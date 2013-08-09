@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 //using System.Windows.Controls;
 
+// 8/8/2013: Testing, testing... 1, 2, 3, douche...
+
 namespace GizMaker.forms
 {
     public partial class Mapper : Form
