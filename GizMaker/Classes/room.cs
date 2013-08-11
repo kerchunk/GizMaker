@@ -471,8 +471,8 @@ namespace GizMaker.classes
                 strSQL += "             [HasExitWest], [HasExitUp], [HasExitDown] ";
                 strSQL += " from    [Room]  ";
                 strSQL += " where   [RoomAreaID] = " + RoomAreaID.ToString() +" ";
-                strSQL += "         and [RoomID] in ( ";
-                strSQL += "         select  [RoomID] ";
+                strSQL += "         and [RoomNumber] in ( ";
+                strSQL += "         select  [RoomNumber] ";
                 strSQL += "         from    [RoomMobs] ";
                 strSQL += "         where   [SpawnAreaID] = " + RoomAreaID.ToString() + " ";
                 strSQL += "                 and [MobID] = " + iMobID.ToString() + " ";

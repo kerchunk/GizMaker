@@ -521,7 +521,7 @@
             // 
             this.lblMobsNotInRoom.AutoSize = true;
             this.lblMobsNotInRoom.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMobsNotInRoom.Location = new System.Drawing.Point(10, 101);
+            this.lblMobsNotInRoom.Location = new System.Drawing.Point(13, 101);
             this.lblMobsNotInRoom.Name = "lblMobsNotInRoom";
             this.lblMobsNotInRoom.Size = new System.Drawing.Size(114, 14);
             this.lblMobsNotInRoom.TabIndex = 5;
@@ -529,6 +529,7 @@
             // 
             // dgMobsInRoom
             // 
+            this.dgMobsInRoom.AllowDrop = true;
             this.dgMobsInRoom.AllowUserToAddRows = false;
             this.dgMobsInRoom.AllowUserToOrderColumns = true;
             this.dgMobsInRoom.AllowUserToResizeColumns = false;

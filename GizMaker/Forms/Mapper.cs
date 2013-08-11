@@ -1900,7 +1900,6 @@ namespace GizMaker.forms
         // Populate Mobs Loading in Room.
         private void PopulateMobsLoadingInRoom()
         {
-            // Populate the Grid to Display Mobs Spawning in Current Room.
             dgMobsInRoom.AutoGenerateColumns = true;
             dgMobsInRoom.DataSource = classes.mob.GetMobSpawns_ByRoomID(iCurrentArea, iCurrentRoom, iCurrentX, iCurrentY, iCurrentZ);
             dgMobsInRoom.DataMember = "Mobs";

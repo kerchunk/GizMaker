@@ -88,7 +88,7 @@ namespace GizMaker.classes
                 strSQL += "         select  [MobID] ";
                 strSQL += "         from    [RoomMobs] ";
                 strSQL += "         where   SpawnAreaID = " + MobAreaID + " ";
-                strSQL += "                 and RoomID = " + intRoomID + " ";
+                strSQL += "                 and RoomNumber = " + intRoomID + " ";
                 strSQL += "                 and CoordX = " + CoordX + " ";
                 strSQL += "                 and CoordY = " + CoordY + " ";
                 strSQL += "                 and CoordZ = " + CoordZ + " ";
@@ -148,7 +148,7 @@ namespace GizMaker.classes
                 strSQL += "         select  [MobID] ";
                 strSQL += "         from    [RoomMobs] ";
                 strSQL += "         where   [SpawnAreaID] = " + MobAreaID.ToString() + " ";
-                strSQL += "                 and [RoomID] = " + intRoomID.ToString() + " ";
+                strSQL += "                 and [RoomNumber] = " + intRoomID.ToString() + " ";
                 strSQL += "                 and [CoordX] = " + CoordX.ToString() + " ";
                 strSQL += "                 and [CoordY] = " + CoordY.ToString() + " ";
                 strSQL += "                 and [CoordZ] = " + CoordZ.ToString() + " ";
@@ -207,7 +207,7 @@ namespace GizMaker.classes
                 strSQL += "         select  [MobID] ";
                 strSQL += "         from    [RoomMobs] ";
                 strSQL += "         where   [SpawnAreaID] = " + MobAreaID.ToString() + " ";
-                strSQL += "                 and [RoomID] = " + intRoomID.ToString() + " ";
+                strSQL += "                 and [RoomNumber] = " + intRoomID.ToString() + " ";
                 strSQL += "                 and [CoordX] = " + CoordX.ToString() + " ";
                 strSQL += "                 and [CoordY] = " + CoordY.ToString() + " ";
                 strSQL += "                 and [CoordZ] = " + CoordZ.ToString() + " ";
