@@ -119,6 +119,45 @@ namespace GizMaker.forms
         {
             Close();
         }
+
+        // Open "New Mob" Window.
+        private void newMobToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (iCurrentArea > 0)
+            {
+                // Display the Form to allow the User to select an Area.
+                using (forms.MobManagement mobDetail = new forms.MobManagement(iCurrentArea))
+                {
+                    // Display the form.
+                    mobDetail.ShowDialog();
+
+                    // Get the saved Mob ID from the child form and refresh.
+                    int iMob = mobDetail.iMobID;
+
+                    if (iMob > 0)
+                    {
+                        // Refresh Mob Detail.
+                    }
+
+                    // Refresh Available Mob List.
+                    PopulateMobsNotLoadingInRoom();
+                }
+            }
+        }
+
+        // Open "New Object" Windows.
+        private void newObjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (iCurrentArea > 0)
+            {
+                // Display the Form to allow the User to select an Area.
+                using (forms.ObjectManagement objDetail = new forms.ObjectManagement(iCurrentArea))
+                {
+                    // Display the form.
+                    objDetail.ShowDialog();
+                }
+            }
+        }
         #endregion
 
         // Movement around the grid.
@@ -1092,7 +1131,7 @@ namespace GizMaker.forms
         private void btnNewMob_Click(object sender, EventArgs e)
         {
             // Display the Form to allow the User to select an Area.
-            using (forms.MobManagement mobDetail = new forms.MobManagement())
+            using (forms.MobManagement mobDetail = new forms.MobManagement(iCurrentArea))
             {
                 // Display the form.
                 mobDetail.ShowDialog();
@@ -1104,6 +1143,9 @@ namespace GizMaker.forms
                 {
                     // Refresh Mob Detail.
                 }
+
+                // Refresh Available Mob List.
+                PopulateMobsNotLoadingInRoom();
             }
         }
 
@@ -1113,21 +1155,12 @@ namespace GizMaker.forms
             int iCurrentMob = -1;
 
             // Check which row is selected.
-            foreach (DataGridViewRow dgvRow in dgMobsInRoom.Rows)
-            {
-                if (dgvRow.Selected)
-                {
-                    iCurrentMob = dgvRow.Index;
-                }
-            }
+            iCurrentMob = Convert.ToInt32(lbSpawns.SelectedValue.ToString());
 
             if (iCurrentMob > -1)
             {
-                // Get the Mob ID
-                string strMobID = dgMobsInRoom.Rows[iCurrentMob].Cells["MobID"].Value.ToString();
-
                 // Display the Form to allow the User to Edit a Mob.
-                using (forms.MobManagement mobDetail = new forms.MobManagement(Convert.ToInt32(strMobID)))
+                using (forms.MobManagement mobDetail = new forms.MobManagement(iCurrentArea, iCurrentMob))
                 {
                     // Display the form.
                     mobDetail.ShowDialog();
@@ -1139,6 +1172,10 @@ namespace GizMaker.forms
                     {
                         // Refresh Mob Detail.
                     }
+
+                    // Refresh Mob Lists.
+                    PopulateMobsLoadingInRoom();
+                    PopulateMobsNotLoadingInRoom();
                 }
             }
         }
@@ -1147,7 +1184,7 @@ namespace GizMaker.forms
         private void btnAddObject_Click(object sender, EventArgs e)
         {
             // Display the Form to allow the User to select an Area.
-            using (forms.ObjectManagement objDetail = new forms.ObjectManagement())
+            using (forms.ObjectManagement objDetail = new forms.ObjectManagement(iCurrentArea))
             {
                 // Display the form.
                 objDetail.ShowDialog();
@@ -1160,27 +1197,60 @@ namespace GizMaker.forms
             HighlightMobSpawns();
         }
 
+        // Add the selected Mob to the Room Spawn list.
+        private void btnAddSpawn_Click(object sender, EventArgs e)
+        {
+            int iCurrentMob = -1;
+
+            // Get the selected Mob.
+            iCurrentMob = Convert.ToInt32(cboAllMobs.SelectedValue.ToString());
+
+            if (iCurrentMob > 0)
+            {
+                // Call Add Method.
+                classes.room.AddRoomSpawn(iCurrentArea, iCurrentRoom, iCurrentX, iCurrentY, iCurrentZ, iCurrentMob);
+
+                // Reset ComboBox.
+                PopulateMobsLoadingInRoom();
+                PopulateMobsNotLoadingInRoom();
+            }
+        }
+
+        // Add the selected Object to the Mob Load list.
+        private void btnAddLoad_Click(object sender, EventArgs e)
+        {
+            int iCurrentObj = -1;
+            int iCurrentMob = -1;
+
+            // Get the selected Mob.
+            iCurrentMob = Convert.ToInt32(lbSpawns.SelectedValue.ToString());
+            // Get the selected Object.
+            iCurrentObj = Convert.ToInt32(cboAllObjects.SelectedValue.ToString());
+
+            if (iCurrentMob > 0 && iCurrentObj > 0)
+            {
+                // Call Add Method.
+                classes.mob.AddMobLoad(iCurrentArea, iCurrentMob, iCurrentObj, iCurrentX, iCurrentY, iCurrentZ);
+
+                // Reset ComboBox.
+                PopulateObjectsLoadingOnMob(iCurrentMob);
+                PopulateObjectsNotLoadingOnMob(iCurrentMob);
+            }
+        }
+
         // Open Object Detail and Populate for selected Mob.
         private void btnFullObjDetail_Click(object sender, EventArgs e)
         {
             int iCurrentObj = -1;
+            int iCurrentMob = -1;
 
             // Check which row is selected.
-            foreach (DataGridViewRow dgvRow in dgLoadingItems.Rows)
-            {
-                if (dgvRow.Selected)
-                {
-                    iCurrentObj = dgvRow.Index;
-                }
-            }
+            iCurrentObj = Convert.ToInt32(lbLoads.SelectedValue.ToString());
 
             if (iCurrentObj > -1)
             {
-                // Get the Object ID
-                string strObjectID = dgLoadingItems.Rows[iCurrentObj].Cells["ObjectID"].Value.ToString();
-
                 // Display the Form to allow the User to Edit an Object.
-                using (forms.ObjectManagement objDetail = new forms.ObjectManagement(Convert.ToInt32(strObjectID)))
+                using (forms.ObjectManagement objDetail = new forms.ObjectManagement(iCurrentArea, iCurrentObj))
                 {
                     // Display the form.
                     objDetail.ShowDialog();
@@ -1191,6 +1261,15 @@ namespace GizMaker.forms
                     if (iObjectID > 0)
                     {
                         // Refresh Mob Detail.
+                    }
+
+                    if (lbSpawns.SelectedValue.ToString() != "")
+                    {
+                        // Check which row is selected.
+                        iCurrentMob = Convert.ToInt32(lbSpawns.SelectedValue.ToString());
+
+                        PopulateObjectsLoadingOnMob(iCurrentMob);
+                        PopulateObjectsNotLoadingOnMob(iCurrentMob);
                     }
                 }
             }
@@ -1228,59 +1307,96 @@ namespace GizMaker.forms
             int iCurrentMob = -1;
 
             // Check which row is selected.
-            foreach (DataGridViewRow dgvRow in dgMobsInRoom.Rows)
-            {
-                if (dgvRow.Selected)
-                {
-                    iCurrentMob = dgvRow.Index;
-                }
-            }
+            iCurrentMob = Convert.ToInt32(lbSpawns.SelectedValue.ToString());
 
             if (iCurrentMob > -1)
             {
-                // Get the Mob ID
-                string strMobID = dgMobsInRoom.Rows[iCurrentMob].Cells["MobID"].Value.ToString();
-
                 // Populate Objects associated with selected Mob. 
-                PopulateObjectsLoadingOnMob(Convert.ToInt32(strMobID));
+                PopulateObjectsLoadingOnMob(iCurrentMob);
                 // Populate Objects not associated with selected Mob.
-                PopulateObjectsNotLoadingOnMob(Convert.ToInt32(strMobID));
+                PopulateObjectsNotLoadingOnMob(iCurrentMob);
                 // Set Mob Details on Mob Tab.
-                classes.mob oMob = classes.mob.GetMob(Convert.ToInt32(strMobID));
+                classes.mob oMob = classes.mob.GetMob(iCurrentMob);
                 lblQuickMobName.Text = oMob.ShortDesc;
                 lblQuickMobVNUM.Text = oMob.mobVNUM.ToString();
                 lblQuickMobID.Text = oMob.mobID.ToString();
             }
         }
 
-        // Mob Selected in "Mobs NOT Currently Loading in Room" grid.
-        private void dgMobsNotInRoom_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        // Update Selected Mob from Spawn List.
+        private void lbSpawns_SelectedIndexChanged(object sender, EventArgs e)
         {
             int iCurrentMob = -1;
 
             // Check which row is selected.
-            foreach (DataGridViewRow dgvRow in dgMobsNotInRoom.Rows)
-            {
-                if (dgvRow.Selected)
-                {
-                    iCurrentMob = dgvRow.Index;
-                }
-            }
+            iCurrentMob = Convert.ToInt32(lbSpawns.SelectedValue.ToString());
 
             if (iCurrentMob > -1)
             {
-                // Get the Mob ID
-                string strMobID = dgMobsNotInRoom.Rows[iCurrentMob].Cells["MobIDOther"].Value.ToString();
-
                 // Populate Objects associated with selected Mob. 
-                PopulateObjectsLoadingOnMob(Convert.ToInt32(strMobID));
+                PopulateObjectsLoadingOnMob(iCurrentMob);
                 // Populate Objects not associated with selected Mob.
-                PopulateObjectsNotLoadingOnMob(Convert.ToInt32(strMobID));
+                PopulateObjectsNotLoadingOnMob(iCurrentMob);
                 // Set Mob Details on Mob Tab.
-                classes.mob oMob = classes.mob.GetMob(Convert.ToInt32(strMobID));
+                classes.mob oMob = classes.mob.GetMob(iCurrentMob);
                 lblQuickMobName.Text = oMob.ShortDesc;
                 lblQuickMobVNUM.Text = oMob.mobVNUM.ToString();
                 lblQuickMobID.Text = oMob.mobID.ToString();
+
+                lbLoads.Enabled = true;
+            }
+        }
+
+        // Update Selected Object from Load List.
+        private void lbLoads_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        // Remove Currently-Selected Spawn from the Selected Room.
+        private void btnRemoveSpawn_Click(object sender, EventArgs e)
+        {
+            int iCurrentMob = -1;
+
+            // Check which row is selected.
+            iCurrentMob = Convert.ToInt32(lbSpawns.SelectedValue.ToString());
+
+            if (iCurrentMob > -1)
+            {
+                // Remove the Spawn from the Room.
+                classes.mob.RemoveMobLoads(iCurrentArea, iCurrentMob, iCurrentX, iCurrentY, iCurrentZ);
+                // Remove the Spawn from the Room.
+                classes.room.RemoveRoomSpawn(iCurrentArea, iCurrentRoom, iCurrentX, iCurrentY, iCurrentZ, iCurrentMob);
+                // Populate Spawns associated with selected Room. 
+                PopulateMobsLoadingInRoom();
+                // Populate Spawns not associated with selected Room.
+                PopulateMobsNotLoadingInRoom();
+            }
+        }
+
+        // Remove Currently-Selected Load from the Selected Mob.
+        private void btnRemoveLoad_Click(object sender, EventArgs e)
+        {
+            int iCurrentMob = -1;
+            int iCurrentObj = -1;
+
+            // Check which row is selected.
+            iCurrentMob = Convert.ToInt32(lbSpawns.SelectedValue.ToString());
+            // Check which row is selected.
+            iCurrentObj = Convert.ToInt32(lbLoads.SelectedValue.ToString());
+
+            if (iCurrentMob > 0 && iCurrentObj > 0)
+            {
+                // Remove the Spawn from the Room.
+                classes.mob.RemoveMobLoad(iCurrentArea, iCurrentMob, iCurrentObj, iCurrentX, iCurrentY, iCurrentZ);
+                // Populate Spawns associated with selected Room. 
+                PopulateMobsLoadingInRoom();
+                // Populate Spawns not associated with selected Room.
+                PopulateMobsNotLoadingInRoom();
+                // Populate Loads associated with selected Mob. 
+                PopulateObjectsLoadingOnMob(iCurrentMob);
+                // Populate Loads not associated with selected Mob.
+                PopulateObjectsNotLoadingOnMob(iCurrentMob);
             }
         }
         #endregion
@@ -1766,6 +1882,26 @@ namespace GizMaker.forms
             PopulateMobsLoadingInRoom();
             // Populate Mobs Not Loading in Room.
             PopulateMobsNotLoadingInRoom();
+
+            // Disable Spawn selection if Room is not part of Map.
+            classes.room oRoom = new classes.room();
+            oRoom = classes.room.GetRoom(iCurrentArea, iCurrentRoom, iCurrentX, iCurrentY, iCurrentZ);
+            if (oRoom.Exists())
+                cboAllMobs.Enabled = true;
+            else
+                cboAllMobs.Enabled = false;
+
+
+            // Disable Load selection if Mob is not Selected.
+            if (lbSpawns.SelectedIndex > -1)
+            {
+                PopulateObjectsNotLoadingOnMob(Convert.ToInt32(lbSpawns.SelectedValue.ToString()));
+                cboAllObjects.Enabled = true;
+            }
+            else
+            {
+                cboAllObjects.Enabled = false;
+            }
         }
 
         // Update Zoom View window.
@@ -1900,40 +2036,93 @@ namespace GizMaker.forms
         // Populate Mobs Loading in Room.
         private void PopulateMobsLoadingInRoom()
         {
-            dgMobsInRoom.AutoGenerateColumns = true;
-            dgMobsInRoom.DataSource = classes.mob.GetMobSpawns_ByRoomID(iCurrentArea, iCurrentRoom, iCurrentX, iCurrentY, iCurrentZ);
-            dgMobsInRoom.DataMember = "Mobs";
-            dgMobsInRoom.Update();
+            // Create a DataTable to source the Combobox.
+            DataTable dtMobs = new DataTable();
+            dtMobs.Columns.Add("MobID", typeof(string));
+            dtMobs.Columns.Add("ShortDesc", typeof(string));
+
+            // Get the list of Mobs to Populate the Combobox.
+            DataSet dsMobs = classes.mob.GetMobSpawns_ByRoomID(iCurrentArea, iCurrentRoom, iCurrentX, iCurrentY, iCurrentZ);
+
+            // Fill the DataTable with the list of Mobs.
+            dtMobs = dsMobs.Tables[0];
+
+            // Push the List to the ComboBox.
+            lbSpawns.ValueMember = "MobID";
+            lbSpawns.DisplayMember = "ShortDesc";
+            lbSpawns.DataSource = dtMobs;
         }
 
         // Populate Mobs NOT Loading in Room.
         private void PopulateMobsNotLoadingInRoom()
         {
-            // Populate the Grid to Display Mobs NOT Spawning in Current Room.
-            dgMobsNotInRoom.AutoGenerateColumns = true;
-            dgMobsNotInRoom.DataSource = classes.mob.GetMobSpawnsNotInRoom_ByRoomID(iCurrentArea, iCurrentRoom, iCurrentX, iCurrentY, iCurrentZ);
-            dgMobsNotInRoom.DataMember = "Mobs";
-            dgMobsNotInRoom.Update();
+            // Create a DataTable to source the Combobox.
+            DataTable dtMobs = new DataTable();
+            dtMobs.Columns.Add("MobID", typeof(string));
+            dtMobs.Columns.Add("ShortDesc", typeof(string));
+
+            // Get the list of Mobs to Populate the Combobox.
+            DataSet dsMobs = classes.mob.GetMobSpawnsNotInRoom_ByRoomID(iCurrentArea, iCurrentRoom, iCurrentX, iCurrentY, iCurrentZ);
+
+            // Fill the DataTable with the list of Mobs.
+            dtMobs = dsMobs.Tables[0];
+
+            // Add blank row to the top of the ComboBox.
+            DataRow row = dtMobs.NewRow();
+            row["MobID"] = "";
+            row["ShortDesc"] = " < Add New Mob >";
+            dtMobs.Rows.InsertAt(row, 0);
+
+            // Push the List to the ComboBox.
+            cboAllMobs.ValueMember = "MobID";
+            cboAllMobs.DisplayMember = "ShortDesc";
+            cboAllMobs.DataSource = dtMobs;
         }
 
         // Populate Objects Loading on Mob.
         private void PopulateObjectsLoadingOnMob(int iCurrentMob)
         {
-            // Populate the Grid to Objects Loading on the Current Mob.
-            dgLoadingItems.AutoGenerateColumns = true;
-            dgLoadingItems.DataSource = classes.c_object.GetLoadingObjects_ByMobID(iCurrentArea, iCurrentMob, iCurrentX, iCurrentY, iCurrentZ);
-            dgLoadingItems.DataMember = "Objs";
-            dgLoadingItems.Update();
+            // Create a DataTable to source the Combobox.
+            DataTable dtObjects = new DataTable();
+            dtObjects.Columns.Add("ObjectID", typeof(string));
+            dtObjects.Columns.Add("ShortDesc", typeof(string));
+
+            // Get the list of Objects to Populate the Combobox.
+            DataSet dsObjects = classes.c_object.GetLoadingObjects_ByMobID(iCurrentArea, iCurrentMob, iCurrentX, iCurrentY, iCurrentZ);
+
+            // Fill the DataTable with the list of Mobs.
+            dtObjects = dsObjects.Tables[0];
+
+            // Push the List to the ComboBox.
+            lbLoads.ValueMember = "ObjectID";
+            lbLoads.DisplayMember = "ShortDesc";
+            lbLoads.DataSource = dtObjects;
         }
 
         // Populate Objects NOT Loading on Mob.
         private void PopulateObjectsNotLoadingOnMob(int iCurrentMob)
         {
-            // Populate the Grid to Objects NOT Loading on the Current Mob.
-            dgNonLoadingItems.AutoGenerateColumns = true;
-            dgNonLoadingItems.DataSource = classes.c_object.GetNonLoadingObjects_ByMobID(iCurrentArea, iCurrentMob, iCurrentX, iCurrentY, iCurrentZ);
-            dgNonLoadingItems.DataMember = "Objs";
-            dgNonLoadingItems.Update();
+            // Create a DataTable to source the Combobox.
+            DataTable dtObjects = new DataTable();
+            dtObjects.Columns.Add("ObjectID", typeof(string));
+            dtObjects.Columns.Add("ShortDesc", typeof(string));
+
+            // Get the list of Objects to Populate the Combobox.
+            DataSet dsObjects = classes.c_object.GetNonLoadingObjects_ByMobID(iCurrentArea, iCurrentMob, iCurrentX, iCurrentY, iCurrentZ);
+
+            // Fill the DataTable with the list of Mobs.
+            dtObjects = dsObjects.Tables[0];
+
+            // Add blank row to the top of the ComboBox.
+            DataRow row = dtObjects.NewRow();
+            row["ObjectID"] = "";
+            row["ShortDesc"] = " < Add New Object >";
+            dtObjects.Rows.InsertAt(row, 0);
+
+            // Push the List to the ComboBox.
+            cboAllObjects.ValueMember = "ObjectID";
+            cboAllObjects.DisplayMember = "ShortDesc";
+            cboAllObjects.DataSource = dtObjects;
         }
 
         // Display Currently Mob Spawns to the current Panel.
@@ -1969,9 +2158,15 @@ namespace GizMaker.forms
                 
                 // Set the Highlight Mob Toggle;
                 if (blnHighlightMobs)
+                {
+                    btnHighlightSpawns.Text = "Show Spawns";
                     blnHighlightMobs = false;
+                }
                 else
+                {
+                    btnHighlightSpawns.Text = "Hide Spawns";
                     blnHighlightMobs = true;
+                }
             }
         }
         #endregion

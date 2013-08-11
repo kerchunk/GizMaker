@@ -257,6 +257,7 @@ namespace GizMaker.classes
 
                 if (ds.Tables[0].Rows.Count > 0)
                 {
+                    oRoom.roomAreaID = (int)ds.Tables[0].Rows[0]["RoomAreaID"];
                     oRoom.roomNumber = (int)ds.Tables[0].Rows[0]["RoomNumber"];
                     oRoom.hasExitNorth = (bool)ds.Tables[0].Rows[0]["HasExitNorth"];
                     oRoom.hasExitSouth = (bool)ds.Tables[0].Rows[0]["HasExitSouth"];
@@ -511,6 +512,89 @@ namespace GizMaker.classes
             connection.Dispose();
 
             return rooms;
+        }
+
+        // Add a Mob Spawn to the Selected Room.
+        public static void AddRoomSpawn(int RoomAreaID, int RoomNumber, int CoordX, int CoordY, int CoordZ, int iMobID)
+        {
+            // Configure database connection elements.
+            OleDbDataAdapter da = new OleDbDataAdapter();
+
+            OleDbConnection connection = new OleDbConnection();
+            connection.ConnectionString = database.getConnectionString();
+
+            try
+            {
+                connection.Open();
+
+                // Create query. 
+                string strSQL = string.Empty;
+                strSQL += " insert into [RoomMobs] ([SpawnAreaID], [RoomNumber], [CoordX], [CoordY], [CoordZ], [MobID]) ";
+                strSQL += " values (@SpawnAreaID, @RoomNumber, @CoordX, @CoordY, @CoordZ, @MobID)";
+
+                da.InsertCommand = new OleDbCommand(strSQL);
+                da.InsertCommand.Connection = connection;
+
+                da.InsertCommand.Parameters.Add("@SpawnAreaID", OleDbType.Integer, 10, "SpawnAreaID").Value = RoomAreaID;
+                da.InsertCommand.Parameters.Add("@RoomNumber", OleDbType.Integer, 10, "RoomNumber").Value = RoomNumber;
+                da.InsertCommand.Parameters.Add("@CoordX", OleDbType.Integer, 10, "CoordX").Value = CoordX;
+                da.InsertCommand.Parameters.Add("@CoordY", OleDbType.Integer, 10, "CoordY").Value = CoordY;
+                da.InsertCommand.Parameters.Add("@CoordZ", OleDbType.Integer, 10, "CoordZ").Value = CoordZ;
+                da.InsertCommand.Parameters.Add("@MobID", OleDbType.Integer, 10, "MobID").Value = iMobID;
+
+                da.InsertCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                string strError = ex.Message;
+            }
+
+            connection.Close();
+            connection.Dispose();
+        }
+
+        // Remove a Mob Spawn to the Selected Room.
+        public static void RemoveRoomSpawn(int RoomAreaID, int RoomNumber, int CoordX, int CoordY, int CoordZ, int iMobID)
+        {
+            // Configure database connection elements.
+            OleDbDataAdapter da = new OleDbDataAdapter();
+
+            OleDbConnection connection = new OleDbConnection();
+            connection.ConnectionString = database.getConnectionString();
+
+            try
+            {
+                connection.Open();
+
+                // Create query. 
+                string strSQL = string.Empty;
+                strSQL += " delete from [RoomMobs] ";
+                strSQL += " where [SpawnAreaID] = @SpawnAreaID ";
+                strSQL += "       and [RoomNumber] = @RoomNumber ";
+                strSQL += "       and [CoordX] = @CoordX ";
+                strSQL += "       and [CoordY] = @CoordY ";
+                strSQL += "       and [CoordZ] = @CoordZ ";
+                strSQL += "       and [MobID] = @MobID ";
+
+                da.DeleteCommand = new OleDbCommand(strSQL);
+                da.DeleteCommand.Connection = connection;
+
+                da.DeleteCommand.Parameters.Add("@SpawnAreaID", OleDbType.Integer, 10, "SpawnAreaID").Value = RoomAreaID;
+                da.DeleteCommand.Parameters.Add("@RoomNumber", OleDbType.Integer, 10, "RoomNumber").Value = RoomNumber;
+                da.DeleteCommand.Parameters.Add("@CoordX", OleDbType.Integer, 10, "CoordX").Value = CoordX;
+                da.DeleteCommand.Parameters.Add("@CoordY", OleDbType.Integer, 10, "CoordY").Value = CoordY;
+                da.DeleteCommand.Parameters.Add("@CoordZ", OleDbType.Integer, 10, "CoordZ").Value = CoordZ;
+                da.DeleteCommand.Parameters.Add("@MobID", OleDbType.Integer, 10, "MobID").Value = iMobID;
+
+                da.DeleteCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                string strError = ex.Message;
+            }
+
+            connection.Close();
+            connection.Dispose();
         }
         #endregion
     }

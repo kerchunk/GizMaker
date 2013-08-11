@@ -28,45 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Mapper));
             this.tabMob = new System.Windows.Forms.TabPage();
             this.btnNewMob = new System.Windows.Forms.Button();
             this.btnAddObject = new System.Windows.Forms.Button();
-            this.btnFullObjDetail = new System.Windows.Forms.Button();
             this.lblMobs = new System.Windows.Forms.Label();
             this.lblLoadingObjects = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.cboAllObjects = new System.Windows.Forms.ComboBox();
             this.lblMobLoadingObjects = new System.Windows.Forms.Label();
-            this.dgNonLoadingItems = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgLoadingItems = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblRemainingAreaItems = new System.Windows.Forms.Label();
+            this.btnFullObjDetail = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.dgMobsNotInRoom = new System.Windows.Forms.DataGridView();
-            this.MobIDOther = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblMobsNotInRoom = new System.Windows.Forms.Label();
-            this.dgMobsInRoom = new System.Windows.Forms.DataGridView();
-            this.MobID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VNUM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AreaName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboAllMobs = new System.Windows.Forms.ComboBox();
             this.lblMobsInRoom = new System.Windows.Forms.Label();
-            this.btnMobSave = new System.Windows.Forms.Button();
             this.btnHighlightSpawns = new System.Windows.Forms.Button();
-            this.lblMobRoomName = new System.Windows.Forms.Label();
             this.btnFullDetail = new System.Windows.Forms.Button();
+            this.lblMobRoomName = new System.Windows.Forms.Label();
             this.lblMobCurrentVNUM = new System.Windows.Forms.Label();
             this.lblMobVNUMPrompt = new System.Windows.Forms.Label();
             this.lblMobCurrentRoom = new System.Windows.Forms.Label();
@@ -208,13 +185,17 @@
             this.mobToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.objectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAddSpawn = new System.Windows.Forms.Button();
+            this.btnAddLoad = new System.Windows.Forms.Button();
+            this.lbSpawns = new System.Windows.Forms.ListBox();
+            this.lbLoads = new System.Windows.Forms.ListBox();
+            this.btnRemoveSpawn = new System.Windows.Forms.Button();
+            this.btnRemoveLoad = new System.Windows.Forms.Button();
+            this.newMobToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newObjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabMob.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgNonLoadingItems)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgLoadingItems)).BeginInit();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgMobsNotInRoom)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgMobsInRoom)).BeginInit();
             this.panel5.SuspendLayout();
             this.tabRoom.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -236,15 +217,12 @@
             this.tabMob.BackColor = System.Drawing.Color.LightSlateGray;
             this.tabMob.Controls.Add(this.btnNewMob);
             this.tabMob.Controls.Add(this.btnAddObject);
-            this.tabMob.Controls.Add(this.btnFullObjDetail);
             this.tabMob.Controls.Add(this.lblMobs);
             this.tabMob.Controls.Add(this.lblLoadingObjects);
             this.tabMob.Controls.Add(this.panel7);
-            this.tabMob.Controls.Add(this.panel6);
-            this.tabMob.Controls.Add(this.btnMobSave);
             this.tabMob.Controls.Add(this.btnHighlightSpawns);
+            this.tabMob.Controls.Add(this.panel6);
             this.tabMob.Controls.Add(this.lblMobRoomName);
-            this.tabMob.Controls.Add(this.btnFullDetail);
             this.tabMob.Controls.Add(this.lblMobCurrentVNUM);
             this.tabMob.Controls.Add(this.lblMobVNUMPrompt);
             this.tabMob.Controls.Add(this.lblMobCurrentRoom);
@@ -261,7 +239,7 @@
             // btnNewMob
             // 
             this.btnNewMob.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewMob.Location = new System.Drawing.Point(355, 175);
+            this.btnNewMob.Location = new System.Drawing.Point(355, 209);
             this.btnNewMob.Name = "btnNewMob";
             this.btnNewMob.Size = new System.Drawing.Size(88, 23);
             this.btnNewMob.TabIndex = 41;
@@ -272,7 +250,7 @@
             // btnAddObject
             // 
             this.btnAddObject.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddObject.Location = new System.Drawing.Point(355, 453);
+            this.btnAddObject.Location = new System.Drawing.Point(355, 494);
             this.btnAddObject.Name = "btnAddObject";
             this.btnAddObject.Size = new System.Drawing.Size(88, 23);
             this.btnAddObject.TabIndex = 40;
@@ -280,22 +258,11 @@
             this.btnAddObject.UseVisualStyleBackColor = true;
             this.btnAddObject.Click += new System.EventHandler(this.btnAddObject_Click);
             // 
-            // btnFullObjDetail
-            // 
-            this.btnFullObjDetail.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFullObjDetail.Location = new System.Drawing.Point(234, 453);
-            this.btnFullObjDetail.Name = "btnFullObjDetail";
-            this.btnFullObjDetail.Size = new System.Drawing.Size(115, 23);
-            this.btnFullObjDetail.TabIndex = 39;
-            this.btnFullObjDetail.Text = "Open Object Detail";
-            this.btnFullObjDetail.UseVisualStyleBackColor = true;
-            this.btnFullObjDetail.Click += new System.EventHandler(this.btnFullObjDetail_Click);
-            // 
             // lblMobs
             // 
             this.lblMobs.AutoSize = true;
             this.lblMobs.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMobs.Location = new System.Drawing.Point(17, 187);
+            this.lblMobs.Location = new System.Drawing.Point(17, 224);
             this.lblMobs.Name = "lblMobs";
             this.lblMobs.Size = new System.Drawing.Size(38, 14);
             this.lblMobs.TabIndex = 38;
@@ -305,7 +272,7 @@
             // 
             this.lblLoadingObjects.AutoSize = true;
             this.lblLoadingObjects.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoadingObjects.Location = new System.Drawing.Point(17, 464);
+            this.lblLoadingObjects.Location = new System.Drawing.Point(17, 508);
             this.lblLoadingObjects.Name = "lblLoadingObjects";
             this.lblLoadingObjects.Size = new System.Drawing.Size(49, 14);
             this.lblLoadingObjects.TabIndex = 37;
@@ -314,334 +281,119 @@
             // panel7
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.btnRemoveLoad);
+            this.panel7.Controls.Add(this.lbLoads);
+            this.panel7.Controls.Add(this.btnAddLoad);
+            this.panel7.Controls.Add(this.cboAllObjects);
             this.panel7.Controls.Add(this.lblMobLoadingObjects);
-            this.panel7.Controls.Add(this.dgNonLoadingItems);
-            this.panel7.Controls.Add(this.dgLoadingItems);
-            this.panel7.Controls.Add(this.lblRemainingAreaItems);
-            this.panel7.Location = new System.Drawing.Point(17, 479);
+            this.panel7.Controls.Add(this.btnFullObjDetail);
+            this.panel7.Location = new System.Drawing.Point(17, 523);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(426, 224);
+            this.panel7.Size = new System.Drawing.Size(426, 212);
             this.panel7.TabIndex = 36;
+            // 
+            // cboAllObjects
+            // 
+            this.cboAllObjects.BackColor = System.Drawing.Color.LightSlateGray;
+            this.cboAllObjects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAllObjects.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboAllObjects.FormattingEnabled = true;
+            this.cboAllObjects.Location = new System.Drawing.Point(6, 23);
+            this.cboAllObjects.Name = "cboAllObjects";
+            this.cboAllObjects.Size = new System.Drawing.Size(367, 22);
+            this.cboAllObjects.TabIndex = 42;
             // 
             // lblMobLoadingObjects
             // 
             this.lblMobLoadingObjects.AutoSize = true;
             this.lblMobLoadingObjects.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMobLoadingObjects.Location = new System.Drawing.Point(6, 7);
+            this.lblMobLoadingObjects.Location = new System.Drawing.Point(10, 6);
             this.lblMobLoadingObjects.Name = "lblMobLoadingObjects";
             this.lblMobLoadingObjects.Size = new System.Drawing.Size(173, 14);
             this.lblMobLoadingObjects.TabIndex = 35;
             this.lblMobLoadingObjects.Text = "Objects Currently Loading on Mob:";
             // 
-            // dgNonLoadingItems
+            // btnFullObjDetail
             // 
-            this.dgNonLoadingItems.AllowUserToAddRows = false;
-            this.dgNonLoadingItems.AllowUserToOrderColumns = true;
-            this.dgNonLoadingItems.AllowUserToResizeColumns = false;
-            this.dgNonLoadingItems.AllowUserToResizeRows = false;
-            this.dgNonLoadingItems.BackgroundColor = System.Drawing.Color.LightSlateGray;
-            this.dgNonLoadingItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgNonLoadingItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgNonLoadingItems.ColumnHeadersVisible = false;
-            this.dgNonLoadingItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6});
-            this.dgNonLoadingItems.GridColor = System.Drawing.Color.DarkGray;
-            this.dgNonLoadingItems.Location = new System.Drawing.Point(11, 121);
-            this.dgNonLoadingItems.MultiSelect = false;
-            this.dgNonLoadingItems.Name = "dgNonLoadingItems";
-            this.dgNonLoadingItems.RowHeadersVisible = false;
-            this.dgNonLoadingItems.RowHeadersWidth = 10;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSlateGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgNonLoadingItems.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgNonLoadingItems.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgNonLoadingItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgNonLoadingItems.Size = new System.Drawing.Size(404, 92);
-            this.dgNonLoadingItems.TabIndex = 34;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "VNUM";
-            this.dataGridViewTextBoxColumn5.HeaderText = "VNUM";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "ShortDesc";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Object Name";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.Width = 400;
-            // 
-            // dgLoadingItems
-            // 
-            this.dgLoadingItems.AllowUserToAddRows = false;
-            this.dgLoadingItems.AllowUserToOrderColumns = true;
-            this.dgLoadingItems.AllowUserToResizeColumns = false;
-            this.dgLoadingItems.AllowUserToResizeRows = false;
-            this.dgLoadingItems.BackgroundColor = System.Drawing.Color.LightSlateGray;
-            this.dgLoadingItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgLoadingItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgLoadingItems.ColumnHeadersVisible = false;
-            this.dgLoadingItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.dgLoadingItems.GridColor = System.Drawing.Color.DarkGray;
-            this.dgLoadingItems.Location = new System.Drawing.Point(11, 24);
-            this.dgLoadingItems.MultiSelect = false;
-            this.dgLoadingItems.Name = "dgLoadingItems";
-            this.dgLoadingItems.RowHeadersVisible = false;
-            this.dgLoadingItems.RowHeadersWidth = 10;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSlateGray;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgLoadingItems.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgLoadingItems.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgLoadingItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgLoadingItems.Size = new System.Drawing.Size(404, 75);
-            this.dgLoadingItems.TabIndex = 32;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "VNUM";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Object VNUM";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "ShortDesc";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Object Name";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 400;
-            // 
-            // lblRemainingAreaItems
-            // 
-            this.lblRemainingAreaItems.AutoSize = true;
-            this.lblRemainingAreaItems.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRemainingAreaItems.Location = new System.Drawing.Point(6, 105);
-            this.lblRemainingAreaItems.Name = "lblRemainingAreaItems";
-            this.lblRemainingAreaItems.Size = new System.Drawing.Size(125, 14);
-            this.lblRemainingAreaItems.TabIndex = 33;
-            this.lblRemainingAreaItems.Text = "Remaining Area Objects:";
+            this.btnFullObjDetail.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFullObjDetail.Location = new System.Drawing.Point(6, 173);
+            this.btnFullObjDetail.Name = "btnFullObjDetail";
+            this.btnFullObjDetail.Size = new System.Drawing.Size(87, 23);
+            this.btnFullObjDetail.TabIndex = 39;
+            this.btnFullObjDetail.Text = "Object Detail";
+            this.btnFullObjDetail.UseVisualStyleBackColor = true;
+            this.btnFullObjDetail.Click += new System.EventHandler(this.btnFullObjDetail_Click);
             // 
             // panel6
             // 
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.dgMobsNotInRoom);
-            this.panel6.Controls.Add(this.lblMobsNotInRoom);
-            this.panel6.Controls.Add(this.dgMobsInRoom);
+            this.panel6.Controls.Add(this.btnRemoveSpawn);
+            this.panel6.Controls.Add(this.lbSpawns);
+            this.panel6.Controls.Add(this.btnAddSpawn);
+            this.panel6.Controls.Add(this.cboAllMobs);
             this.panel6.Controls.Add(this.lblMobsInRoom);
-            this.panel6.Location = new System.Drawing.Point(17, 201);
+            this.panel6.Controls.Add(this.btnFullDetail);
+            this.panel6.Location = new System.Drawing.Point(17, 238);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(426, 239);
+            this.panel6.Size = new System.Drawing.Size(426, 214);
             this.panel6.TabIndex = 35;
             // 
-            // dgMobsNotInRoom
+            // cboAllMobs
             // 
-            this.dgMobsNotInRoom.AllowUserToAddRows = false;
-            this.dgMobsNotInRoom.AllowUserToOrderColumns = true;
-            this.dgMobsNotInRoom.AllowUserToResizeColumns = false;
-            this.dgMobsNotInRoom.AllowUserToResizeRows = false;
-            this.dgMobsNotInRoom.BackgroundColor = System.Drawing.Color.LightSlateGray;
-            this.dgMobsNotInRoom.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgMobsNotInRoom.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgMobsNotInRoom.ColumnHeadersVisible = false;
-            this.dgMobsNotInRoom.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MobIDOther,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn7});
-            this.dgMobsNotInRoom.GridColor = System.Drawing.Color.DarkGray;
-            this.dgMobsNotInRoom.Location = new System.Drawing.Point(10, 118);
-            this.dgMobsNotInRoom.MultiSelect = false;
-            this.dgMobsNotInRoom.Name = "dgMobsNotInRoom";
-            this.dgMobsNotInRoom.RowHeadersVisible = false;
-            this.dgMobsNotInRoom.RowHeadersWidth = 10;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.LightSlateGray;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgMobsNotInRoom.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgMobsNotInRoom.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgMobsNotInRoom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgMobsNotInRoom.Size = new System.Drawing.Size(404, 110);
-            this.dgMobsNotInRoom.TabIndex = 4;
-            this.dgMobsNotInRoom.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMobsNotInRoom_CellContentClick);
-            // 
-            // MobIDOther
-            // 
-            this.MobIDOther.DataPropertyName = "MobID";
-            this.MobIDOther.HeaderText = "Mob ID";
-            this.MobIDOther.Name = "MobIDOther";
-            this.MobIDOther.Visible = false;
-            this.MobIDOther.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "VNUM";
-            this.dataGridViewTextBoxColumn2.HeaderText = "VNUM";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "ShortDesc";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Mob Name";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.Width = 400;
-            // 
-            // lblMobsNotInRoom
-            // 
-            this.lblMobsNotInRoom.AutoSize = true;
-            this.lblMobsNotInRoom.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMobsNotInRoom.Location = new System.Drawing.Point(13, 101);
-            this.lblMobsNotInRoom.Name = "lblMobsNotInRoom";
-            this.lblMobsNotInRoom.Size = new System.Drawing.Size(114, 14);
-            this.lblMobsNotInRoom.TabIndex = 5;
-            this.lblMobsNotInRoom.Text = "Remaining Area Mobs:";
-            // 
-            // dgMobsInRoom
-            // 
-            this.dgMobsInRoom.AllowDrop = true;
-            this.dgMobsInRoom.AllowUserToAddRows = false;
-            this.dgMobsInRoom.AllowUserToOrderColumns = true;
-            this.dgMobsInRoom.AllowUserToResizeColumns = false;
-            this.dgMobsInRoom.AllowUserToResizeRows = false;
-            this.dgMobsInRoom.BackgroundColor = System.Drawing.Color.LightSlateGray;
-            this.dgMobsInRoom.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgMobsInRoom.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgMobsInRoom.ColumnHeadersVisible = false;
-            this.dgMobsInRoom.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MobID,
-            this.VNUM,
-            this.AreaName});
-            this.dgMobsInRoom.GridColor = System.Drawing.Color.DarkGray;
-            this.dgMobsInRoom.Location = new System.Drawing.Point(10, 23);
-            this.dgMobsInRoom.MultiSelect = false;
-            this.dgMobsInRoom.Name = "dgMobsInRoom";
-            this.dgMobsInRoom.RowHeadersVisible = false;
-            this.dgMobsInRoom.RowHeadersWidth = 10;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.LightSlateGray;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgMobsInRoom.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgMobsInRoom.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgMobsInRoom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgMobsInRoom.Size = new System.Drawing.Size(404, 75);
-            this.dgMobsInRoom.TabIndex = 2;
-            this.dgMobsInRoom.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMobsInRoom_CellContentClick);
-            // 
-            // MobID
-            // 
-            this.MobID.DataPropertyName = "MobID";
-            this.MobID.HeaderText = "MobID";
-            this.MobID.Name = "MobID";
-            this.MobID.Visible = false;
-            // 
-            // VNUM
-            // 
-            this.VNUM.DataPropertyName = "VNUM";
-            this.VNUM.HeaderText = "VNUM";
-            this.VNUM.Name = "VNUM";
-            this.VNUM.Width = 50;
-            // 
-            // AreaName
-            // 
-            this.AreaName.DataPropertyName = "ShortDesc";
-            this.AreaName.HeaderText = "Mob Name";
-            this.AreaName.Name = "AreaName";
-            this.AreaName.Width = 400;
+            this.cboAllMobs.BackColor = System.Drawing.Color.LightSlateGray;
+            this.cboAllMobs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAllMobs.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboAllMobs.FormattingEnabled = true;
+            this.cboAllMobs.Location = new System.Drawing.Point(6, 26);
+            this.cboAllMobs.Name = "cboAllMobs";
+            this.cboAllMobs.Size = new System.Drawing.Size(367, 22);
+            this.cboAllMobs.TabIndex = 6;
             // 
             // lblMobsInRoom
             // 
             this.lblMobsInRoom.AutoSize = true;
             this.lblMobsInRoom.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMobsInRoom.Location = new System.Drawing.Point(10, 6);
+            this.lblMobsInRoom.Location = new System.Drawing.Point(8, 9);
             this.lblMobsInRoom.Name = "lblMobsInRoom";
             this.lblMobsInRoom.Size = new System.Drawing.Size(165, 14);
             this.lblMobsInRoom.TabIndex = 3;
             this.lblMobsInRoom.Text = "Mobs Currently Loading in Room:";
             // 
-            // btnMobSave
-            // 
-            this.btnMobSave.Location = new System.Drawing.Point(358, 706);
-            this.btnMobSave.Name = "btnMobSave";
-            this.btnMobSave.Size = new System.Drawing.Size(85, 23);
-            this.btnMobSave.TabIndex = 30;
-            this.btnMobSave.Text = "Save Spawn";
-            this.btnMobSave.UseVisualStyleBackColor = true;
-            // 
             // btnHighlightSpawns
             // 
-            this.btnHighlightSpawns.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHighlightSpawns.Location = new System.Drawing.Point(20, 707);
+            this.btnHighlightSpawns.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHighlightSpawns.Location = new System.Drawing.Point(24, 88);
             this.btnHighlightSpawns.Name = "btnHighlightSpawns";
-            this.btnHighlightSpawns.Size = new System.Drawing.Size(173, 23);
+            this.btnHighlightSpawns.Size = new System.Drawing.Size(96, 23);
             this.btnHighlightSpawns.TabIndex = 29;
-            this.btnHighlightSpawns.Text = "Highlight Spawn Locations";
+            this.btnHighlightSpawns.Text = "Show Spawns";
             this.btnHighlightSpawns.UseVisualStyleBackColor = true;
             this.btnHighlightSpawns.Click += new System.EventHandler(this.btnHighlightSpawns_Click);
+            // 
+            // btnFullDetail
+            // 
+            this.btnFullDetail.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFullDetail.Location = new System.Drawing.Point(6, 175);
+            this.btnFullDetail.Name = "btnFullDetail";
+            this.btnFullDetail.Size = new System.Drawing.Size(88, 23);
+            this.btnFullDetail.TabIndex = 28;
+            this.btnFullDetail.Text = "Mob Detail";
+            this.btnFullDetail.UseVisualStyleBackColor = true;
+            this.btnFullDetail.Click += new System.EventHandler(this.btnFullDetail_Click);
             // 
             // lblMobRoomName
             // 
             this.lblMobRoomName.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMobRoomName.Location = new System.Drawing.Point(14, 136);
+            this.lblMobRoomName.Location = new System.Drawing.Point(14, 150);
             this.lblMobRoomName.Name = "lblMobRoomName";
             this.lblMobRoomName.Size = new System.Drawing.Size(429, 16);
             this.lblMobRoomName.TabIndex = 26;
             this.lblMobRoomName.Text = "Room Name";
             // 
-            // btnFullDetail
-            // 
-            this.btnFullDetail.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFullDetail.Location = new System.Drawing.Point(234, 175);
-            this.btnFullDetail.Name = "btnFullDetail";
-            this.btnFullDetail.Size = new System.Drawing.Size(115, 23);
-            this.btnFullDetail.TabIndex = 28;
-            this.btnFullDetail.Text = "Open Mob Detail";
-            this.btnFullDetail.UseVisualStyleBackColor = true;
-            this.btnFullDetail.Click += new System.EventHandler(this.btnFullDetail_Click);
-            // 
             // lblMobCurrentVNUM
             // 
             this.lblMobCurrentVNUM.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMobCurrentVNUM.Location = new System.Drawing.Point(364, 111);
+            this.lblMobCurrentVNUM.Location = new System.Drawing.Point(364, 125);
             this.lblMobCurrentVNUM.Name = "lblMobCurrentVNUM";
             this.lblMobCurrentVNUM.Size = new System.Drawing.Size(67, 23);
             this.lblMobCurrentVNUM.TabIndex = 25;
@@ -651,7 +403,7 @@
             // 
             this.lblMobVNUMPrompt.AutoSize = true;
             this.lblMobVNUMPrompt.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMobVNUMPrompt.Location = new System.Drawing.Point(254, 114);
+            this.lblMobVNUMPrompt.Location = new System.Drawing.Point(254, 128);
             this.lblMobVNUMPrompt.Name = "lblMobVNUMPrompt";
             this.lblMobVNUMPrompt.Size = new System.Drawing.Size(112, 16);
             this.lblMobVNUMPrompt.TabIndex = 24;
@@ -660,7 +412,7 @@
             // lblMobCurrentRoom
             // 
             this.lblMobCurrentRoom.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMobCurrentRoom.Location = new System.Drawing.Point(122, 107);
+            this.lblMobCurrentRoom.Location = new System.Drawing.Point(122, 121);
             this.lblMobCurrentRoom.Name = "lblMobCurrentRoom";
             this.lblMobCurrentRoom.Size = new System.Drawing.Size(47, 23);
             this.lblMobCurrentRoom.TabIndex = 22;
@@ -670,7 +422,7 @@
             // 
             this.lblMobCurrentRoomPrompt.AutoSize = true;
             this.lblMobCurrentRoomPrompt.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMobCurrentRoomPrompt.Location = new System.Drawing.Point(14, 114);
+            this.lblMobCurrentRoomPrompt.Location = new System.Drawing.Point(14, 128);
             this.lblMobCurrentRoomPrompt.Name = "lblMobCurrentRoomPrompt";
             this.lblMobCurrentRoomPrompt.Size = new System.Drawing.Size(110, 16);
             this.lblMobCurrentRoomPrompt.TabIndex = 23;
@@ -698,7 +450,7 @@
             this.panel5.Controls.Add(this.lblMobName);
             this.panel5.Location = new System.Drawing.Point(17, 25);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(426, 79);
+            this.panel5.Size = new System.Drawing.Size(426, 59);
             this.panel5.TabIndex = 0;
             // 
             // lblQuickMobID
@@ -714,7 +466,7 @@
             // 
             this.lblQuickMobVNUM.AutoSize = true;
             this.lblQuickMobVNUM.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuickMobVNUM.Location = new System.Drawing.Point(48, 42);
+            this.lblQuickMobVNUM.Location = new System.Drawing.Point(48, 31);
             this.lblQuickMobVNUM.Name = "lblQuickMobVNUM";
             this.lblQuickMobVNUM.Size = new System.Drawing.Size(0, 14);
             this.lblQuickMobVNUM.TabIndex = 14;
@@ -754,7 +506,7 @@
             "18",
             "19",
             "20"});
-            this.cboMaxExisting.Location = new System.Drawing.Point(351, 37);
+            this.cboMaxExisting.Location = new System.Drawing.Point(351, 28);
             this.cboMaxExisting.Name = "cboMaxExisting";
             this.cboMaxExisting.Size = new System.Drawing.Size(62, 22);
             this.cboMaxExisting.TabIndex = 12;
@@ -763,7 +515,7 @@
             // 
             this.lblMaxExisting.AutoSize = true;
             this.lblMaxExisting.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaxExisting.Location = new System.Drawing.Point(278, 42);
+            this.lblMaxExisting.Location = new System.Drawing.Point(278, 33);
             this.lblMaxExisting.Name = "lblMaxExisting";
             this.lblMaxExisting.Size = new System.Drawing.Size(70, 14);
             this.lblMaxExisting.TabIndex = 11;
@@ -773,7 +525,7 @@
             // 
             this.lblMobVNUM.AutoSize = true;
             this.lblMobVNUM.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMobVNUM.Location = new System.Drawing.Point(3, 42);
+            this.lblMobVNUM.Location = new System.Drawing.Point(3, 31);
             this.lblMobVNUM.Name = "lblMobVNUM";
             this.lblMobVNUM.Size = new System.Drawing.Size(40, 14);
             this.lblMobVNUM.TabIndex = 2;
@@ -2126,12 +1878,16 @@
             // 
             // mobToolStripMenuItem
             // 
+            this.mobToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newMobToolStripMenuItem});
             this.mobToolStripMenuItem.Name = "mobToolStripMenuItem";
             this.mobToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.mobToolStripMenuItem.Text = "Mob";
             // 
             // objectToolStripMenuItem
             // 
+            this.objectToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newObjectToolStripMenuItem});
             this.objectToolStripMenuItem.Name = "objectToolStripMenuItem";
             this.objectToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.objectToolStripMenuItem.Text = "Object";
@@ -2141,6 +1897,86 @@
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
             this.helpToolStripMenuItem1.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem1.Text = "Help";
+            // 
+            // btnAddSpawn
+            // 
+            this.btnAddSpawn.Location = new System.Drawing.Point(377, 24);
+            this.btnAddSpawn.Name = "btnAddSpawn";
+            this.btnAddSpawn.Size = new System.Drawing.Size(37, 24);
+            this.btnAddSpawn.TabIndex = 30;
+            this.btnAddSpawn.Text = "[ + ]";
+            this.btnAddSpawn.UseVisualStyleBackColor = true;
+            this.btnAddSpawn.Click += new System.EventHandler(this.btnAddSpawn_Click);
+            // 
+            // btnAddLoad
+            // 
+            this.btnAddLoad.Location = new System.Drawing.Point(376, 23);
+            this.btnAddLoad.Name = "btnAddLoad";
+            this.btnAddLoad.Size = new System.Drawing.Size(37, 22);
+            this.btnAddLoad.TabIndex = 43;
+            this.btnAddLoad.Text = "[ + ]";
+            this.btnAddLoad.UseVisualStyleBackColor = true;
+            this.btnAddLoad.Click += new System.EventHandler(this.btnAddLoad_Click);
+            // 
+            // lbSpawns
+            // 
+            this.lbSpawns.BackColor = System.Drawing.Color.LightSlateGray;
+            this.lbSpawns.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSpawns.FormattingEnabled = true;
+            this.lbSpawns.ItemHeight = 14;
+            this.lbSpawns.Location = new System.Drawing.Point(6, 54);
+            this.lbSpawns.Name = "lbSpawns";
+            this.lbSpawns.Size = new System.Drawing.Size(407, 116);
+            this.lbSpawns.TabIndex = 31;
+            this.lbSpawns.SelectedIndexChanged += new System.EventHandler(this.lbSpawns_SelectedIndexChanged);
+            // 
+            // lbLoads
+            // 
+            this.lbLoads.BackColor = System.Drawing.Color.LightSlateGray;
+            this.lbLoads.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLoads.FormattingEnabled = true;
+            this.lbLoads.ItemHeight = 14;
+            this.lbLoads.Location = new System.Drawing.Point(6, 51);
+            this.lbLoads.Name = "lbLoads";
+            this.lbLoads.Size = new System.Drawing.Size(407, 116);
+            this.lbLoads.TabIndex = 44;
+            this.lbLoads.SelectedIndexChanged += new System.EventHandler(this.lbLoads_SelectedIndexChanged);
+            // 
+            // btnRemoveSpawn
+            // 
+            this.btnRemoveSpawn.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveSpawn.Location = new System.Drawing.Point(307, 175);
+            this.btnRemoveSpawn.Name = "btnRemoveSpawn";
+            this.btnRemoveSpawn.Size = new System.Drawing.Size(106, 23);
+            this.btnRemoveSpawn.TabIndex = 32;
+            this.btnRemoveSpawn.Text = "Remove Spawn";
+            this.btnRemoveSpawn.UseVisualStyleBackColor = true;
+            this.btnRemoveSpawn.Click += new System.EventHandler(this.btnRemoveSpawn_Click);
+            // 
+            // btnRemoveLoad
+            // 
+            this.btnRemoveLoad.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveLoad.Location = new System.Drawing.Point(308, 173);
+            this.btnRemoveLoad.Name = "btnRemoveLoad";
+            this.btnRemoveLoad.Size = new System.Drawing.Size(106, 23);
+            this.btnRemoveLoad.TabIndex = 45;
+            this.btnRemoveLoad.Text = "Remove Load";
+            this.btnRemoveLoad.UseVisualStyleBackColor = true;
+            this.btnRemoveLoad.Click += new System.EventHandler(this.btnRemoveLoad_Click);
+            // 
+            // newMobToolStripMenuItem
+            // 
+            this.newMobToolStripMenuItem.Name = "newMobToolStripMenuItem";
+            this.newMobToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newMobToolStripMenuItem.Text = "New Mob";
+            this.newMobToolStripMenuItem.Click += new System.EventHandler(this.newMobToolStripMenuItem_Click);
+            // 
+            // newObjectToolStripMenuItem
+            // 
+            this.newObjectToolStripMenuItem.Name = "newObjectToolStripMenuItem";
+            this.newObjectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newObjectToolStripMenuItem.Text = "New Object";
+            this.newObjectToolStripMenuItem.Click += new System.EventHandler(this.newObjectToolStripMenuItem_Click);
             // 
             // Mapper
             // 
@@ -2160,12 +1996,8 @@
             this.tabMob.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgNonLoadingItems)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgLoadingItems)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgMobsNotInRoom)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgMobsInRoom)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.tabRoom.ResumeLayout(false);
@@ -2319,9 +2151,6 @@
         private System.Windows.Forms.Label lblDetailRoomNumber;
         private System.Windows.Forms.Label lblMobGeneral;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.DataGridView dgMobsInRoom;
-        private System.Windows.Forms.Label lblMobsNotInRoom;
-        private System.Windows.Forms.DataGridView dgMobsNotInRoom;
         private System.Windows.Forms.Label lblMobsInRoom;
         private System.Windows.Forms.Label lblMobName;
         private System.Windows.Forms.Label lblDoorKey;
@@ -2340,11 +2169,7 @@
         private System.Windows.Forms.Label lblMobVNUMPrompt;
         private System.Windows.Forms.Label lblMobCurrentRoom;
         private System.Windows.Forms.Label lblMobCurrentRoomPrompt;
-        private System.Windows.Forms.Button btnMobSave;
         private System.Windows.Forms.Label lblMaxExisting;
-        private System.Windows.Forms.DataGridView dgNonLoadingItems;
-        private System.Windows.Forms.Label lblRemainingAreaItems;
-        private System.Windows.Forms.DataGridView dgLoadingItems;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label lblLoadingObjects;
@@ -2355,19 +2180,19 @@
         private System.Windows.Forms.Button btnNewMob;
         private System.Windows.Forms.Button btnAddObject;
         private System.Windows.Forms.ComboBox cboMaxExisting;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MobID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VNUM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AreaName;
         private System.Windows.Forms.Label lblQuickMobName;
         private System.Windows.Forms.Label lblQuickMobVNUM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MobIDOther;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.Label lblQuickMobID;
+        private System.Windows.Forms.ComboBox cboAllMobs;
+        private System.Windows.Forms.ComboBox cboAllObjects;
+        private System.Windows.Forms.Button btnAddLoad;
+        private System.Windows.Forms.Button btnAddSpawn;
+        private System.Windows.Forms.ListBox lbSpawns;
+        private System.Windows.Forms.ListBox lbLoads;
+        private System.Windows.Forms.Button btnRemoveLoad;
+        private System.Windows.Forms.Button btnRemoveSpawn;
+        private System.Windows.Forms.ToolStripMenuItem newMobToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newObjectToolStripMenuItem;
     }
 }
 

@@ -14,12 +14,85 @@ namespace GizMaker.classes
         #region "object properties"
         // Properties
         public int objectID { get; set; }
+        public int objAreaID { get; set; }
         public int objVNUM { get; set; }
         public string ShortDesc { get; set; }
         #endregion
 
         #region "object methods"
-         #endregion
+        // Add a new Object.
+        public void AddObject()
+        {
+            // Configure database connection elements.
+            OleDbDataAdapter da = new OleDbDataAdapter();
+
+            OleDbConnection connection = new OleDbConnection();
+            connection.ConnectionString = database.getConnectionString();
+
+            try
+            {
+                connection.Open();
+
+                // Create query. 
+                string strSQL = string.Empty;
+                strSQL += " insert into [Object] ([ObjectAreaID], [VNUM], [ShortDesc]) ";
+                strSQL += " values (@ObjectAreaID, @VNUM, @ShortDesc) ";
+
+                da.InsertCommand = new OleDbCommand(strSQL);
+                da.InsertCommand.Connection = connection;
+
+                da.InsertCommand.Parameters.Add("@ObjectAreaID", OleDbType.Integer, 10, "ObjectAreaID").Value = this.objAreaID;
+                da.InsertCommand.Parameters.Add("@VNUM", OleDbType.Integer, 10, "VNUM").Value = this.objVNUM;
+                da.InsertCommand.Parameters.Add("@ShortDesc", OleDbType.VarChar, 100, "ShortDesc").Value = this.ShortDesc;
+
+                da.InsertCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                string strError = ex.Message;
+            }
+
+            connection.Close();
+            connection.Dispose();
+        }
+
+        // Update an existing object.
+        public void UpdateObject()
+        {
+            // Configure database connection elements.
+            OleDbDataAdapter da = new OleDbDataAdapter();
+
+            OleDbConnection connection = new OleDbConnection();
+            connection.ConnectionString = database.getConnectionString();
+
+            try
+            {
+                connection.Open();
+
+                // Create query. 
+                string strSQL = string.Empty;
+                strSQL += " update  [Object] ";
+                strSQL += " set     [VNUM] =  @VNUM,";
+                strSQL += "         [ShortDesc] =  @ShortDesc";
+                strSQL += " where  ObjectID = " + this.objectID + " ";
+
+                da.InsertCommand = new OleDbCommand(strSQL);
+                da.InsertCommand.Connection = connection;
+
+                da.InsertCommand.Parameters.Add("@VNUM", OleDbType.Integer, 10, "VNUM").Value = this.objVNUM;
+                da.InsertCommand.Parameters.Add("@ShortDesc", OleDbType.VarChar, 100, "ShortDesc").Value = this.ShortDesc;
+
+                da.InsertCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                string strError = ex.Message;
+            }
+
+            connection.Close();
+            connection.Dispose();
+        }
+        #endregion
 
         #region "object public methods"
         // Get an object by Object ID. 

@@ -30,49 +30,49 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.cboPosition = new System.Windows.Forms.ComboBox();
-            this.cboDefaultPos = new System.Windows.Forms.ComboBox();
-            this.cboTarget = new System.Windows.Forms.ComboBox();
-            this.txtChance = new System.Windows.Forms.TextBox();
-            this.cboNumOfAttacks = new System.Windows.Forms.ComboBox();
-            this.cboDamageType = new System.Windows.Forms.ComboBox();
-            this.cboAttackType = new System.Windows.Forms.ComboBox();
             this.cboSex = new System.Windows.Forms.ComboBox();
             this.cboRace = new System.Windows.Forms.ComboBox();
             this.txtLongDescription = new System.Windows.Forms.TextBox();
-            this.txtThaco = new System.Windows.Forms.TextBox();
-            this.txtDamage = new System.Windows.Forms.TextBox();
-            this.txtExp = new System.Windows.Forms.TextBox();
-            this.txtGold = new System.Windows.Forms.TextBox();
-            this.txtAC = new System.Windows.Forms.TextBox();
-            this.txtHP = new System.Windows.Forms.TextBox();
-            this.txtAlignment = new System.Windows.Forms.TextBox();
-            this.txtLevel = new System.Windows.Forms.TextBox();
             this.txtNameList = new System.Windows.Forms.TextBox();
+            this.cboDefaultPos = new System.Windows.Forms.ComboBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtShortDescription = new System.Windows.Forms.TextBox();
             this.txtVNUM = new System.Windows.Forms.TextBox();
-            this.lblThaco = new System.Windows.Forms.Label();
-            this.lblNumberOfAttacks = new System.Windows.Forms.Label();
-            this.lblChance = new System.Windows.Forms.Label();
-            this.lblDamage = new System.Windows.Forms.Label();
-            this.lblTarget = new System.Windows.Forms.Label();
-            this.lblDefPosition = new System.Windows.Forms.Label();
-            this.lblPosition = new System.Windows.Forms.Label();
-            this.lblDamageType = new System.Windows.Forms.Label();
-            this.lblAttackType = new System.Windows.Forms.Label();
-            this.lblExperience = new System.Windows.Forms.Label();
-            this.lblGold = new System.Windows.Forms.Label();
-            this.lblAC = new System.Windows.Forms.Label();
-            this.lblHP = new System.Windows.Forms.Label();
-            this.lblAlignment = new System.Windows.Forms.Label();
+            this.txtChance = new System.Windows.Forms.TextBox();
             this.lblRace = new System.Windows.Forms.Label();
             this.lblSex = new System.Windows.Forms.Label();
-            this.lblLevel = new System.Windows.Forms.Label();
+            this.cboTarget = new System.Windows.Forms.ComboBox();
             this.lblLongDescription = new System.Windows.Forms.Label();
+            this.txtThaco = new System.Windows.Forms.TextBox();
             this.lblDescription = new System.Windows.Forms.Label();
+            this.txtDamage = new System.Windows.Forms.TextBox();
+            this.lblDamage = new System.Windows.Forms.Label();
             this.lblNameList = new System.Windows.Forms.Label();
+            this.lblChance = new System.Windows.Forms.Label();
             this.lblShortDescription = new System.Windows.Forms.Label();
+            this.lblThaco = new System.Windows.Forms.Label();
             this.lblVNUM = new System.Windows.Forms.Label();
+            this.cboNumOfAttacks = new System.Windows.Forms.ComboBox();
+            this.lblLevel = new System.Windows.Forms.Label();
+            this.txtLevel = new System.Windows.Forms.TextBox();
+            this.cboDamageType = new System.Windows.Forms.ComboBox();
+            this.txtAlignment = new System.Windows.Forms.TextBox();
+            this.txtHP = new System.Windows.Forms.TextBox();
+            this.cboAttackType = new System.Windows.Forms.ComboBox();
+            this.txtAC = new System.Windows.Forms.TextBox();
+            this.txtGold = new System.Windows.Forms.TextBox();
+            this.lblAttackType = new System.Windows.Forms.Label();
+            this.lblAlignment = new System.Windows.Forms.Label();
+            this.lblDamageType = new System.Windows.Forms.Label();
+            this.lblExperience = new System.Windows.Forms.Label();
+            this.lblPosition = new System.Windows.Forms.Label();
+            this.lblHP = new System.Windows.Forms.Label();
+            this.lblDefPosition = new System.Windows.Forms.Label();
+            this.txtExp = new System.Windows.Forms.TextBox();
+            this.lblTarget = new System.Windows.Forms.Label();
+            this.lblGold = new System.Windows.Forms.Label();
+            this.lblAC = new System.Windows.Forms.Label();
+            this.lblNumberOfAttacks = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.chkActSwitch = new System.Windows.Forms.CheckBox();
             this.chkActArm = new System.Windows.Forms.CheckBox();
@@ -225,133 +225,6 @@
             this.cboPosition.Size = new System.Drawing.Size(122, 22);
             this.cboPosition.TabIndex = 44;
             // 
-            // cboDefaultPos
-            // 
-            this.cboDefaultPos.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.cboDefaultPos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboDefaultPos.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboDefaultPos.FormattingEnabled = true;
-            this.cboDefaultPos.Items.AddRange(new object[] {
-            "Dead",
-            "Fighting",
-            "Flying",
-            "Incapacitated",
-            "Mortally Wounded",
-            "Resting",
-            "Riding",
-            "Sitting",
-            "Sleeping",
-            "Standing",
-            "Stunned",
-            "Swimming"});
-            this.cboDefaultPos.Location = new System.Drawing.Point(606, 109);
-            this.cboDefaultPos.Name = "cboDefaultPos";
-            this.cboDefaultPos.Size = new System.Drawing.Size(122, 22);
-            this.cboDefaultPos.TabIndex = 43;
-            // 
-            // cboTarget
-            // 
-            this.cboTarget.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.cboTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTarget.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboTarget.FormattingEnabled = true;
-            this.cboTarget.Items.AddRange(new object[] {
-            "Buffer",
-            "Group",
-            "RAN Group",
-            "RAN Room",
-            "Room",
-            "Rooms Around",
-            "Undefined",
-            "World",
-            "Zone"});
-            this.cboTarget.Location = new System.Drawing.Point(606, 134);
-            this.cboTarget.Name = "cboTarget";
-            this.cboTarget.Size = new System.Drawing.Size(122, 22);
-            this.cboTarget.TabIndex = 42;
-            // 
-            // txtChance
-            // 
-            this.txtChance.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtChance.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtChance.Location = new System.Drawing.Point(766, 57);
-            this.txtChance.Name = "txtChance";
-            this.txtChance.Size = new System.Drawing.Size(50, 20);
-            this.txtChance.TabIndex = 41;
-            // 
-            // cboNumOfAttacks
-            // 
-            this.cboNumOfAttacks.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.cboNumOfAttacks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboNumOfAttacks.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboNumOfAttacks.FormattingEnabled = true;
-            this.cboNumOfAttacks.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.cboNumOfAttacks.Location = new System.Drawing.Point(606, 59);
-            this.cboNumOfAttacks.Name = "cboNumOfAttacks";
-            this.cboNumOfAttacks.Size = new System.Drawing.Size(67, 22);
-            this.cboNumOfAttacks.TabIndex = 40;
-            // 
-            // cboDamageType
-            // 
-            this.cboDamageType.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.cboDamageType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboDamageType.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboDamageType.FormattingEnabled = true;
-            this.cboDamageType.Items.AddRange(new object[] {
-            "Acid",
-            "Bleeding",
-            "Bludgeon",
-            "Cold",
-            "Crush",
-            "Drain",
-            "Fire",
-            "Lightning",
-            "Magic",
-            "Pierce",
-            "Poison",
-            "Slash"});
-            this.cboDamageType.Location = new System.Drawing.Point(606, 34);
-            this.cboDamageType.Name = "cboDamageType";
-            this.cboDamageType.Size = new System.Drawing.Size(91, 22);
-            this.cboDamageType.TabIndex = 39;
-            // 
-            // cboAttackType
-            // 
-            this.cboAttackType.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.cboAttackType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboAttackType.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboAttackType.FormattingEnabled = true;
-            this.cboAttackType.Items.AddRange(new object[] {
-            "Bite",
-            "Bludgeon",
-            "Breath",
-            "Claw",
-            "Crush",
-            "Hit",
-            "Kick",
-            "Slash",
-            "Sting",
-            "Pierce",
-            "Punch",
-            "Spell",
-            "Suffering",
-            "Trample",
-            "Whip"});
-            this.cboAttackType.Location = new System.Drawing.Point(606, 10);
-            this.cboAttackType.Name = "cboAttackType";
-            this.cboAttackType.Size = new System.Drawing.Size(91, 22);
-            this.cboAttackType.TabIndex = 38;
-            // 
             // cboSex
             // 
             this.cboSex.BackColor = System.Drawing.SystemColors.InactiveCaption;
@@ -403,78 +276,6 @@
             this.txtLongDescription.Size = new System.Drawing.Size(821, 71);
             this.txtLongDescription.TabIndex = 35;
             // 
-            // txtThaco
-            // 
-            this.txtThaco.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtThaco.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtThaco.Location = new System.Drawing.Point(766, 34);
-            this.txtThaco.Name = "txtThaco";
-            this.txtThaco.Size = new System.Drawing.Size(67, 20);
-            this.txtThaco.TabIndex = 34;
-            // 
-            // txtDamage
-            // 
-            this.txtDamage.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtDamage.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDamage.Location = new System.Drawing.Point(766, 10);
-            this.txtDamage.Name = "txtDamage";
-            this.txtDamage.Size = new System.Drawing.Size(67, 20);
-            this.txtDamage.TabIndex = 33;
-            // 
-            // txtExp
-            // 
-            this.txtExp.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtExp.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtExp.Location = new System.Drawing.Point(455, 130);
-            this.txtExp.Name = "txtExp";
-            this.txtExp.Size = new System.Drawing.Size(69, 20);
-            this.txtExp.TabIndex = 32;
-            // 
-            // txtGold
-            // 
-            this.txtGold.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtGold.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGold.Location = new System.Drawing.Point(455, 106);
-            this.txtGold.Name = "txtGold";
-            this.txtGold.Size = new System.Drawing.Size(69, 20);
-            this.txtGold.TabIndex = 31;
-            // 
-            // txtAC
-            // 
-            this.txtAC.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtAC.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAC.Location = new System.Drawing.Point(455, 82);
-            this.txtAC.Name = "txtAC";
-            this.txtAC.Size = new System.Drawing.Size(61, 20);
-            this.txtAC.TabIndex = 30;
-            // 
-            // txtHP
-            // 
-            this.txtHP.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtHP.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHP.Location = new System.Drawing.Point(455, 58);
-            this.txtHP.Name = "txtHP";
-            this.txtHP.Size = new System.Drawing.Size(61, 20);
-            this.txtHP.TabIndex = 29;
-            // 
-            // txtAlignment
-            // 
-            this.txtAlignment.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtAlignment.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAlignment.Location = new System.Drawing.Point(455, 34);
-            this.txtAlignment.Name = "txtAlignment";
-            this.txtAlignment.Size = new System.Drawing.Size(40, 20);
-            this.txtAlignment.TabIndex = 28;
-            // 
-            // txtLevel
-            // 
-            this.txtLevel.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtLevel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLevel.Location = new System.Drawing.Point(455, 10);
-            this.txtLevel.Name = "txtLevel";
-            this.txtLevel.Size = new System.Drawing.Size(40, 20);
-            this.txtLevel.TabIndex = 27;
-            // 
             // txtNameList
             // 
             this.txtNameList.BackColor = System.Drawing.SystemColors.InactiveCaption;
@@ -483,6 +284,30 @@
             this.txtNameList.Name = "txtNameList";
             this.txtNameList.Size = new System.Drawing.Size(283, 20);
             this.txtNameList.TabIndex = 26;
+            // 
+            // cboDefaultPos
+            // 
+            this.cboDefaultPos.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.cboDefaultPos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDefaultPos.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboDefaultPos.FormattingEnabled = true;
+            this.cboDefaultPos.Items.AddRange(new object[] {
+            "Dead",
+            "Fighting",
+            "Flying",
+            "Incapacitated",
+            "Mortally Wounded",
+            "Resting",
+            "Riding",
+            "Sitting",
+            "Sleeping",
+            "Standing",
+            "Stunned",
+            "Swimming"});
+            this.cboDefaultPos.Location = new System.Drawing.Point(606, 109);
+            this.cboDefaultPos.Name = "cboDefaultPos";
+            this.cboDefaultPos.Size = new System.Drawing.Size(122, 22);
+            this.cboDefaultPos.TabIndex = 43;
             // 
             // txtDescription
             // 
@@ -511,145 +336,14 @@
             this.txtVNUM.Size = new System.Drawing.Size(75, 20);
             this.txtVNUM.TabIndex = 23;
             // 
-            // lblThaco
+            // txtChance
             // 
-            this.lblThaco.AutoSize = true;
-            this.lblThaco.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblThaco.Location = new System.Drawing.Point(720, 37);
-            this.lblThaco.Name = "lblThaco";
-            this.lblThaco.Size = new System.Drawing.Size(40, 14);
-            this.lblThaco.TabIndex = 21;
-            this.lblThaco.Text = "Thac0:";
-            // 
-            // lblNumberOfAttacks
-            // 
-            this.lblNumberOfAttacks.AutoSize = true;
-            this.lblNumberOfAttacks.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumberOfAttacks.Location = new System.Drawing.Point(532, 62);
-            this.lblNumberOfAttacks.Name = "lblNumberOfAttacks";
-            this.lblNumberOfAttacks.Size = new System.Drawing.Size(68, 14);
-            this.lblNumberOfAttacks.TabIndex = 20;
-            this.lblNumberOfAttacks.Text = "# of Attacks:";
-            // 
-            // lblChance
-            // 
-            this.lblChance.AutoSize = true;
-            this.lblChance.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChance.Location = new System.Drawing.Point(713, 60);
-            this.lblChance.Name = "lblChance";
-            this.lblChance.Size = new System.Drawing.Size(47, 14);
-            this.lblChance.TabIndex = 19;
-            this.lblChance.Text = "Chance:";
-            // 
-            // lblDamage
-            // 
-            this.lblDamage.AutoSize = true;
-            this.lblDamage.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDamage.Location = new System.Drawing.Point(711, 13);
-            this.lblDamage.Name = "lblDamage";
-            this.lblDamage.Size = new System.Drawing.Size(49, 14);
-            this.lblDamage.TabIndex = 18;
-            this.lblDamage.Text = "Damage:";
-            // 
-            // lblTarget
-            // 
-            this.lblTarget.AutoSize = true;
-            this.lblTarget.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTarget.Location = new System.Drawing.Point(563, 136);
-            this.lblTarget.Name = "lblTarget";
-            this.lblTarget.Size = new System.Drawing.Size(40, 14);
-            this.lblTarget.TabIndex = 17;
-            this.lblTarget.Text = "Target:";
-            // 
-            // lblDefPosition
-            // 
-            this.lblDefPosition.AutoSize = true;
-            this.lblDefPosition.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDefPosition.Location = new System.Drawing.Point(538, 111);
-            this.lblDefPosition.Name = "lblDefPosition";
-            this.lblDefPosition.Size = new System.Drawing.Size(65, 14);
-            this.lblDefPosition.TabIndex = 16;
-            this.lblDefPosition.Text = "Default Pos:";
-            // 
-            // lblPosition
-            // 
-            this.lblPosition.AutoSize = true;
-            this.lblPosition.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPosition.Location = new System.Drawing.Point(556, 87);
-            this.lblPosition.Name = "lblPosition";
-            this.lblPosition.Size = new System.Drawing.Size(47, 14);
-            this.lblPosition.TabIndex = 15;
-            this.lblPosition.Text = "Position:";
-            // 
-            // lblDamageType
-            // 
-            this.lblDamageType.AutoSize = true;
-            this.lblDamageType.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDamageType.Location = new System.Drawing.Point(525, 37);
-            this.lblDamageType.Name = "lblDamageType";
-            this.lblDamageType.Size = new System.Drawing.Size(75, 14);
-            this.lblDamageType.TabIndex = 14;
-            this.lblDamageType.Text = "Damage Type:";
-            // 
-            // lblAttackType
-            // 
-            this.lblAttackType.AutoSize = true;
-            this.lblAttackType.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttackType.Location = new System.Drawing.Point(533, 13);
-            this.lblAttackType.Name = "lblAttackType";
-            this.lblAttackType.Size = new System.Drawing.Size(67, 14);
-            this.lblAttackType.TabIndex = 13;
-            this.lblAttackType.Text = "Attack Type:";
-            // 
-            // lblExperience
-            // 
-            this.lblExperience.AutoSize = true;
-            this.lblExperience.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExperience.Location = new System.Drawing.Point(422, 134);
-            this.lblExperience.Name = "lblExperience";
-            this.lblExperience.Size = new System.Drawing.Size(28, 14);
-            this.lblExperience.TabIndex = 12;
-            this.lblExperience.Text = "Exp:";
-            // 
-            // lblGold
-            // 
-            this.lblGold.AutoSize = true;
-            this.lblGold.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGold.Location = new System.Drawing.Point(418, 111);
-            this.lblGold.Name = "lblGold";
-            this.lblGold.Size = new System.Drawing.Size(32, 14);
-            this.lblGold.TabIndex = 11;
-            this.lblGold.Text = "Gold:";
-            // 
-            // lblAC
-            // 
-            this.lblAC.AutoSize = true;
-            this.lblAC.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAC.Location = new System.Drawing.Point(425, 87);
-            this.lblAC.Name = "lblAC";
-            this.lblAC.Size = new System.Drawing.Size(25, 14);
-            this.lblAC.TabIndex = 10;
-            this.lblAC.Text = "AC:";
-            // 
-            // lblHP
-            // 
-            this.lblHP.AutoSize = true;
-            this.lblHP.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHP.Location = new System.Drawing.Point(427, 62);
-            this.lblHP.Name = "lblHP";
-            this.lblHP.Size = new System.Drawing.Size(23, 14);
-            this.lblHP.TabIndex = 9;
-            this.lblHP.Text = "HP:";
-            // 
-            // lblAlignment
-            // 
-            this.lblAlignment.AutoSize = true;
-            this.lblAlignment.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAlignment.Location = new System.Drawing.Point(393, 37);
-            this.lblAlignment.Name = "lblAlignment";
-            this.lblAlignment.Size = new System.Drawing.Size(57, 14);
-            this.lblAlignment.TabIndex = 8;
-            this.lblAlignment.Text = "Alignment:";
+            this.txtChance.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtChance.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtChance.Location = new System.Drawing.Point(766, 57);
+            this.txtChance.Name = "txtChance";
+            this.txtChance.Size = new System.Drawing.Size(50, 20);
+            this.txtChance.TabIndex = 41;
             // 
             // lblRace
             // 
@@ -671,15 +365,26 @@
             this.lblSex.TabIndex = 6;
             this.lblSex.Text = "Sex:";
             // 
-            // lblLevel
+            // cboTarget
             // 
-            this.lblLevel.AutoSize = true;
-            this.lblLevel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLevel.Location = new System.Drawing.Point(414, 13);
-            this.lblLevel.Name = "lblLevel";
-            this.lblLevel.Size = new System.Drawing.Size(36, 14);
-            this.lblLevel.TabIndex = 5;
-            this.lblLevel.Text = "Level:";
+            this.cboTarget.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.cboTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTarget.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboTarget.FormattingEnabled = true;
+            this.cboTarget.Items.AddRange(new object[] {
+            "Buffer",
+            "Group",
+            "RAN Group",
+            "RAN Room",
+            "Room",
+            "Rooms Around",
+            "Undefined",
+            "World",
+            "Zone"});
+            this.cboTarget.Location = new System.Drawing.Point(606, 134);
+            this.cboTarget.Name = "cboTarget";
+            this.cboTarget.Size = new System.Drawing.Size(122, 22);
+            this.cboTarget.TabIndex = 42;
             // 
             // lblLongDescription
             // 
@@ -691,6 +396,15 @@
             this.lblLongDescription.TabIndex = 4;
             this.lblLongDescription.Text = "Long Description:";
             // 
+            // txtThaco
+            // 
+            this.txtThaco.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtThaco.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtThaco.Location = new System.Drawing.Point(766, 34);
+            this.txtThaco.Name = "txtThaco";
+            this.txtThaco.Size = new System.Drawing.Size(67, 20);
+            this.txtThaco.TabIndex = 34;
+            // 
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
@@ -700,6 +414,25 @@
             this.lblDescription.Size = new System.Drawing.Size(64, 14);
             this.lblDescription.TabIndex = 3;
             this.lblDescription.Text = "Description:";
+            // 
+            // txtDamage
+            // 
+            this.txtDamage.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtDamage.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDamage.Location = new System.Drawing.Point(766, 10);
+            this.txtDamage.Name = "txtDamage";
+            this.txtDamage.Size = new System.Drawing.Size(67, 20);
+            this.txtDamage.TabIndex = 33;
+            // 
+            // lblDamage
+            // 
+            this.lblDamage.AutoSize = true;
+            this.lblDamage.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDamage.Location = new System.Drawing.Point(711, 13);
+            this.lblDamage.Name = "lblDamage";
+            this.lblDamage.Size = new System.Drawing.Size(49, 14);
+            this.lblDamage.TabIndex = 18;
+            this.lblDamage.Text = "Damage:";
             // 
             // lblNameList
             // 
@@ -711,6 +444,16 @@
             this.lblNameList.TabIndex = 2;
             this.lblNameList.Text = "Name List:";
             // 
+            // lblChance
+            // 
+            this.lblChance.AutoSize = true;
+            this.lblChance.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChance.Location = new System.Drawing.Point(713, 60);
+            this.lblChance.Name = "lblChance";
+            this.lblChance.Size = new System.Drawing.Size(47, 14);
+            this.lblChance.TabIndex = 19;
+            this.lblChance.Text = "Chance:";
+            // 
             // lblShortDescription
             // 
             this.lblShortDescription.AutoSize = true;
@@ -721,6 +464,16 @@
             this.lblShortDescription.TabIndex = 1;
             this.lblShortDescription.Text = "Short Description:";
             // 
+            // lblThaco
+            // 
+            this.lblThaco.AutoSize = true;
+            this.lblThaco.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblThaco.Location = new System.Drawing.Point(720, 37);
+            this.lblThaco.Name = "lblThaco";
+            this.lblThaco.Size = new System.Drawing.Size(40, 14);
+            this.lblThaco.TabIndex = 21;
+            this.lblThaco.Text = "Thac0:";
+            // 
             // lblVNUM
             // 
             this.lblVNUM.AutoSize = true;
@@ -730,6 +483,253 @@
             this.lblVNUM.Size = new System.Drawing.Size(63, 14);
             this.lblVNUM.TabIndex = 0;
             this.lblVNUM.Text = "Mob VNUM:";
+            // 
+            // cboNumOfAttacks
+            // 
+            this.cboNumOfAttacks.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.cboNumOfAttacks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboNumOfAttacks.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboNumOfAttacks.FormattingEnabled = true;
+            this.cboNumOfAttacks.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.cboNumOfAttacks.Location = new System.Drawing.Point(606, 59);
+            this.cboNumOfAttacks.Name = "cboNumOfAttacks";
+            this.cboNumOfAttacks.Size = new System.Drawing.Size(67, 22);
+            this.cboNumOfAttacks.TabIndex = 40;
+            // 
+            // lblLevel
+            // 
+            this.lblLevel.AutoSize = true;
+            this.lblLevel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLevel.Location = new System.Drawing.Point(414, 13);
+            this.lblLevel.Name = "lblLevel";
+            this.lblLevel.Size = new System.Drawing.Size(36, 14);
+            this.lblLevel.TabIndex = 5;
+            this.lblLevel.Text = "Level:";
+            // 
+            // txtLevel
+            // 
+            this.txtLevel.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtLevel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLevel.Location = new System.Drawing.Point(455, 10);
+            this.txtLevel.Name = "txtLevel";
+            this.txtLevel.Size = new System.Drawing.Size(40, 20);
+            this.txtLevel.TabIndex = 27;
+            // 
+            // cboDamageType
+            // 
+            this.cboDamageType.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.cboDamageType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDamageType.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboDamageType.FormattingEnabled = true;
+            this.cboDamageType.Items.AddRange(new object[] {
+            "Acid",
+            "Bleeding",
+            "Bludgeon",
+            "Cold",
+            "Crush",
+            "Drain",
+            "Fire",
+            "Lightning",
+            "Magic",
+            "Pierce",
+            "Poison",
+            "Slash"});
+            this.cboDamageType.Location = new System.Drawing.Point(606, 34);
+            this.cboDamageType.Name = "cboDamageType";
+            this.cboDamageType.Size = new System.Drawing.Size(91, 22);
+            this.cboDamageType.TabIndex = 39;
+            // 
+            // txtAlignment
+            // 
+            this.txtAlignment.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtAlignment.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAlignment.Location = new System.Drawing.Point(455, 34);
+            this.txtAlignment.Name = "txtAlignment";
+            this.txtAlignment.Size = new System.Drawing.Size(40, 20);
+            this.txtAlignment.TabIndex = 28;
+            // 
+            // txtHP
+            // 
+            this.txtHP.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtHP.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHP.Location = new System.Drawing.Point(455, 58);
+            this.txtHP.Name = "txtHP";
+            this.txtHP.Size = new System.Drawing.Size(61, 20);
+            this.txtHP.TabIndex = 29;
+            // 
+            // cboAttackType
+            // 
+            this.cboAttackType.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.cboAttackType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAttackType.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboAttackType.FormattingEnabled = true;
+            this.cboAttackType.Items.AddRange(new object[] {
+            "Bite",
+            "Bludgeon",
+            "Breath",
+            "Claw",
+            "Crush",
+            "Hit",
+            "Kick",
+            "Slash",
+            "Sting",
+            "Pierce",
+            "Punch",
+            "Spell",
+            "Suffering",
+            "Trample",
+            "Whip"});
+            this.cboAttackType.Location = new System.Drawing.Point(606, 10);
+            this.cboAttackType.Name = "cboAttackType";
+            this.cboAttackType.Size = new System.Drawing.Size(91, 22);
+            this.cboAttackType.TabIndex = 38;
+            // 
+            // txtAC
+            // 
+            this.txtAC.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtAC.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAC.Location = new System.Drawing.Point(455, 82);
+            this.txtAC.Name = "txtAC";
+            this.txtAC.Size = new System.Drawing.Size(61, 20);
+            this.txtAC.TabIndex = 30;
+            // 
+            // txtGold
+            // 
+            this.txtGold.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtGold.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGold.Location = new System.Drawing.Point(455, 106);
+            this.txtGold.Name = "txtGold";
+            this.txtGold.Size = new System.Drawing.Size(69, 20);
+            this.txtGold.TabIndex = 31;
+            // 
+            // lblAttackType
+            // 
+            this.lblAttackType.AutoSize = true;
+            this.lblAttackType.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAttackType.Location = new System.Drawing.Point(533, 13);
+            this.lblAttackType.Name = "lblAttackType";
+            this.lblAttackType.Size = new System.Drawing.Size(67, 14);
+            this.lblAttackType.TabIndex = 13;
+            this.lblAttackType.Text = "Attack Type:";
+            // 
+            // lblAlignment
+            // 
+            this.lblAlignment.AutoSize = true;
+            this.lblAlignment.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAlignment.Location = new System.Drawing.Point(393, 37);
+            this.lblAlignment.Name = "lblAlignment";
+            this.lblAlignment.Size = new System.Drawing.Size(57, 14);
+            this.lblAlignment.TabIndex = 8;
+            this.lblAlignment.Text = "Alignment:";
+            // 
+            // lblDamageType
+            // 
+            this.lblDamageType.AutoSize = true;
+            this.lblDamageType.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDamageType.Location = new System.Drawing.Point(525, 37);
+            this.lblDamageType.Name = "lblDamageType";
+            this.lblDamageType.Size = new System.Drawing.Size(75, 14);
+            this.lblDamageType.TabIndex = 14;
+            this.lblDamageType.Text = "Damage Type:";
+            // 
+            // lblExperience
+            // 
+            this.lblExperience.AutoSize = true;
+            this.lblExperience.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExperience.Location = new System.Drawing.Point(422, 134);
+            this.lblExperience.Name = "lblExperience";
+            this.lblExperience.Size = new System.Drawing.Size(28, 14);
+            this.lblExperience.TabIndex = 12;
+            this.lblExperience.Text = "Exp:";
+            // 
+            // lblPosition
+            // 
+            this.lblPosition.AutoSize = true;
+            this.lblPosition.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPosition.Location = new System.Drawing.Point(556, 87);
+            this.lblPosition.Name = "lblPosition";
+            this.lblPosition.Size = new System.Drawing.Size(47, 14);
+            this.lblPosition.TabIndex = 15;
+            this.lblPosition.Text = "Position:";
+            // 
+            // lblHP
+            // 
+            this.lblHP.AutoSize = true;
+            this.lblHP.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHP.Location = new System.Drawing.Point(427, 62);
+            this.lblHP.Name = "lblHP";
+            this.lblHP.Size = new System.Drawing.Size(23, 14);
+            this.lblHP.TabIndex = 9;
+            this.lblHP.Text = "HP:";
+            // 
+            // lblDefPosition
+            // 
+            this.lblDefPosition.AutoSize = true;
+            this.lblDefPosition.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDefPosition.Location = new System.Drawing.Point(538, 111);
+            this.lblDefPosition.Name = "lblDefPosition";
+            this.lblDefPosition.Size = new System.Drawing.Size(65, 14);
+            this.lblDefPosition.TabIndex = 16;
+            this.lblDefPosition.Text = "Default Pos:";
+            // 
+            // txtExp
+            // 
+            this.txtExp.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtExp.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtExp.Location = new System.Drawing.Point(455, 130);
+            this.txtExp.Name = "txtExp";
+            this.txtExp.Size = new System.Drawing.Size(69, 20);
+            this.txtExp.TabIndex = 32;
+            // 
+            // lblTarget
+            // 
+            this.lblTarget.AutoSize = true;
+            this.lblTarget.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTarget.Location = new System.Drawing.Point(563, 136);
+            this.lblTarget.Name = "lblTarget";
+            this.lblTarget.Size = new System.Drawing.Size(40, 14);
+            this.lblTarget.TabIndex = 17;
+            this.lblTarget.Text = "Target:";
+            // 
+            // lblGold
+            // 
+            this.lblGold.AutoSize = true;
+            this.lblGold.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGold.Location = new System.Drawing.Point(418, 111);
+            this.lblGold.Name = "lblGold";
+            this.lblGold.Size = new System.Drawing.Size(32, 14);
+            this.lblGold.TabIndex = 11;
+            this.lblGold.Text = "Gold:";
+            // 
+            // lblAC
+            // 
+            this.lblAC.AutoSize = true;
+            this.lblAC.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAC.Location = new System.Drawing.Point(425, 87);
+            this.lblAC.Name = "lblAC";
+            this.lblAC.Size = new System.Drawing.Size(25, 14);
+            this.lblAC.TabIndex = 10;
+            this.lblAC.Text = "AC:";
+            // 
+            // lblNumberOfAttacks
+            // 
+            this.lblNumberOfAttacks.AutoSize = true;
+            this.lblNumberOfAttacks.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumberOfAttacks.Location = new System.Drawing.Point(532, 62);
+            this.lblNumberOfAttacks.Name = "lblNumberOfAttacks";
+            this.lblNumberOfAttacks.Size = new System.Drawing.Size(68, 14);
+            this.lblNumberOfAttacks.TabIndex = 20;
+            this.lblNumberOfAttacks.Text = "# of Attacks:";
             // 
             // panel2
             // 
@@ -1307,6 +1307,7 @@
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save Mob";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
@@ -1562,7 +1563,7 @@
             this.Controls.Add(this.panel2);
             this.Name = "MobManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Mob Management";
+            this.Text = "Mob Detail";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
