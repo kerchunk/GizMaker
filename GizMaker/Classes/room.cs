@@ -449,6 +449,69 @@ namespace GizMaker.classes
 
             return rooms;
         }
+
+        // Get a collection of rooms with an "up" exit.
+        public static room[] GetRoomsWithMobSpawn(int RoomAreaID, int CoordX, int CoordY, int CoordZ, int iMobID)
+        {
+            room[] rooms = new room[800];
+
+            // Configure database connection elements.
+            OleDbDataAdapter da = new OleDbDataAdapter();
+            OleDbConnection connection = new OleDbConnection();
+            connection.ConnectionString = database.getConnectionString();
+            DataSet ds = new DataSet("rooms");
+
+            try
+            {
+                connection.Open();
+
+                // Create query. 
+                string strSQL = string.Empty;
+                strSQL = " select [RoomAreaID], [RoomNumber], [CoordX], [CoordY], [CoordZ], [HasExitNorth], [HasExitSouth], [HasExitEast], ";
+                strSQL += "             [HasExitWest], [HasExitUp], [HasExitDown] ";
+                strSQL += " from    [Room]  ";
+                strSQL += " where   [RoomAreaID] = " + RoomAreaID.ToString() +" ";
+                strSQL += "         and [RoomID] in ( ";
+                strSQL += "         select  [RoomID] ";
+                strSQL += "         from    [RoomMobs] ";
+                strSQL += "         where   [SpawnAreaID] = " + RoomAreaID.ToString() + " ";
+                strSQL += "                 and [MobID] = " + iMobID.ToString() + " ";
+                strSQL += "                 and [CoordX] = " + CoordX.ToString() + " ";
+                strSQL += "                 and [CoordY] = " + CoordY.ToString() + " ";
+                strSQL += "                 and [CoordZ] = " + CoordZ.ToString() + " ";
+                strSQL += "         ) ";
+
+                da = new OleDbDataAdapter(strSQL, connection);
+                da.Fill(ds);
+
+                int iRow = 0;
+                while (iRow <= ds.Tables[0].Rows.Count - 1)
+                {
+                    room oRoom = new room();
+
+                    oRoom.roomNumber = (int)ds.Tables[0].Rows[iRow]["RoomNumber"];
+                    oRoom.hasExitNorth = (bool)ds.Tables[0].Rows[iRow]["HasExitNorth"];
+                    oRoom.hasExitSouth = (bool)ds.Tables[0].Rows[iRow]["HasExitSouth"];
+                    oRoom.hasExitEast = (bool)ds.Tables[0].Rows[iRow]["HasExitEast"];
+                    oRoom.hasExitWest = (bool)ds.Tables[0].Rows[iRow]["HasExitWest"];
+                    oRoom.hasExitUp = (bool)ds.Tables[0].Rows[iRow]["HasExitUp"];
+                    oRoom.hasExitDown = (bool)ds.Tables[0].Rows[iRow]["HasExitDown"];
+
+                    rooms[iRow] = oRoom;
+
+                    iRow++;
+                }
+            }
+            catch (Exception ex)
+            {
+                string strError = ex.Message;
+            }
+
+            connection.Close();
+            connection.Dispose();
+
+            return rooms;
+        }
         #endregion
     }
 }

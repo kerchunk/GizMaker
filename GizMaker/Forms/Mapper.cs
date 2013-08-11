@@ -7,9 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using System.Windows.Controls;
-
-// 8/8/2013: Testing, testing... 1, 2, 3, douche...
 
 namespace GizMaker.forms
 {
@@ -28,6 +25,7 @@ namespace GizMaker.forms
         Color clrDown = Color.MediumSpringGreen;
         Color clrDoorDefault = Color.DarkGoldenrod;
         Color clrDoorLocked = Color.DarkRed;
+        Color clrHighlightSpawn = Color.OrangeRed;
 
         // Positioning 
         int iCurrentArea = 0;
@@ -39,6 +37,7 @@ namespace GizMaker.forms
         // Toggles
         bool blnAutoColor = false;
         bool blnAutoLink = false;
+        bool blnHighlightMobs = false;
         #endregion"
 
         // On Load Event.
@@ -1155,6 +1154,12 @@ namespace GizMaker.forms
             }
         }
 
+        // Highlight selected mob on the current panel.
+        private void btnHighlightSpawns_Click(object sender, EventArgs e)
+        {
+            HighlightMobSpawns();
+        }
+
         // Open Object Detail and Populate for selected Mob.
         private void btnFullObjDetail_Click(object sender, EventArgs e)
         {
@@ -1240,6 +1245,42 @@ namespace GizMaker.forms
                 PopulateObjectsLoadingOnMob(Convert.ToInt32(strMobID));
                 // Populate Objects not associated with selected Mob.
                 PopulateObjectsNotLoadingOnMob(Convert.ToInt32(strMobID));
+                // Set Mob Details on Mob Tab.
+                classes.mob oMob = classes.mob.GetMob(Convert.ToInt32(strMobID));
+                lblQuickMobName.Text = oMob.ShortDesc;
+                lblQuickMobVNUM.Text = oMob.mobVNUM.ToString();
+                lblQuickMobID.Text = oMob.mobID.ToString();
+            }
+        }
+
+        // Mob Selected in "Mobs NOT Currently Loading in Room" grid.
+        private void dgMobsNotInRoom_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int iCurrentMob = -1;
+
+            // Check which row is selected.
+            foreach (DataGridViewRow dgvRow in dgMobsNotInRoom.Rows)
+            {
+                if (dgvRow.Selected)
+                {
+                    iCurrentMob = dgvRow.Index;
+                }
+            }
+
+            if (iCurrentMob > -1)
+            {
+                // Get the Mob ID
+                string strMobID = dgMobsNotInRoom.Rows[iCurrentMob].Cells["MobIDOther"].Value.ToString();
+
+                // Populate Objects associated with selected Mob. 
+                PopulateObjectsLoadingOnMob(Convert.ToInt32(strMobID));
+                // Populate Objects not associated with selected Mob.
+                PopulateObjectsNotLoadingOnMob(Convert.ToInt32(strMobID));
+                // Set Mob Details on Mob Tab.
+                classes.mob oMob = classes.mob.GetMob(Convert.ToInt32(strMobID));
+                lblQuickMobName.Text = oMob.ShortDesc;
+                lblQuickMobVNUM.Text = oMob.mobVNUM.ToString();
+                lblQuickMobID.Text = oMob.mobID.ToString();
             }
         }
         #endregion
@@ -1535,11 +1576,6 @@ namespace GizMaker.forms
                     if (btnRoom != null)
                     {
                         btnRoom = (Button)ctrlRoom[0];
-                    }
-
-                    // Color the Room.
-                    if (btnRoom.BackColor != clrCurrent)
-                    {
                         btnRoom.BackColor = clrCurrent;
                         btnRoom.FlatAppearance.BorderColor = clrBlankBorder;
                     }
@@ -1899,6 +1935,45 @@ namespace GizMaker.forms
             dgNonLoadingItems.DataSource = classes.c_object.GetNonLoadingObjects_ByMobID(iCurrentArea, iCurrentMob, iCurrentX, iCurrentY, iCurrentZ);
             dgNonLoadingItems.DataMember = "Objs";
             dgNonLoadingItems.Update();
+        }
+
+        // Display Currently Mob Spawns to the current Panel.
+        private void HighlightMobSpawns()
+        {
+            if (lblMobVNUM.Text.Trim() != "")
+            {
+                // If turning "Spawn Highlight" off, redisplay the panel.
+                if (blnHighlightMobs)
+                {
+                    DisplayPanelRooms(iCurrentArea, iCurrentX, iCurrentY, iCurrentZ);
+                }
+                else
+                {
+                    // Display Spawn Rooms for Current Mob. 
+                    classes.room[] MobSpawns = new classes.room[750];
+                    MobSpawns = classes.room.GetRoomsWithMobSpawn(iCurrentArea, iCurrentX, iCurrentY, iCurrentZ, Convert.ToInt32(lblQuickMobID.Text.Trim()));
+                    // Loop through Down Rooms and change border colors on map. 
+                    foreach (classes.room MobSpawn in MobSpawns)
+                    {
+                        if (MobSpawn != null)
+                        {
+                            Control[] ctrlSpawn = this.Controls.Find("room" + MobSpawn.roomNumber.ToString(), true);
+                            Button btnRoom = new Button();
+                            if (btnRoom != null)
+                            {
+                                btnRoom = (Button)ctrlSpawn[0];
+                                btnRoom.FlatAppearance.BorderColor = clrHighlightSpawn;
+                            }
+                        }
+                    }
+                }
+                
+                // Set the Highlight Mob Toggle;
+                if (blnHighlightMobs)
+                    blnHighlightMobs = false;
+                else
+                    blnHighlightMobs = true;
+            }
         }
         #endregion
 

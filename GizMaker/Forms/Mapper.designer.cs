@@ -54,7 +54,7 @@
             this.lblRemainingAreaItems = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dgMobsNotInRoom = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MobIDOther = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblMobsNotInRoom = new System.Windows.Forms.Label();
@@ -73,6 +73,9 @@
             this.lblMobCurrentRoomPrompt = new System.Windows.Forms.Label();
             this.lblMobGeneral = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.lblQuickMobID = new System.Windows.Forms.Label();
+            this.lblQuickMobVNUM = new System.Windows.Forms.Label();
+            this.lblQuickMobName = new System.Windows.Forms.Label();
             this.cboMaxExisting = new System.Windows.Forms.ComboBox();
             this.lblMaxExisting = new System.Windows.Forms.Label();
             this.lblMobVNUM = new System.Windows.Forms.Label();
@@ -472,7 +475,7 @@
             this.dgMobsNotInRoom.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgMobsNotInRoom.ColumnHeadersVisible = false;
             this.dgMobsNotInRoom.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
+            this.MobIDOther,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn7});
             this.dgMobsNotInRoom.GridColor = System.Drawing.Color.DarkGray;
@@ -491,14 +494,15 @@
             this.dgMobsNotInRoom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgMobsNotInRoom.Size = new System.Drawing.Size(404, 110);
             this.dgMobsNotInRoom.TabIndex = 4;
+            this.dgMobsNotInRoom.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMobsNotInRoom_CellContentClick);
             // 
-            // dataGridViewTextBoxColumn1
+            // MobIDOther
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "MobID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Mob ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            this.dataGridViewTextBoxColumn1.Width = 50;
+            this.MobIDOther.DataPropertyName = "MobID";
+            this.MobIDOther.HeaderText = "Mob ID";
+            this.MobIDOther.Name = "MobIDOther";
+            this.MobIDOther.Visible = false;
+            this.MobIDOther.Width = 50;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -611,6 +615,7 @@
             this.btnHighlightSpawns.TabIndex = 29;
             this.btnHighlightSpawns.Text = "Highlight Spawn Locations";
             this.btnHighlightSpawns.UseVisualStyleBackColor = true;
+            this.btnHighlightSpawns.Click += new System.EventHandler(this.btnHighlightSpawns_Click);
             // 
             // lblMobRoomName
             // 
@@ -683,6 +688,9 @@
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.lblQuickMobID);
+            this.panel5.Controls.Add(this.lblQuickMobVNUM);
+            this.panel5.Controls.Add(this.lblQuickMobName);
             this.panel5.Controls.Add(this.cboMaxExisting);
             this.panel5.Controls.Add(this.lblMaxExisting);
             this.panel5.Controls.Add(this.lblMobVNUM);
@@ -691,6 +699,33 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(426, 79);
             this.panel5.TabIndex = 0;
+            // 
+            // lblQuickMobID
+            // 
+            this.lblQuickMobID.AutoSize = true;
+            this.lblQuickMobID.Location = new System.Drawing.Point(348, 10);
+            this.lblQuickMobID.Name = "lblQuickMobID";
+            this.lblQuickMobID.Size = new System.Drawing.Size(0, 13);
+            this.lblQuickMobID.TabIndex = 15;
+            this.lblQuickMobID.Visible = false;
+            // 
+            // lblQuickMobVNUM
+            // 
+            this.lblQuickMobVNUM.AutoSize = true;
+            this.lblQuickMobVNUM.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuickMobVNUM.Location = new System.Drawing.Point(48, 42);
+            this.lblQuickMobVNUM.Name = "lblQuickMobVNUM";
+            this.lblQuickMobVNUM.Size = new System.Drawing.Size(0, 14);
+            this.lblQuickMobVNUM.TabIndex = 14;
+            // 
+            // lblQuickMobName
+            // 
+            this.lblQuickMobName.AutoSize = true;
+            this.lblQuickMobName.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuickMobName.Location = new System.Drawing.Point(48, 10);
+            this.lblQuickMobName.Name = "lblQuickMobName";
+            this.lblQuickMobName.Size = new System.Drawing.Size(0, 14);
+            this.lblQuickMobName.TabIndex = 13;
             // 
             // cboMaxExisting
             // 
@@ -2323,12 +2358,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn MobID;
         private System.Windows.Forms.DataGridViewTextBoxColumn VNUM;
         private System.Windows.Forms.DataGridViewTextBoxColumn AreaName;
+        private System.Windows.Forms.Label lblQuickMobName;
+        private System.Windows.Forms.Label lblQuickMobVNUM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MobIDOther;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.Label lblQuickMobID;
     }
 }
 
