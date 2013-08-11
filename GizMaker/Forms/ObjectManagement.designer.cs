@@ -639,22 +639,22 @@
             // lblVNUM
             // 
             this.lblVNUM.AutoSize = true;
-            this.lblVNUM.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVNUM.Location = new System.Drawing.Point(26, 11);
+            this.lblVNUM.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVNUM.Location = new System.Drawing.Point(19, 11);
             this.lblVNUM.Name = "lblVNUM";
-            this.lblVNUM.Size = new System.Drawing.Size(74, 14);
+            this.lblVNUM.Size = new System.Drawing.Size(80, 14);
             this.lblVNUM.TabIndex = 26;
             this.lblVNUM.Text = "Object VNUM:";
             // 
             // lblShortDescription
             // 
             this.lblShortDescription.AutoSize = true;
-            this.lblShortDescription.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShortDescription.Location = new System.Drawing.Point(7, 35);
+            this.lblShortDescription.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShortDescription.Location = new System.Drawing.Point(29, 35);
             this.lblShortDescription.Name = "lblShortDescription";
-            this.lblShortDescription.Size = new System.Drawing.Size(93, 14);
+            this.lblShortDescription.Size = new System.Drawing.Size(70, 14);
             this.lblShortDescription.TabIndex = 27;
-            this.lblShortDescription.Text = "Short Description:";
+            this.lblShortDescription.Text = "Short Desc:";
             // 
             // lblLongDescription
             // 

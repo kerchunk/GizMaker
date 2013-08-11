@@ -457,12 +457,12 @@
             // lblShortDescription
             // 
             this.lblShortDescription.AutoSize = true;
-            this.lblShortDescription.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShortDescription.Location = new System.Drawing.Point(7, 34);
+            this.lblShortDescription.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShortDescription.Location = new System.Drawing.Point(30, 34);
             this.lblShortDescription.Name = "lblShortDescription";
-            this.lblShortDescription.Size = new System.Drawing.Size(93, 14);
+            this.lblShortDescription.Size = new System.Drawing.Size(70, 14);
             this.lblShortDescription.TabIndex = 1;
-            this.lblShortDescription.Text = "Short Description:";
+            this.lblShortDescription.Text = "Short Desc:";
             // 
             // lblThaco
             // 
@@ -477,10 +477,10 @@
             // lblVNUM
             // 
             this.lblVNUM.AutoSize = true;
-            this.lblVNUM.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVNUM.Location = new System.Drawing.Point(37, 10);
+            this.lblVNUM.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVNUM.Location = new System.Drawing.Point(31, 10);
             this.lblVNUM.Name = "lblVNUM";
-            this.lblVNUM.Size = new System.Drawing.Size(63, 14);
+            this.lblVNUM.Size = new System.Drawing.Size(69, 14);
             this.lblVNUM.TabIndex = 0;
             this.lblVNUM.Text = "Mob VNUM:";
             // 
