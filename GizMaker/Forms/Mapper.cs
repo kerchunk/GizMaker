@@ -932,70 +932,75 @@ namespace GizMaker.forms
         // Respond to Numpad directional keys and move around the grid.
         private void KeyDown_Click(object sender, KeyEventArgs e)
         {
-            // North
-            if (!e.Control && e.KeyCode == Keys.NumPad8)
+            bool blnTXTHasFocus = false;
+            blnTXTHasFocus = TextBoxHasFocus();
+            if (!blnTXTHasFocus)
             {
-                MoveNorth();
-            }
-            // Panel North
-            if (e.Control && e.KeyCode == Keys.NumPad8)
-            {
-                MovePanelNorth();
-            }
+                // North
+                if (!e.Control && e.KeyCode == Keys.NumPad8)
+                {
+                    MoveNorth();
+                }
+                // Panel North
+                if (e.Control && e.KeyCode == Keys.NumPad8)
+                {
+                    MovePanelNorth();
+                }
 
-            // West
-            if (!e.Control && e.KeyCode == Keys.NumPad4)
-            {
-                MoveWest();
-            }
-            // Panel West
-            if (e.Control && e.KeyCode == Keys.NumPad4)
-            {
-                MovePanelWest();
-            }
+                // West
+                if (!e.Control && e.KeyCode == Keys.NumPad4)
+                {
+                    MoveWest();
+                }
+                // Panel West
+                if (e.Control && e.KeyCode == Keys.NumPad4)
+                {
+                    MovePanelWest();
+                }
 
-            // East
-            if (!e.Control && e.KeyCode == Keys.NumPad6)
-            {
-                MoveEast();
-            }
-            // Panel East
-            if (e.Control && e.KeyCode == Keys.NumPad6)
-            {
-                MovePanelEast();
-            }
+                // East
+                if (!e.Control && e.KeyCode == Keys.NumPad6)
+                {
+                    MoveEast();
+                }
+                // Panel East
+                if (e.Control && e.KeyCode == Keys.NumPad6)
+                {
+                    MovePanelEast();
+                }
 
-            // South
-            if (!e.Control && e.KeyCode == Keys.NumPad2)
-            {
-                MoveSouth();
-            }
-            // Panel South
-            if (e.Control && e.KeyCode == Keys.NumPad2)
-            {
-                MovePanelSouth();
-            }
+                // South
+                if (!e.Control && e.KeyCode == Keys.NumPad2)
+                {
+                    MoveSouth();
+                }
+                // Panel South
+                if (e.Control && e.KeyCode == Keys.NumPad2)
+                {
+                    MovePanelSouth();
+                }
 
-            // Up
-            if (!e.Control && e.KeyCode == Keys.NumPad9)
-            {
-                MoveUp();
-            }
-            // Panel Up
-            if (e.Control && e.KeyCode == Keys.NumPad9)
-            {
-                MovePanelUp();
-            }
+                // Up
+                if (!e.Control && e.KeyCode == Keys.NumPad9)
+                {
+                    MoveUp();
+                }
+                // Panel Up
+                if (e.Control && e.KeyCode == Keys.NumPad9)
+                {
+                    MovePanelUp();
+                }
 
-            // Down
-            if (!e.Control && e.KeyCode == Keys.NumPad3)
-            {
-                MoveDown();
-            }
-            // Panel Down
-            if (e.Control && e.KeyCode == Keys.NumPad3)
-            {
-                MovePanelDown();
+                // Down
+                if (!e.Control && e.KeyCode == Keys.NumPad3)
+                {
+                    MoveDown();
+                }
+                // Panel Down
+                if (e.Control && e.KeyCode == Keys.NumPad3)
+                {
+                    MovePanelDown();
+                }
             }
         }
 
@@ -2197,5 +2202,51 @@ namespace GizMaker.forms
         {
         }
         #endregion
+
+        private bool TextBoxHasFocus()
+        {
+            bool blnHasFocus = false;
+
+            // Loop through panel controls and check if a TextBox has focus.
+            foreach (Control con in this.pnlRoomDetail.Controls)
+            {
+                if (con.Name.Contains("txt") || con.Name.Contains("cbo"))
+                {
+                    // Every control has a Focused property.
+                    if (con.Focused == true)
+                    {
+                        blnHasFocus = true;
+                    }
+                }
+            }
+
+            // Loop through panel controls and check if a TextBox has focus.
+            foreach (Control con in this.pnlGeneral.Controls)
+            {
+                if (con.Name.Contains("txt") || con.Name.Contains("cbo"))
+                {
+                    // Every control has a Focused property.
+                    if (con.Focused == true)
+                    {
+                        blnHasFocus = true;
+                    }
+                }
+            }
+
+            // Loop through panel controls and check if a TextBox has focus.
+            foreach (Control con in this.pnlDoor.Controls)
+            {
+                if (con.Name.Contains("txt") || con.Name.Contains("cbo"))
+                {
+                    // Every control has a Focused property.
+                    if (con.Focused == true)
+                    {
+                        blnHasFocus = true;
+                    }
+                }
+            }
+
+            return blnHasFocus; 
+        }
     }
 }

@@ -64,7 +64,7 @@
             this.lblMobVNUM = new System.Windows.Forms.Label();
             this.lblMobName = new System.Windows.Forms.Label();
             this.tabRoom = new System.Windows.Forms.TabPage();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlRoomDetail = new System.Windows.Forms.Panel();
             this.btnCopyRoom = new System.Windows.Forms.Button();
             this.lblRoomRoomNumber = new System.Windows.Forms.Label();
             this.lblDetailRoomNumber = new System.Windows.Forms.Label();
@@ -119,7 +119,7 @@
             this.btnZoomSouth = new System.Windows.Forms.Button();
             this.btnZoomNorth = new System.Windows.Forms.Button();
             this.btnCurrentZoom = new System.Windows.Forms.Button();
-            this.pnlMapping = new System.Windows.Forms.Panel();
+            this.pnlDoor = new System.Windows.Forms.Panel();
             this.lblDoorFlag = new System.Windows.Forms.Label();
             this.cboDoorFlag = new System.Windows.Forms.ComboBox();
             this.lblDoorKey = new System.Windows.Forms.Label();
@@ -198,13 +198,13 @@
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.tabRoom.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pnlRoomDetail.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabArea.SuspendLayout();
             this.pnlZoom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUp)).BeginInit();
-            this.pnlMapping.SuspendLayout();
+            this.pnlDoor.SuspendLayout();
             this.pnlGeneral.SuspendLayout();
             this.tabAttributes.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -242,7 +242,7 @@
             this.btnNewMob.Location = new System.Drawing.Point(355, 209);
             this.btnNewMob.Name = "btnNewMob";
             this.btnNewMob.Size = new System.Drawing.Size(88, 23);
-            this.btnNewMob.TabIndex = 41;
+            this.btnNewMob.TabIndex = 42;
             this.btnNewMob.Text = "New Mob";
             this.btnNewMob.UseVisualStyleBackColor = true;
             this.btnNewMob.Click += new System.EventHandler(this.btnNewMob_Click);
@@ -253,7 +253,7 @@
             this.btnAddObject.Location = new System.Drawing.Point(355, 494);
             this.btnAddObject.Name = "btnAddObject";
             this.btnAddObject.Size = new System.Drawing.Size(88, 23);
-            this.btnAddObject.TabIndex = 40;
+            this.btnAddObject.TabIndex = 48;
             this.btnAddObject.Text = "New Object";
             this.btnAddObject.UseVisualStyleBackColor = true;
             this.btnAddObject.Click += new System.EventHandler(this.btnAddObject_Click);
@@ -299,7 +299,7 @@
             this.btnRemoveLoad.Location = new System.Drawing.Point(308, 173);
             this.btnRemoveLoad.Name = "btnRemoveLoad";
             this.btnRemoveLoad.Size = new System.Drawing.Size(106, 23);
-            this.btnRemoveLoad.TabIndex = 45;
+            this.btnRemoveLoad.TabIndex = 53;
             this.btnRemoveLoad.Text = "Remove Load";
             this.btnRemoveLoad.UseVisualStyleBackColor = true;
             this.btnRemoveLoad.Click += new System.EventHandler(this.btnRemoveLoad_Click);
@@ -313,7 +313,7 @@
             this.lbLoads.Location = new System.Drawing.Point(6, 51);
             this.lbLoads.Name = "lbLoads";
             this.lbLoads.Size = new System.Drawing.Size(407, 116);
-            this.lbLoads.TabIndex = 44;
+            this.lbLoads.TabIndex = 51;
             this.lbLoads.SelectedIndexChanged += new System.EventHandler(this.lbLoads_SelectedIndexChanged);
             // 
             // btnAddLoad
@@ -322,7 +322,7 @@
             this.btnAddLoad.Location = new System.Drawing.Point(376, 23);
             this.btnAddLoad.Name = "btnAddLoad";
             this.btnAddLoad.Size = new System.Drawing.Size(37, 22);
-            this.btnAddLoad.TabIndex = 43;
+            this.btnAddLoad.TabIndex = 50;
             this.btnAddLoad.Text = "[ + ]";
             this.btnAddLoad.UseVisualStyleBackColor = true;
             this.btnAddLoad.Click += new System.EventHandler(this.btnAddLoad_Click);
@@ -337,7 +337,7 @@
             this.cboAllObjects.Location = new System.Drawing.Point(6, 23);
             this.cboAllObjects.Name = "cboAllObjects";
             this.cboAllObjects.Size = new System.Drawing.Size(367, 22);
-            this.cboAllObjects.TabIndex = 42;
+            this.cboAllObjects.TabIndex = 49;
             // 
             // lblMobLoadingObjects
             // 
@@ -356,7 +356,7 @@
             this.btnObjDetail.Location = new System.Drawing.Point(6, 173);
             this.btnObjDetail.Name = "btnObjDetail";
             this.btnObjDetail.Size = new System.Drawing.Size(87, 23);
-            this.btnObjDetail.TabIndex = 39;
+            this.btnObjDetail.TabIndex = 52;
             this.btnObjDetail.Text = "Object Detail";
             this.btnObjDetail.UseVisualStyleBackColor = true;
             this.btnObjDetail.Click += new System.EventHandler(this.btnFullObjDetail_Click);
@@ -367,7 +367,7 @@
             this.btnHighlightSpawns.Location = new System.Drawing.Point(24, 88);
             this.btnHighlightSpawns.Name = "btnHighlightSpawns";
             this.btnHighlightSpawns.Size = new System.Drawing.Size(96, 23);
-            this.btnHighlightSpawns.TabIndex = 29;
+            this.btnHighlightSpawns.TabIndex = 41;
             this.btnHighlightSpawns.Text = "Show Spawns";
             this.btnHighlightSpawns.UseVisualStyleBackColor = true;
             this.btnHighlightSpawns.Click += new System.EventHandler(this.btnHighlightSpawns_Click);
@@ -393,7 +393,7 @@
             this.btnRemoveSpawn.Location = new System.Drawing.Point(307, 175);
             this.btnRemoveSpawn.Name = "btnRemoveSpawn";
             this.btnRemoveSpawn.Size = new System.Drawing.Size(106, 23);
-            this.btnRemoveSpawn.TabIndex = 32;
+            this.btnRemoveSpawn.TabIndex = 47;
             this.btnRemoveSpawn.Text = "Remove Spawn";
             this.btnRemoveSpawn.UseVisualStyleBackColor = true;
             this.btnRemoveSpawn.Click += new System.EventHandler(this.btnRemoveSpawn_Click);
@@ -407,7 +407,7 @@
             this.lbSpawns.Location = new System.Drawing.Point(6, 54);
             this.lbSpawns.Name = "lbSpawns";
             this.lbSpawns.Size = new System.Drawing.Size(407, 116);
-            this.lbSpawns.TabIndex = 31;
+            this.lbSpawns.TabIndex = 45;
             this.lbSpawns.SelectedIndexChanged += new System.EventHandler(this.lbSpawns_SelectedIndexChanged);
             // 
             // btnAddSpawn
@@ -416,7 +416,7 @@
             this.btnAddSpawn.Location = new System.Drawing.Point(377, 24);
             this.btnAddSpawn.Name = "btnAddSpawn";
             this.btnAddSpawn.Size = new System.Drawing.Size(37, 24);
-            this.btnAddSpawn.TabIndex = 30;
+            this.btnAddSpawn.TabIndex = 44;
             this.btnAddSpawn.Text = "[ + ]";
             this.btnAddSpawn.UseVisualStyleBackColor = true;
             this.btnAddSpawn.Click += new System.EventHandler(this.btnAddSpawn_Click);
@@ -431,7 +431,7 @@
             this.cboAllMobs.Location = new System.Drawing.Point(6, 26);
             this.cboAllMobs.Name = "cboAllMobs";
             this.cboAllMobs.Size = new System.Drawing.Size(367, 22);
-            this.cboAllMobs.TabIndex = 6;
+            this.cboAllMobs.TabIndex = 43;
             // 
             // lblMobsInRoom
             // 
@@ -450,7 +450,7 @@
             this.btnMobDetail.Location = new System.Drawing.Point(6, 175);
             this.btnMobDetail.Name = "btnMobDetail";
             this.btnMobDetail.Size = new System.Drawing.Size(88, 23);
-            this.btnMobDetail.TabIndex = 28;
+            this.btnMobDetail.TabIndex = 46;
             this.btnMobDetail.Text = "Mob Detail";
             this.btnMobDetail.UseVisualStyleBackColor = true;
             this.btnMobDetail.Click += new System.EventHandler(this.btnFullDetail_Click);
@@ -583,7 +583,7 @@
             this.cboMaxExisting.Location = new System.Drawing.Point(351, 28);
             this.cboMaxExisting.Name = "cboMaxExisting";
             this.cboMaxExisting.Size = new System.Drawing.Size(62, 22);
-            this.cboMaxExisting.TabIndex = 12;
+            this.cboMaxExisting.TabIndex = 40;
             // 
             // lblMaxExisting
             // 
@@ -618,7 +618,7 @@
             // tabRoom
             // 
             this.tabRoom.BackColor = System.Drawing.Color.LightSlateGray;
-            this.tabRoom.Controls.Add(this.panel2);
+            this.tabRoom.Controls.Add(this.pnlRoomDetail);
             this.tabRoom.Location = new System.Drawing.Point(4, 22);
             this.tabRoom.Name = "tabRoom";
             this.tabRoom.Padding = new System.Windows.Forms.Padding(3);
@@ -626,41 +626,41 @@
             this.tabRoom.TabIndex = 0;
             this.tabRoom.Text = "Room Detail";
             // 
-            // panel2
+            // pnlRoomDetail
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.btnCopyRoom);
-            this.panel2.Controls.Add(this.lblRoomRoomNumber);
-            this.panel2.Controls.Add(this.lblDetailRoomNumber);
-            this.panel2.Controls.Add(this.btnSaveRoom);
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.txtVNUM);
-            this.panel2.Controls.Add(this.txtRoomName);
-            this.panel2.Controls.Add(this.txtExtraDescKeywords);
-            this.panel2.Controls.Add(this.txtExtraDescription);
-            this.panel2.Controls.Add(this.txtDownExit);
-            this.panel2.Controls.Add(this.txtUpExit);
-            this.panel2.Controls.Add(this.txtWestExit);
-            this.panel2.Controls.Add(this.txtEastExit);
-            this.panel2.Controls.Add(this.txtSouthExit);
-            this.panel2.Controls.Add(this.txtNorthExit);
-            this.panel2.Controls.Add(this.lblDownExit);
-            this.panel2.Controls.Add(this.lblUpExit);
-            this.panel2.Controls.Add(this.lblWestExit);
-            this.panel2.Controls.Add(this.lblEastExit);
-            this.panel2.Controls.Add(this.lblSouthExit);
-            this.panel2.Controls.Add(this.lblNorthExit);
-            this.panel2.Controls.Add(this.lblExtraDescription);
-            this.panel2.Controls.Add(this.lblExtraDescKeywords);
-            this.panel2.Controls.Add(this.txtRoomDescription);
-            this.panel2.Controls.Add(this.lblRoomDescription);
-            this.panel2.Controls.Add(this.lblTerrain);
-            this.panel2.Controls.Add(this.lblRoomName);
-            this.panel2.Controls.Add(this.lblRoomVNUM);
-            this.panel2.Location = new System.Drawing.Point(16, 23);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(422, 706);
-            this.panel2.TabIndex = 0;
+            this.pnlRoomDetail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlRoomDetail.Controls.Add(this.btnCopyRoom);
+            this.pnlRoomDetail.Controls.Add(this.lblRoomRoomNumber);
+            this.pnlRoomDetail.Controls.Add(this.lblDetailRoomNumber);
+            this.pnlRoomDetail.Controls.Add(this.btnSaveRoom);
+            this.pnlRoomDetail.Controls.Add(this.comboBox1);
+            this.pnlRoomDetail.Controls.Add(this.txtVNUM);
+            this.pnlRoomDetail.Controls.Add(this.txtRoomName);
+            this.pnlRoomDetail.Controls.Add(this.txtExtraDescKeywords);
+            this.pnlRoomDetail.Controls.Add(this.txtExtraDescription);
+            this.pnlRoomDetail.Controls.Add(this.txtDownExit);
+            this.pnlRoomDetail.Controls.Add(this.txtUpExit);
+            this.pnlRoomDetail.Controls.Add(this.txtWestExit);
+            this.pnlRoomDetail.Controls.Add(this.txtEastExit);
+            this.pnlRoomDetail.Controls.Add(this.txtSouthExit);
+            this.pnlRoomDetail.Controls.Add(this.txtNorthExit);
+            this.pnlRoomDetail.Controls.Add(this.lblDownExit);
+            this.pnlRoomDetail.Controls.Add(this.lblUpExit);
+            this.pnlRoomDetail.Controls.Add(this.lblWestExit);
+            this.pnlRoomDetail.Controls.Add(this.lblEastExit);
+            this.pnlRoomDetail.Controls.Add(this.lblSouthExit);
+            this.pnlRoomDetail.Controls.Add(this.lblNorthExit);
+            this.pnlRoomDetail.Controls.Add(this.lblExtraDescription);
+            this.pnlRoomDetail.Controls.Add(this.lblExtraDescKeywords);
+            this.pnlRoomDetail.Controls.Add(this.txtRoomDescription);
+            this.pnlRoomDetail.Controls.Add(this.lblRoomDescription);
+            this.pnlRoomDetail.Controls.Add(this.lblTerrain);
+            this.pnlRoomDetail.Controls.Add(this.lblRoomName);
+            this.pnlRoomDetail.Controls.Add(this.lblRoomVNUM);
+            this.pnlRoomDetail.Location = new System.Drawing.Point(16, 23);
+            this.pnlRoomDetail.Name = "pnlRoomDetail";
+            this.pnlRoomDetail.Size = new System.Drawing.Size(422, 706);
+            this.pnlRoomDetail.TabIndex = 0;
             // 
             // btnCopyRoom
             // 
@@ -668,7 +668,7 @@
             this.btnCopyRoom.Location = new System.Drawing.Point(9, 672);
             this.btnCopyRoom.Name = "btnCopyRoom";
             this.btnCopyRoom.Size = new System.Drawing.Size(84, 23);
-            this.btnCopyRoom.TabIndex = 27;
+            this.btnCopyRoom.TabIndex = 25;
             this.btnCopyRoom.Text = "Copy Room";
             this.btnCopyRoom.UseVisualStyleBackColor = true;
             // 
@@ -697,7 +697,7 @@
             this.btnSaveRoom.Location = new System.Drawing.Point(331, 673);
             this.btnSaveRoom.Name = "btnSaveRoom";
             this.btnSaveRoom.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveRoom.TabIndex = 24;
+            this.btnSaveRoom.TabIndex = 26;
             this.btnSaveRoom.Text = "Save Room";
             this.btnSaveRoom.UseVisualStyleBackColor = true;
             // 
@@ -719,7 +719,7 @@
             this.comboBox1.Location = new System.Drawing.Point(285, 45);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 22);
-            this.comboBox1.TabIndex = 23;
+            this.comboBox1.TabIndex = 14;
             // 
             // txtVNUM
             // 
@@ -728,7 +728,7 @@
             this.txtVNUM.Location = new System.Drawing.Point(59, 72);
             this.txtVNUM.Name = "txtVNUM";
             this.txtVNUM.Size = new System.Drawing.Size(100, 20);
-            this.txtVNUM.TabIndex = 22;
+            this.txtVNUM.TabIndex = 15;
             // 
             // txtRoomName
             // 
@@ -737,7 +737,7 @@
             this.txtRoomName.Location = new System.Drawing.Point(15, 19);
             this.txtRoomName.Name = "txtRoomName";
             this.txtRoomName.Size = new System.Drawing.Size(392, 20);
-            this.txtRoomName.TabIndex = 21;
+            this.txtRoomName.TabIndex = 13;
             // 
             // txtExtraDescKeywords
             // 
@@ -746,7 +746,7 @@
             this.txtExtraDescKeywords.Location = new System.Drawing.Point(14, 430);
             this.txtExtraDescKeywords.Name = "txtExtraDescKeywords";
             this.txtExtraDescKeywords.Size = new System.Drawing.Size(392, 20);
-            this.txtExtraDescKeywords.TabIndex = 20;
+            this.txtExtraDescKeywords.TabIndex = 17;
             // 
             // txtExtraDescription
             // 
@@ -755,7 +755,7 @@
             this.txtExtraDescription.Location = new System.Drawing.Point(15, 470);
             this.txtExtraDescription.Name = "txtExtraDescription";
             this.txtExtraDescription.Size = new System.Drawing.Size(392, 20);
-            this.txtExtraDescription.TabIndex = 19;
+            this.txtExtraDescription.TabIndex = 18;
             // 
             // txtDownExit
             // 
@@ -763,7 +763,7 @@
             this.txtDownExit.Location = new System.Drawing.Point(95, 645);
             this.txtDownExit.Name = "txtDownExit";
             this.txtDownExit.Size = new System.Drawing.Size(312, 22);
-            this.txtDownExit.TabIndex = 18;
+            this.txtDownExit.TabIndex = 24;
             // 
             // txtUpExit
             // 
@@ -771,7 +771,7 @@
             this.txtUpExit.Location = new System.Drawing.Point(95, 617);
             this.txtUpExit.Name = "txtUpExit";
             this.txtUpExit.Size = new System.Drawing.Size(312, 22);
-            this.txtUpExit.TabIndex = 17;
+            this.txtUpExit.TabIndex = 23;
             // 
             // txtWestExit
             // 
@@ -779,7 +779,7 @@
             this.txtWestExit.Location = new System.Drawing.Point(95, 590);
             this.txtWestExit.Name = "txtWestExit";
             this.txtWestExit.Size = new System.Drawing.Size(312, 22);
-            this.txtWestExit.TabIndex = 16;
+            this.txtWestExit.TabIndex = 22;
             // 
             // txtEastExit
             // 
@@ -787,7 +787,7 @@
             this.txtEastExit.Location = new System.Drawing.Point(95, 563);
             this.txtEastExit.Name = "txtEastExit";
             this.txtEastExit.Size = new System.Drawing.Size(312, 22);
-            this.txtEastExit.TabIndex = 15;
+            this.txtEastExit.TabIndex = 21;
             // 
             // txtSouthExit
             // 
@@ -795,7 +795,7 @@
             this.txtSouthExit.Location = new System.Drawing.Point(95, 536);
             this.txtSouthExit.Name = "txtSouthExit";
             this.txtSouthExit.Size = new System.Drawing.Size(312, 22);
-            this.txtSouthExit.TabIndex = 14;
+            this.txtSouthExit.TabIndex = 20;
             // 
             // txtNorthExit
             // 
@@ -803,7 +803,7 @@
             this.txtNorthExit.Location = new System.Drawing.Point(95, 509);
             this.txtNorthExit.Name = "txtNorthExit";
             this.txtNorthExit.Size = new System.Drawing.Size(312, 22);
-            this.txtNorthExit.TabIndex = 13;
+            this.txtNorthExit.TabIndex = 19;
             // 
             // lblDownExit
             // 
@@ -894,7 +894,7 @@
             this.txtRoomDescription.Name = "txtRoomDescription";
             this.txtRoomDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtRoomDescription.Size = new System.Drawing.Size(392, 289);
-            this.txtRoomDescription.TabIndex = 4;
+            this.txtRoomDescription.TabIndex = 16;
             // 
             // lblRoomDescription
             // 
@@ -982,7 +982,7 @@
             this.tabArea.Controls.Add(this.lblCurrentVNUM);
             this.tabArea.Controls.Add(this.lblDoorSection);
             this.tabArea.Controls.Add(this.pnlZoom);
-            this.tabArea.Controls.Add(this.pnlMapping);
+            this.tabArea.Controls.Add(this.pnlDoor);
             this.tabArea.Controls.Add(this.lblAreaID);
             this.tabArea.Controls.Add(this.lblGeneral);
             this.tabArea.Controls.Add(this.lblButtonName);
@@ -1217,24 +1217,24 @@
             this.btnCurrentZoom.UseVisualStyleBackColor = true;
             this.btnCurrentZoom.Visible = false;
             // 
-            // pnlMapping
+            // pnlDoor
             // 
-            this.pnlMapping.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlMapping.Controls.Add(this.lblDoorFlag);
-            this.pnlMapping.Controls.Add(this.cboDoorFlag);
-            this.pnlMapping.Controls.Add(this.lblDoorKey);
-            this.pnlMapping.Controls.Add(this.cboDoorKey);
-            this.pnlMapping.Controls.Add(this.lblDoorObjNum);
-            this.pnlMapping.Controls.Add(this.txtDoorObjNum);
-            this.pnlMapping.Controls.Add(this.btnSaveDoor);
-            this.pnlMapping.Controls.Add(this.lblKeywords);
-            this.pnlMapping.Controls.Add(this.txtDoorKeywords);
-            this.pnlMapping.Controls.Add(this.lblDirection);
-            this.pnlMapping.Controls.Add(this.cboDirection);
-            this.pnlMapping.Location = new System.Drawing.Point(9, 216);
-            this.pnlMapping.Name = "pnlMapping";
-            this.pnlMapping.Size = new System.Drawing.Size(429, 111);
-            this.pnlMapping.TabIndex = 12;
+            this.pnlDoor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlDoor.Controls.Add(this.lblDoorFlag);
+            this.pnlDoor.Controls.Add(this.cboDoorFlag);
+            this.pnlDoor.Controls.Add(this.lblDoorKey);
+            this.pnlDoor.Controls.Add(this.cboDoorKey);
+            this.pnlDoor.Controls.Add(this.lblDoorObjNum);
+            this.pnlDoor.Controls.Add(this.txtDoorObjNum);
+            this.pnlDoor.Controls.Add(this.btnSaveDoor);
+            this.pnlDoor.Controls.Add(this.lblKeywords);
+            this.pnlDoor.Controls.Add(this.txtDoorKeywords);
+            this.pnlDoor.Controls.Add(this.lblDirection);
+            this.pnlDoor.Controls.Add(this.cboDirection);
+            this.pnlDoor.Location = new System.Drawing.Point(9, 216);
+            this.pnlDoor.Name = "pnlDoor";
+            this.pnlDoor.Size = new System.Drawing.Size(429, 111);
+            this.pnlDoor.TabIndex = 12;
             // 
             // lblDoorFlag
             // 
@@ -1258,7 +1258,7 @@
             this.cboDoorFlag.Location = new System.Drawing.Point(96, 55);
             this.cboDoorFlag.Name = "cboDoorFlag";
             this.cboDoorFlag.Size = new System.Drawing.Size(121, 22);
-            this.cboDoorFlag.TabIndex = 20;
+            this.cboDoorFlag.TabIndex = 11;
             // 
             // lblDoorKey
             // 
@@ -1278,7 +1278,7 @@
             this.cboDoorKey.Location = new System.Drawing.Point(96, 81);
             this.cboDoorKey.Name = "cboDoorKey";
             this.cboDoorKey.Size = new System.Drawing.Size(233, 22);
-            this.cboDoorKey.TabIndex = 18;
+            this.cboDoorKey.TabIndex = 12;
             // 
             // lblDoorObjNum
             // 
@@ -1297,7 +1297,7 @@
             this.txtDoorObjNum.Location = new System.Drawing.Point(96, 31);
             this.txtDoorObjNum.Name = "txtDoorObjNum";
             this.txtDoorObjNum.Size = new System.Drawing.Size(88, 20);
-            this.txtDoorObjNum.TabIndex = 16;
+            this.txtDoorObjNum.TabIndex = 9;
             // 
             // btnSaveDoor
             // 
@@ -1305,7 +1305,7 @@
             this.btnSaveDoor.Location = new System.Drawing.Point(345, 80);
             this.btnSaveDoor.Name = "btnSaveDoor";
             this.btnSaveDoor.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveDoor.TabIndex = 15;
+            this.btnSaveDoor.TabIndex = 13;
             this.btnSaveDoor.Text = "Save Door";
             this.btnSaveDoor.UseVisualStyleBackColor = true;
             // 
@@ -1326,7 +1326,7 @@
             this.txtDoorKeywords.Location = new System.Drawing.Point(96, 7);
             this.txtDoorKeywords.Name = "txtDoorKeywords";
             this.txtDoorKeywords.Size = new System.Drawing.Size(318, 20);
-            this.txtDoorKeywords.TabIndex = 13;
+            this.txtDoorKeywords.TabIndex = 8;
             // 
             // lblDirection
             // 
@@ -1433,7 +1433,7 @@
             this.txtZoneNumber.Location = new System.Drawing.Point(82, 41);
             this.txtZoneNumber.Name = "txtZoneNumber";
             this.txtZoneNumber.Size = new System.Drawing.Size(53, 20);
-            this.txtZoneNumber.TabIndex = 31;
+            this.txtZoneNumber.TabIndex = 2;
             // 
             // lblOnLinkClick
             // 
@@ -1452,7 +1452,7 @@
             this.rdoRemoveLink.Location = new System.Drawing.Point(289, 118);
             this.rdoRemoveLink.Name = "rdoRemoveLink";
             this.rdoRemoveLink.Size = new System.Drawing.Size(86, 18);
-            this.rdoRemoveLink.TabIndex = 29;
+            this.rdoRemoveLink.TabIndex = 7;
             this.rdoRemoveLink.Text = "Remove Link";
             this.rdoRemoveLink.UseVisualStyleBackColor = true;
             // 
@@ -1464,7 +1464,7 @@
             this.rdoCreateDoor.Location = new System.Drawing.Point(289, 102);
             this.rdoCreateDoor.Name = "rdoCreateDoor";
             this.rdoCreateDoor.Size = new System.Drawing.Size(98, 18);
-            this.rdoCreateDoor.TabIndex = 28;
+            this.rdoCreateDoor.TabIndex = 6;
             this.rdoCreateDoor.TabStop = true;
             this.rdoCreateDoor.Text = "Configure Door";
             this.rdoCreateDoor.UseVisualStyleBackColor = true;
@@ -1486,7 +1486,7 @@
             this.txtStartingVNUM.Location = new System.Drawing.Point(345, 41);
             this.txtStartingVNUM.Name = "txtStartingVNUM";
             this.txtStartingVNUM.Size = new System.Drawing.Size(53, 20);
-            this.txtStartingVNUM.TabIndex = 2;
+            this.txtStartingVNUM.TabIndex = 3;
             // 
             // chkAutolink
             // 
@@ -1495,7 +1495,7 @@
             this.chkAutolink.Location = new System.Drawing.Point(25, 118);
             this.chkAutolink.Name = "chkAutolink";
             this.chkAutolink.Size = new System.Drawing.Size(156, 18);
-            this.chkAutolink.TabIndex = 27;
+            this.chkAutolink.TabIndex = 5;
             this.chkAutolink.Text = "Enable Linking on Move";
             this.chkAutolink.UseVisualStyleBackColor = true;
             this.chkAutolink.CheckedChanged += new System.EventHandler(this.chkAutolink_CheckedChanged);
@@ -1517,7 +1517,7 @@
             this.chkAutocolor.Location = new System.Drawing.Point(25, 99);
             this.chkAutocolor.Name = "chkAutocolor";
             this.chkAutocolor.Size = new System.Drawing.Size(138, 18);
-            this.chkAutocolor.TabIndex = 25;
+            this.chkAutocolor.TabIndex = 4;
             this.chkAutocolor.Text = "Enable Map Creation";
             this.chkAutocolor.UseVisualStyleBackColor = true;
             this.chkAutocolor.CheckedChanged += new System.EventHandler(this.chkAutocolor_CheckedChanged);
@@ -1529,7 +1529,7 @@
             this.txtAreaName.Location = new System.Drawing.Point(82, 16);
             this.txtAreaName.Name = "txtAreaName";
             this.txtAreaName.Size = new System.Drawing.Size(316, 20);
-            this.txtAreaName.TabIndex = 0;
+            this.txtAreaName.TabIndex = 1;
             // 
             // tabAttributes
             // 
@@ -1617,7 +1617,7 @@
             this.btnSaveRoomAttributes.Location = new System.Drawing.Point(334, 706);
             this.btnSaveRoomAttributes.Name = "btnSaveRoomAttributes";
             this.btnSaveRoomAttributes.Size = new System.Drawing.Size(100, 23);
-            this.btnSaveRoomAttributes.TabIndex = 3;
+            this.btnSaveRoomAttributes.TabIndex = 39;
             this.btnSaveRoomAttributes.Text = "Save Attributes";
             this.btnSaveRoomAttributes.UseVisualStyleBackColor = true;
             // 
@@ -1696,7 +1696,7 @@
             this.chkAttDuel.Location = new System.Drawing.Point(12, 140);
             this.chkAttDuel.Name = "chkAttDuel";
             this.chkAttDuel.Size = new System.Drawing.Size(53, 18);
-            this.chkAttDuel.TabIndex = 21;
+            this.chkAttDuel.TabIndex = 32;
             this.chkAttDuel.Text = "DUEL";
             this.chkAttDuel.UseVisualStyleBackColor = true;
             // 
@@ -1707,7 +1707,7 @@
             this.chkAttClan.Location = new System.Drawing.Point(12, 43);
             this.chkAttClan.Name = "chkAttClan";
             this.chkAttClan.Size = new System.Drawing.Size(56, 18);
-            this.chkAttClan.TabIndex = 20;
+            this.chkAttClan.TabIndex = 28;
             this.chkAttClan.Text = "CLAN";
             this.chkAttClan.UseVisualStyleBackColor = true;
             // 
@@ -1727,7 +1727,7 @@
             this.chkAttPrivate.Location = new System.Drawing.Point(12, 236);
             this.chkAttPrivate.Name = "chkAttPrivate";
             this.chkAttPrivate.Size = new System.Drawing.Size(70, 18);
-            this.chkAttPrivate.TabIndex = 11;
+            this.chkAttPrivate.TabIndex = 36;
             this.chkAttPrivate.Text = "PRIVATE";
             this.chkAttPrivate.UseVisualStyleBackColor = true;
             // 
@@ -1747,7 +1747,7 @@
             this.chkAttNoMagic.Location = new System.Drawing.Point(12, 188);
             this.chkAttNoMagic.Name = "chkAttNoMagic";
             this.chkAttNoMagic.Size = new System.Drawing.Size(84, 18);
-            this.chkAttNoMagic.TabIndex = 10;
+            this.chkAttNoMagic.TabIndex = 34;
             this.chkAttNoMagic.Text = "NO_MAGIC";
             this.chkAttNoMagic.UseVisualStyleBackColor = true;
             // 
@@ -1767,7 +1767,7 @@
             this.chkAttSafe.Location = new System.Drawing.Point(12, 271);
             this.chkAttSafe.Name = "chkAttSafe";
             this.chkAttSafe.Size = new System.Drawing.Size(53, 18);
-            this.chkAttSafe.TabIndex = 8;
+            this.chkAttSafe.TabIndex = 38;
             this.chkAttSafe.Text = "SAFE";
             this.chkAttSafe.UseVisualStyleBackColor = true;
             // 
@@ -1787,7 +1787,7 @@
             this.chkAttDeath.Location = new System.Drawing.Point(12, 115);
             this.chkAttDeath.Name = "chkAttDeath";
             this.chkAttDeath.Size = new System.Drawing.Size(60, 18);
-            this.chkAttDeath.TabIndex = 4;
+            this.chkAttDeath.TabIndex = 31;
             this.chkAttDeath.Text = "DEATH";
             this.chkAttDeath.UseVisualStyleBackColor = true;
             // 
@@ -1807,7 +1807,7 @@
             this.chkAttClub.Location = new System.Drawing.Point(12, 67);
             this.chkAttClub.Name = "chkAttClub";
             this.chkAttClub.Size = new System.Drawing.Size(55, 18);
-            this.chkAttClub.TabIndex = 18;
+            this.chkAttClub.TabIndex = 29;
             this.chkAttClub.Text = "CLUB";
             this.chkAttClub.UseVisualStyleBackColor = true;
             // 
@@ -1836,7 +1836,7 @@
             this.chkAttArena.Location = new System.Drawing.Point(12, 20);
             this.chkAttArena.Name = "chkAttArena";
             this.chkAttArena.Size = new System.Drawing.Size(62, 18);
-            this.chkAttArena.TabIndex = 13;
+            this.chkAttArena.TabIndex = 27;
             this.chkAttArena.Text = "ARENA";
             this.chkAttArena.UseVisualStyleBackColor = true;
             // 
@@ -1847,7 +1847,7 @@
             this.chkAttLock.Location = new System.Drawing.Point(12, 164);
             this.chkAttLock.Name = "chkAttLock";
             this.chkAttLock.Size = new System.Drawing.Size(56, 18);
-            this.chkAttLock.TabIndex = 12;
+            this.chkAttLock.TabIndex = 33;
             this.chkAttLock.Text = "LOCK";
             this.chkAttLock.UseVisualStyleBackColor = true;
             // 
@@ -1867,7 +1867,7 @@
             this.chkAttNoMob.Location = new System.Drawing.Point(12, 212);
             this.chkAttNoMob.Name = "chkAttNoMob";
             this.chkAttNoMob.Size = new System.Drawing.Size(72, 18);
-            this.chkAttNoMob.TabIndex = 6;
+            this.chkAttNoMob.TabIndex = 35;
             this.chkAttNoMob.Text = "NO_MOB";
             this.chkAttNoMob.UseVisualStyleBackColor = true;
             // 
@@ -1887,7 +1887,7 @@
             this.chkAttDark.Location = new System.Drawing.Point(12, 91);
             this.chkAttDark.Name = "chkAttDark";
             this.chkAttDark.Size = new System.Drawing.Size(55, 18);
-            this.chkAttDark.TabIndex = 0;
+            this.chkAttDark.TabIndex = 30;
             this.chkAttDark.Text = "DARK";
             this.chkAttDark.UseVisualStyleBackColor = true;
             // 
@@ -2009,8 +2009,8 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.tabRoom.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pnlRoomDetail.ResumeLayout(false);
+            this.pnlRoomDetail.PerformLayout();
             this.tabControl.ResumeLayout(false);
             this.tabArea.ResumeLayout(false);
             this.tabArea.PerformLayout();
@@ -2018,8 +2018,8 @@
             this.pnlZoom.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUp)).EndInit();
-            this.pnlMapping.ResumeLayout(false);
-            this.pnlMapping.PerformLayout();
+            this.pnlDoor.ResumeLayout(false);
+            this.pnlDoor.PerformLayout();
             this.pnlGeneral.ResumeLayout(false);
             this.pnlGeneral.PerformLayout();
             this.tabAttributes.ResumeLayout(false);
@@ -2049,7 +2049,7 @@
         private System.Windows.Forms.Button btnDefault;
         private System.Windows.Forms.Panel pnlGeneral;
         private System.Windows.Forms.Label lblGeneral;
-        private System.Windows.Forms.Panel pnlMapping;
+        private System.Windows.Forms.Panel pnlDoor;
         private System.Windows.Forms.Panel pnlZoom;
         private System.Windows.Forms.Button btnCurrentZoom;
         private System.Windows.Forms.Button btnZoomSouth;
@@ -2099,7 +2099,7 @@
         private System.Windows.Forms.Button btnSaveDoor;
         private System.Windows.Forms.Label lblDoorObjNum;
         private System.Windows.Forms.TextBox txtDoorObjNum;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlRoomDetail;
         private System.Windows.Forms.TextBox txtExtraDescKeywords;
         private System.Windows.Forms.TextBox txtExtraDescription;
         private System.Windows.Forms.TextBox txtDownExit;
