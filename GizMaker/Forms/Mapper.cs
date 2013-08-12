@@ -515,6 +515,53 @@ namespace GizMaker.forms
 
             NewMap_Down();
         }
+
+        // Before Moving, determine if Textbox has focus (NumPad numerals)
+        private bool TextBoxHasFocus()
+        {
+            bool blnHasFocus = false;
+
+            // Loop through panel controls and check if a TextBox has focus.
+            foreach (Control con in this.pnlRoomDetail.Controls)
+            {
+                if (con.Name.Contains("txt") || con.Name.Contains("cbo"))
+                {
+                    // Every control has a Focused property.
+                    if (con.Focused == true)
+                    {
+                        blnHasFocus = true;
+                    }
+                }
+            }
+
+            // Loop through panel controls and check if a TextBox has focus.
+            foreach (Control con in this.pnlGeneral.Controls)
+            {
+                if (con.Name.Contains("txt") || con.Name.Contains("cbo"))
+                {
+                    // Every control has a Focused property.
+                    if (con.Focused == true)
+                    {
+                        blnHasFocus = true;
+                    }
+                }
+            }
+
+            // Loop through panel controls and check if a TextBox has focus.
+            foreach (Control con in this.pnlDoor.Controls)
+            {
+                if (con.Name.Contains("txt") || con.Name.Contains("cbo"))
+                {
+                    // Every control has a Focused property.
+                    if (con.Focused == true)
+                    {
+                        blnHasFocus = true;
+                    }
+                }
+            }
+
+            return blnHasFocus;
+        }
         #endregion
 
         // Panel Movement.
@@ -2202,51 +2249,5 @@ namespace GizMaker.forms
         {
         }
         #endregion
-
-        private bool TextBoxHasFocus()
-        {
-            bool blnHasFocus = false;
-
-            // Loop through panel controls and check if a TextBox has focus.
-            foreach (Control con in this.pnlRoomDetail.Controls)
-            {
-                if (con.Name.Contains("txt") || con.Name.Contains("cbo"))
-                {
-                    // Every control has a Focused property.
-                    if (con.Focused == true)
-                    {
-                        blnHasFocus = true;
-                    }
-                }
-            }
-
-            // Loop through panel controls and check if a TextBox has focus.
-            foreach (Control con in this.pnlGeneral.Controls)
-            {
-                if (con.Name.Contains("txt") || con.Name.Contains("cbo"))
-                {
-                    // Every control has a Focused property.
-                    if (con.Focused == true)
-                    {
-                        blnHasFocus = true;
-                    }
-                }
-            }
-
-            // Loop through panel controls and check if a TextBox has focus.
-            foreach (Control con in this.pnlDoor.Controls)
-            {
-                if (con.Name.Contains("txt") || con.Name.Contains("cbo"))
-                {
-                    // Every control has a Focused property.
-                    if (con.Focused == true)
-                    {
-                        blnHasFocus = true;
-                    }
-                }
-            }
-
-            return blnHasFocus; 
-        }
     }
 }
