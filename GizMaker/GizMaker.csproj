@@ -139,6 +139,7 @@
   <ItemGroup>
     <Content Include="Resources\dir45_up.jpg" />
     <Content Include="Resources\dir_up.jpg" />
+    <Content Include="Resources\wooden-door.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />

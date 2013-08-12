@@ -65,6 +65,9 @@ namespace GizMaker.forms
                 // Display the Current Map.
                 DisplayPanelRooms(iCurrentArea, iCurrentX, iCurrentY, iCurrentZ);
             }
+
+            DisplayDoor("north");
+            DisplayDoor("south");
         }
 
         // Populate Area to the Grid.
@@ -1672,7 +1675,7 @@ namespace GizMaker.forms
             int iRoomTop = 0;
             int iButtonName = 1;
 
-            // Draw a each column on the form.
+            // Draw a each column on the form. //30
             for (int col = 0; col < 30; col++)
             {
                 // Draw a single column on the form. //26
@@ -2062,11 +2065,11 @@ namespace GizMaker.forms
             // Display or Hide the Up Link depending on Current Room links.
             if (blnHasUpLink)
             {
-                picUp.Visible = true;
+                btnZoomUp.Visible = true;
             }
             else
             {
-                picUp.Visible = false;
+                btnZoomUp.Visible = false;
             }
 
             // ################
@@ -2078,16 +2081,50 @@ namespace GizMaker.forms
             // Display or Hide the Down Link depending on Current Room links.
             if (blnHasDownLink)
             {
-                picDown.Visible = true;
+                btnZoomDown.Visible = true;
             }
             else
             {
-                picDown.Visible = false;
+                btnZoomDown.Visible = false;
             }
 
             if (blnAutoColor && btnCurrentRoom.BackColor != clrBlank)
             {
                 SaveRoom(iCurrentArea, iCurrentRoom, iCurrentX, iCurrentY, iCurrentZ, HasUpLink(iCurrentRoom), HasDownLink(iCurrentRoom));
+            }
+        }
+
+        // Set Door to Display as Exit.
+        private void DisplayDoor(string strDirection)
+        {
+            switch (strDirection.ToLower()) 
+            {
+                case "north":
+                    btnDoorNorth.Visible = true;
+                    btnZoomNorth.Visible = false;
+                    break;
+                case "south":
+                    btnDoorSouth.Visible = true;
+                    btnZoomSouth.Visible = false;
+                    break;
+                case "east":
+                    btnDoorEast.Visible = true;
+                    btnZoomEast.Visible = false;
+                    break;
+                case "west":
+                    btnDoorWest.Visible = true;
+                    btnZoomWest.Visible = false;
+                    break;
+                case "down":
+                    btnDoorDown.Visible = true;
+                    btnZoomDown.Visible = false;
+                    break;
+                case "up":
+                    btnDoorUp.Visible = true;
+                    btnDoorDown.Visible = false;
+                    break;
+                default:
+                    break;
             }
         }
         #endregion
