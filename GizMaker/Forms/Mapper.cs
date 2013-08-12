@@ -2070,7 +2070,7 @@ namespace GizMaker.forms
             // Add blank row to the top of the ComboBox.
             DataRow row = dtMobs.NewRow();
             row["MobID"] = "";
-            row["ShortDesc"] = " < Add New Mob >";
+            row["ShortDesc"] = " < Add New Spawn >";
             dtMobs.Rows.InsertAt(row, 0);
 
             // Push the List to the ComboBox.
@@ -2116,7 +2116,7 @@ namespace GizMaker.forms
             // Add blank row to the top of the ComboBox.
             DataRow row = dtObjects.NewRow();
             row["ObjectID"] = "";
-            row["ShortDesc"] = " < Add New Object >";
+            row["ShortDesc"] = " < Add New Load >";
             dtObjects.Rows.InsertAt(row, 0);
 
             // Push the List to the ComboBox.
