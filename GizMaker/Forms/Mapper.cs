@@ -1203,7 +1203,8 @@ namespace GizMaker.forms
             int iCurrentMob = -1;
 
             // Get the selected Mob.
-            iCurrentMob = Convert.ToInt32(cboAllMobs.SelectedValue.ToString());
+            if (cboAllMobs.SelectedIndex > -1)
+                iCurrentMob = Convert.ToInt32(cboAllMobs.SelectedValue.ToString());
 
             if (iCurrentMob > 0)
             {
@@ -1223,9 +1224,12 @@ namespace GizMaker.forms
             int iCurrentMob = -1;
 
             // Get the selected Mob.
-            iCurrentMob = Convert.ToInt32(lbSpawns.SelectedValue.ToString());
+            if (lbSpawns.SelectedIndex > -1)
+                iCurrentMob = Convert.ToInt32(lbSpawns.SelectedValue.ToString());
+
             // Get the selected Object.
-            iCurrentObj = Convert.ToInt32(cboAllObjects.SelectedValue.ToString());
+            if (cboAllObjects.SelectedIndex > -1)
+                iCurrentObj = Convert.ToInt32(cboAllObjects.SelectedValue.ToString());
 
             if (iCurrentMob > 0 && iCurrentObj > 0)
             {
@@ -1887,9 +1891,19 @@ namespace GizMaker.forms
             classes.room oRoom = new classes.room();
             oRoom = classes.room.GetRoom(iCurrentArea, iCurrentRoom, iCurrentX, iCurrentY, iCurrentZ);
             if (oRoom.Exists())
+            {
                 cboAllMobs.Enabled = true;
+                btnAddSpawn.Enabled = true;
+                btnMobDetail.Enabled = true;
+                btnRemoveSpawn.Enabled = true;
+            }
             else
+            {
                 cboAllMobs.Enabled = false;
+                btnAddSpawn.Enabled = false;
+                btnMobDetail.Enabled = false;
+                btnRemoveSpawn.Enabled = false;
+            }
 
 
             // Disable Load selection if Mob is not Selected.
@@ -1897,10 +1911,16 @@ namespace GizMaker.forms
             {
                 PopulateObjectsNotLoadingOnMob(Convert.ToInt32(lbSpawns.SelectedValue.ToString()));
                 cboAllObjects.Enabled = true;
+                btnAddLoad.Enabled = true;
+                btnObjDetail.Enabled = true;
+                btnRemoveLoad.Enabled = true;
             }
             else
             {
                 cboAllObjects.Enabled = false;
+                btnAddLoad.Enabled = false;
+                btnObjDetail.Enabled = false;
+                btnRemoveLoad.Enabled = false;
             }
         }
 

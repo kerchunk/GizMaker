@@ -35,14 +35,20 @@
             this.lblMobs = new System.Windows.Forms.Label();
             this.lblLoadingObjects = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.btnRemoveLoad = new System.Windows.Forms.Button();
+            this.lbLoads = new System.Windows.Forms.ListBox();
+            this.btnAddLoad = new System.Windows.Forms.Button();
             this.cboAllObjects = new System.Windows.Forms.ComboBox();
             this.lblMobLoadingObjects = new System.Windows.Forms.Label();
-            this.btnFullObjDetail = new System.Windows.Forms.Button();
+            this.btnObjDetail = new System.Windows.Forms.Button();
+            this.btnHighlightSpawns = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btnRemoveSpawn = new System.Windows.Forms.Button();
+            this.lbSpawns = new System.Windows.Forms.ListBox();
+            this.btnAddSpawn = new System.Windows.Forms.Button();
             this.cboAllMobs = new System.Windows.Forms.ComboBox();
             this.lblMobsInRoom = new System.Windows.Forms.Label();
-            this.btnHighlightSpawns = new System.Windows.Forms.Button();
-            this.btnFullDetail = new System.Windows.Forms.Button();
+            this.btnMobDetail = new System.Windows.Forms.Button();
             this.lblMobRoomName = new System.Windows.Forms.Label();
             this.lblMobCurrentVNUM = new System.Windows.Forms.Label();
             this.lblMobVNUMPrompt = new System.Windows.Forms.Label();
@@ -183,16 +189,10 @@
             this.areaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mobToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.objectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnAddSpawn = new System.Windows.Forms.Button();
-            this.btnAddLoad = new System.Windows.Forms.Button();
-            this.lbSpawns = new System.Windows.Forms.ListBox();
-            this.lbLoads = new System.Windows.Forms.ListBox();
-            this.btnRemoveSpawn = new System.Windows.Forms.Button();
-            this.btnRemoveLoad = new System.Windows.Forms.Button();
             this.newMobToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.objectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newObjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabMob.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -286,11 +286,44 @@
             this.panel7.Controls.Add(this.btnAddLoad);
             this.panel7.Controls.Add(this.cboAllObjects);
             this.panel7.Controls.Add(this.lblMobLoadingObjects);
-            this.panel7.Controls.Add(this.btnFullObjDetail);
+            this.panel7.Controls.Add(this.btnObjDetail);
             this.panel7.Location = new System.Drawing.Point(17, 523);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(426, 212);
             this.panel7.TabIndex = 36;
+            // 
+            // btnRemoveLoad
+            // 
+            this.btnRemoveLoad.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveLoad.Location = new System.Drawing.Point(308, 173);
+            this.btnRemoveLoad.Name = "btnRemoveLoad";
+            this.btnRemoveLoad.Size = new System.Drawing.Size(106, 23);
+            this.btnRemoveLoad.TabIndex = 45;
+            this.btnRemoveLoad.Text = "Remove Load";
+            this.btnRemoveLoad.UseVisualStyleBackColor = true;
+            this.btnRemoveLoad.Click += new System.EventHandler(this.btnRemoveLoad_Click);
+            // 
+            // lbLoads
+            // 
+            this.lbLoads.BackColor = System.Drawing.Color.LightSlateGray;
+            this.lbLoads.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLoads.FormattingEnabled = true;
+            this.lbLoads.ItemHeight = 14;
+            this.lbLoads.Location = new System.Drawing.Point(6, 51);
+            this.lbLoads.Name = "lbLoads";
+            this.lbLoads.Size = new System.Drawing.Size(407, 116);
+            this.lbLoads.TabIndex = 44;
+            this.lbLoads.SelectedIndexChanged += new System.EventHandler(this.lbLoads_SelectedIndexChanged);
+            // 
+            // btnAddLoad
+            // 
+            this.btnAddLoad.Location = new System.Drawing.Point(376, 23);
+            this.btnAddLoad.Name = "btnAddLoad";
+            this.btnAddLoad.Size = new System.Drawing.Size(37, 22);
+            this.btnAddLoad.TabIndex = 43;
+            this.btnAddLoad.Text = "[ + ]";
+            this.btnAddLoad.UseVisualStyleBackColor = true;
+            this.btnAddLoad.Click += new System.EventHandler(this.btnAddLoad_Click);
             // 
             // cboAllObjects
             // 
@@ -313,16 +346,27 @@
             this.lblMobLoadingObjects.TabIndex = 35;
             this.lblMobLoadingObjects.Text = "Objects Currently Loading on Mob:";
             // 
-            // btnFullObjDetail
+            // btnObjDetail
             // 
-            this.btnFullObjDetail.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFullObjDetail.Location = new System.Drawing.Point(6, 173);
-            this.btnFullObjDetail.Name = "btnFullObjDetail";
-            this.btnFullObjDetail.Size = new System.Drawing.Size(87, 23);
-            this.btnFullObjDetail.TabIndex = 39;
-            this.btnFullObjDetail.Text = "Object Detail";
-            this.btnFullObjDetail.UseVisualStyleBackColor = true;
-            this.btnFullObjDetail.Click += new System.EventHandler(this.btnFullObjDetail_Click);
+            this.btnObjDetail.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnObjDetail.Location = new System.Drawing.Point(6, 173);
+            this.btnObjDetail.Name = "btnObjDetail";
+            this.btnObjDetail.Size = new System.Drawing.Size(87, 23);
+            this.btnObjDetail.TabIndex = 39;
+            this.btnObjDetail.Text = "Object Detail";
+            this.btnObjDetail.UseVisualStyleBackColor = true;
+            this.btnObjDetail.Click += new System.EventHandler(this.btnFullObjDetail_Click);
+            // 
+            // btnHighlightSpawns
+            // 
+            this.btnHighlightSpawns.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHighlightSpawns.Location = new System.Drawing.Point(24, 88);
+            this.btnHighlightSpawns.Name = "btnHighlightSpawns";
+            this.btnHighlightSpawns.Size = new System.Drawing.Size(96, 23);
+            this.btnHighlightSpawns.TabIndex = 29;
+            this.btnHighlightSpawns.Text = "Show Spawns";
+            this.btnHighlightSpawns.UseVisualStyleBackColor = true;
+            this.btnHighlightSpawns.Click += new System.EventHandler(this.btnHighlightSpawns_Click);
             // 
             // panel6
             // 
@@ -332,11 +376,44 @@
             this.panel6.Controls.Add(this.btnAddSpawn);
             this.panel6.Controls.Add(this.cboAllMobs);
             this.panel6.Controls.Add(this.lblMobsInRoom);
-            this.panel6.Controls.Add(this.btnFullDetail);
+            this.panel6.Controls.Add(this.btnMobDetail);
             this.panel6.Location = new System.Drawing.Point(17, 238);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(426, 214);
             this.panel6.TabIndex = 35;
+            // 
+            // btnRemoveSpawn
+            // 
+            this.btnRemoveSpawn.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveSpawn.Location = new System.Drawing.Point(307, 175);
+            this.btnRemoveSpawn.Name = "btnRemoveSpawn";
+            this.btnRemoveSpawn.Size = new System.Drawing.Size(106, 23);
+            this.btnRemoveSpawn.TabIndex = 32;
+            this.btnRemoveSpawn.Text = "Remove Spawn";
+            this.btnRemoveSpawn.UseVisualStyleBackColor = true;
+            this.btnRemoveSpawn.Click += new System.EventHandler(this.btnRemoveSpawn_Click);
+            // 
+            // lbSpawns
+            // 
+            this.lbSpawns.BackColor = System.Drawing.Color.LightSlateGray;
+            this.lbSpawns.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSpawns.FormattingEnabled = true;
+            this.lbSpawns.ItemHeight = 14;
+            this.lbSpawns.Location = new System.Drawing.Point(6, 54);
+            this.lbSpawns.Name = "lbSpawns";
+            this.lbSpawns.Size = new System.Drawing.Size(407, 116);
+            this.lbSpawns.TabIndex = 31;
+            this.lbSpawns.SelectedIndexChanged += new System.EventHandler(this.lbSpawns_SelectedIndexChanged);
+            // 
+            // btnAddSpawn
+            // 
+            this.btnAddSpawn.Location = new System.Drawing.Point(377, 24);
+            this.btnAddSpawn.Name = "btnAddSpawn";
+            this.btnAddSpawn.Size = new System.Drawing.Size(37, 24);
+            this.btnAddSpawn.TabIndex = 30;
+            this.btnAddSpawn.Text = "[ + ]";
+            this.btnAddSpawn.UseVisualStyleBackColor = true;
+            this.btnAddSpawn.Click += new System.EventHandler(this.btnAddSpawn_Click);
             // 
             // cboAllMobs
             // 
@@ -359,27 +436,16 @@
             this.lblMobsInRoom.TabIndex = 3;
             this.lblMobsInRoom.Text = "Mobs Currently Loading in Room:";
             // 
-            // btnHighlightSpawns
+            // btnMobDetail
             // 
-            this.btnHighlightSpawns.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHighlightSpawns.Location = new System.Drawing.Point(24, 88);
-            this.btnHighlightSpawns.Name = "btnHighlightSpawns";
-            this.btnHighlightSpawns.Size = new System.Drawing.Size(96, 23);
-            this.btnHighlightSpawns.TabIndex = 29;
-            this.btnHighlightSpawns.Text = "Show Spawns";
-            this.btnHighlightSpawns.UseVisualStyleBackColor = true;
-            this.btnHighlightSpawns.Click += new System.EventHandler(this.btnHighlightSpawns_Click);
-            // 
-            // btnFullDetail
-            // 
-            this.btnFullDetail.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFullDetail.Location = new System.Drawing.Point(6, 175);
-            this.btnFullDetail.Name = "btnFullDetail";
-            this.btnFullDetail.Size = new System.Drawing.Size(88, 23);
-            this.btnFullDetail.TabIndex = 28;
-            this.btnFullDetail.Text = "Mob Detail";
-            this.btnFullDetail.UseVisualStyleBackColor = true;
-            this.btnFullDetail.Click += new System.EventHandler(this.btnFullDetail_Click);
+            this.btnMobDetail.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMobDetail.Location = new System.Drawing.Point(6, 175);
+            this.btnMobDetail.Name = "btnMobDetail";
+            this.btnMobDetail.Size = new System.Drawing.Size(88, 23);
+            this.btnMobDetail.TabIndex = 28;
+            this.btnMobDetail.Text = "Mob Detail";
+            this.btnMobDetail.UseVisualStyleBackColor = true;
+            this.btnMobDetail.Click += new System.EventHandler(this.btnFullDetail_Click);
             // 
             // lblMobRoomName
             // 
@@ -1884,6 +1950,13 @@
             this.mobToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.mobToolStripMenuItem.Text = "Mob";
             // 
+            // newMobToolStripMenuItem
+            // 
+            this.newMobToolStripMenuItem.Name = "newMobToolStripMenuItem";
+            this.newMobToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.newMobToolStripMenuItem.Text = "New Mob";
+            this.newMobToolStripMenuItem.Click += new System.EventHandler(this.newMobToolStripMenuItem_Click);
+            // 
             // objectToolStripMenuItem
             // 
             this.objectToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1892,91 +1965,18 @@
             this.objectToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.objectToolStripMenuItem.Text = "Object";
             // 
+            // newObjectToolStripMenuItem
+            // 
+            this.newObjectToolStripMenuItem.Name = "newObjectToolStripMenuItem";
+            this.newObjectToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.newObjectToolStripMenuItem.Text = "New Object";
+            this.newObjectToolStripMenuItem.Click += new System.EventHandler(this.newObjectToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem1
             // 
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
             this.helpToolStripMenuItem1.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem1.Text = "Help";
-            // 
-            // btnAddSpawn
-            // 
-            this.btnAddSpawn.Location = new System.Drawing.Point(377, 24);
-            this.btnAddSpawn.Name = "btnAddSpawn";
-            this.btnAddSpawn.Size = new System.Drawing.Size(37, 24);
-            this.btnAddSpawn.TabIndex = 30;
-            this.btnAddSpawn.Text = "[ + ]";
-            this.btnAddSpawn.UseVisualStyleBackColor = true;
-            this.btnAddSpawn.Click += new System.EventHandler(this.btnAddSpawn_Click);
-            // 
-            // btnAddLoad
-            // 
-            this.btnAddLoad.Location = new System.Drawing.Point(376, 23);
-            this.btnAddLoad.Name = "btnAddLoad";
-            this.btnAddLoad.Size = new System.Drawing.Size(37, 22);
-            this.btnAddLoad.TabIndex = 43;
-            this.btnAddLoad.Text = "[ + ]";
-            this.btnAddLoad.UseVisualStyleBackColor = true;
-            this.btnAddLoad.Click += new System.EventHandler(this.btnAddLoad_Click);
-            // 
-            // lbSpawns
-            // 
-            this.lbSpawns.BackColor = System.Drawing.Color.LightSlateGray;
-            this.lbSpawns.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSpawns.FormattingEnabled = true;
-            this.lbSpawns.ItemHeight = 14;
-            this.lbSpawns.Location = new System.Drawing.Point(6, 54);
-            this.lbSpawns.Name = "lbSpawns";
-            this.lbSpawns.Size = new System.Drawing.Size(407, 116);
-            this.lbSpawns.TabIndex = 31;
-            this.lbSpawns.SelectedIndexChanged += new System.EventHandler(this.lbSpawns_SelectedIndexChanged);
-            // 
-            // lbLoads
-            // 
-            this.lbLoads.BackColor = System.Drawing.Color.LightSlateGray;
-            this.lbLoads.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLoads.FormattingEnabled = true;
-            this.lbLoads.ItemHeight = 14;
-            this.lbLoads.Location = new System.Drawing.Point(6, 51);
-            this.lbLoads.Name = "lbLoads";
-            this.lbLoads.Size = new System.Drawing.Size(407, 116);
-            this.lbLoads.TabIndex = 44;
-            this.lbLoads.SelectedIndexChanged += new System.EventHandler(this.lbLoads_SelectedIndexChanged);
-            // 
-            // btnRemoveSpawn
-            // 
-            this.btnRemoveSpawn.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveSpawn.Location = new System.Drawing.Point(307, 175);
-            this.btnRemoveSpawn.Name = "btnRemoveSpawn";
-            this.btnRemoveSpawn.Size = new System.Drawing.Size(106, 23);
-            this.btnRemoveSpawn.TabIndex = 32;
-            this.btnRemoveSpawn.Text = "Remove Spawn";
-            this.btnRemoveSpawn.UseVisualStyleBackColor = true;
-            this.btnRemoveSpawn.Click += new System.EventHandler(this.btnRemoveSpawn_Click);
-            // 
-            // btnRemoveLoad
-            // 
-            this.btnRemoveLoad.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveLoad.Location = new System.Drawing.Point(308, 173);
-            this.btnRemoveLoad.Name = "btnRemoveLoad";
-            this.btnRemoveLoad.Size = new System.Drawing.Size(106, 23);
-            this.btnRemoveLoad.TabIndex = 45;
-            this.btnRemoveLoad.Text = "Remove Load";
-            this.btnRemoveLoad.UseVisualStyleBackColor = true;
-            this.btnRemoveLoad.Click += new System.EventHandler(this.btnRemoveLoad_Click);
-            // 
-            // newMobToolStripMenuItem
-            // 
-            this.newMobToolStripMenuItem.Name = "newMobToolStripMenuItem";
-            this.newMobToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.newMobToolStripMenuItem.Text = "New Mob";
-            this.newMobToolStripMenuItem.Click += new System.EventHandler(this.newMobToolStripMenuItem_Click);
-            // 
-            // newObjectToolStripMenuItem
-            // 
-            this.newObjectToolStripMenuItem.Name = "newObjectToolStripMenuItem";
-            this.newObjectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.newObjectToolStripMenuItem.Text = "New Object";
-            this.newObjectToolStripMenuItem.Click += new System.EventHandler(this.newObjectToolStripMenuItem_Click);
             // 
             // Mapper
             // 
@@ -2163,7 +2163,7 @@
         private System.Windows.Forms.Label lblAttributesRoomVNUM;
         private System.Windows.Forms.Label lblMobVNUM;
         private System.Windows.Forms.Button btnHighlightSpawns;
-        private System.Windows.Forms.Button btnFullDetail;
+        private System.Windows.Forms.Button btnMobDetail;
         private System.Windows.Forms.Label lblMobRoomName;
         private System.Windows.Forms.Label lblMobCurrentVNUM;
         private System.Windows.Forms.Label lblMobVNUMPrompt;
@@ -2175,7 +2175,7 @@
         private System.Windows.Forms.Label lblLoadingObjects;
         private System.Windows.Forms.Label lblMobs;
         private System.Windows.Forms.Label lblMobLoadingObjects;
-        private System.Windows.Forms.Button btnFullObjDetail;
+        private System.Windows.Forms.Button btnObjDetail;
         private System.Windows.Forms.Button btnCopyRoom;
         private System.Windows.Forms.Button btnNewMob;
         private System.Windows.Forms.Button btnAddObject;
