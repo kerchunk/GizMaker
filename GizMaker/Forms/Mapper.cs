@@ -1203,7 +1203,7 @@ namespace GizMaker.forms
             int iCurrentMob = -1;
 
             // Get the selected Mob.
-            if (cboAllMobs.SelectedIndex > -1)
+            if (cboAllMobs.SelectedIndex > 0)
                 iCurrentMob = Convert.ToInt32(cboAllMobs.SelectedValue.ToString());
 
             if (iCurrentMob > 0)
@@ -1228,7 +1228,7 @@ namespace GizMaker.forms
                 iCurrentMob = Convert.ToInt32(lbSpawns.SelectedValue.ToString());
 
             // Get the selected Object.
-            if (cboAllObjects.SelectedIndex > -1)
+            if (cboAllObjects.SelectedIndex > 0)
                 iCurrentObj = Convert.ToInt32(cboAllObjects.SelectedValue.ToString());
 
             if (iCurrentMob > 0 && iCurrentObj > 0)

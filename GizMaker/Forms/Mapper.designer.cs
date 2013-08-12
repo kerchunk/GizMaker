@@ -294,6 +294,7 @@
             // 
             // btnRemoveLoad
             // 
+            this.btnRemoveLoad.Enabled = false;
             this.btnRemoveLoad.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveLoad.Location = new System.Drawing.Point(308, 173);
             this.btnRemoveLoad.Name = "btnRemoveLoad";
@@ -317,6 +318,7 @@
             // 
             // btnAddLoad
             // 
+            this.btnAddLoad.Enabled = false;
             this.btnAddLoad.Location = new System.Drawing.Point(376, 23);
             this.btnAddLoad.Name = "btnAddLoad";
             this.btnAddLoad.Size = new System.Drawing.Size(37, 22);
@@ -329,6 +331,7 @@
             // 
             this.cboAllObjects.BackColor = System.Drawing.Color.LightSlateGray;
             this.cboAllObjects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAllObjects.Enabled = false;
             this.cboAllObjects.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboAllObjects.FormattingEnabled = true;
             this.cboAllObjects.Location = new System.Drawing.Point(6, 23);
@@ -348,6 +351,7 @@
             // 
             // btnObjDetail
             // 
+            this.btnObjDetail.Enabled = false;
             this.btnObjDetail.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnObjDetail.Location = new System.Drawing.Point(6, 173);
             this.btnObjDetail.Name = "btnObjDetail";
@@ -384,6 +388,7 @@
             // 
             // btnRemoveSpawn
             // 
+            this.btnRemoveSpawn.Enabled = false;
             this.btnRemoveSpawn.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveSpawn.Location = new System.Drawing.Point(307, 175);
             this.btnRemoveSpawn.Name = "btnRemoveSpawn";
@@ -407,6 +412,7 @@
             // 
             // btnAddSpawn
             // 
+            this.btnAddSpawn.Enabled = false;
             this.btnAddSpawn.Location = new System.Drawing.Point(377, 24);
             this.btnAddSpawn.Name = "btnAddSpawn";
             this.btnAddSpawn.Size = new System.Drawing.Size(37, 24);
@@ -419,6 +425,7 @@
             // 
             this.cboAllMobs.BackColor = System.Drawing.Color.LightSlateGray;
             this.cboAllMobs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAllMobs.Enabled = false;
             this.cboAllMobs.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboAllMobs.FormattingEnabled = true;
             this.cboAllMobs.Location = new System.Drawing.Point(6, 26);
@@ -438,6 +445,7 @@
             // 
             // btnMobDetail
             // 
+            this.btnMobDetail.Enabled = false;
             this.btnMobDetail.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMobDetail.Location = new System.Drawing.Point(6, 175);
             this.btnMobDetail.Name = "btnMobDetail";
