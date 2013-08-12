@@ -104,8 +104,8 @@
             this.lblCurrentVNUM = new System.Windows.Forms.Label();
             this.lblDoorSection = new System.Windows.Forms.Label();
             this.pnlZoom = new System.Windows.Forms.Panel();
-            this.picDown = new System.Windows.Forms.PictureBox();
-            this.picUp = new System.Windows.Forms.PictureBox();
+            this.btnZoomDown = new System.Windows.Forms.PictureBox();
+            this.btnZoomUp = new System.Windows.Forms.PictureBox();
             this.lblDefault = new System.Windows.Forms.Label();
             this.btnDefault = new System.Windows.Forms.Button();
             this.lblZ = new System.Windows.Forms.Label();
@@ -193,6 +193,12 @@
             this.objectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newObjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDoorNorth = new System.Windows.Forms.Button();
+            this.btnDoorUp = new System.Windows.Forms.Button();
+            this.btnDoorEast = new System.Windows.Forms.Button();
+            this.btnDoorSouth = new System.Windows.Forms.Button();
+            this.btnDoorDown = new System.Windows.Forms.Button();
+            this.btnDoorWest = new System.Windows.Forms.Button();
             this.tabMob.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -202,8 +208,8 @@
             this.tabControl.SuspendLayout();
             this.tabArea.SuspendLayout();
             this.pnlZoom.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picUp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnZoomDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnZoomUp)).BeginInit();
             this.pnlDoor.SuspendLayout();
             this.pnlGeneral.SuspendLayout();
             this.tabAttributes.SuspendLayout();
@@ -1045,8 +1051,14 @@
             // pnlZoom
             // 
             this.pnlZoom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlZoom.Controls.Add(this.picDown);
-            this.pnlZoom.Controls.Add(this.picUp);
+            this.pnlZoom.Controls.Add(this.btnDoorWest);
+            this.pnlZoom.Controls.Add(this.btnDoorDown);
+            this.pnlZoom.Controls.Add(this.btnDoorSouth);
+            this.pnlZoom.Controls.Add(this.btnDoorEast);
+            this.pnlZoom.Controls.Add(this.btnDoorUp);
+            this.pnlZoom.Controls.Add(this.btnDoorNorth);
+            this.pnlZoom.Controls.Add(this.btnZoomDown);
+            this.pnlZoom.Controls.Add(this.btnZoomUp);
             this.pnlZoom.Controls.Add(this.lblDefault);
             this.pnlZoom.Controls.Add(this.btnDefault);
             this.pnlZoom.Controls.Add(this.lblZ);
@@ -1065,25 +1077,25 @@
             this.pnlZoom.Size = new System.Drawing.Size(429, 346);
             this.pnlZoom.TabIndex = 14;
             // 
-            // picDown
+            // btnZoomDown
             // 
-            this.picDown.Image = ((System.Drawing.Image)(resources.GetObject("picDown.Image")));
-            this.picDown.Location = new System.Drawing.Point(99, 251);
-            this.picDown.Name = "picDown";
-            this.picDown.Size = new System.Drawing.Size(58, 50);
-            this.picDown.TabIndex = 0;
-            this.picDown.TabStop = false;
-            this.picDown.Visible = false;
+            this.btnZoomDown.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomDown.Image")));
+            this.btnZoomDown.Location = new System.Drawing.Point(99, 251);
+            this.btnZoomDown.Name = "btnZoomDown";
+            this.btnZoomDown.Size = new System.Drawing.Size(58, 50);
+            this.btnZoomDown.TabIndex = 0;
+            this.btnZoomDown.TabStop = false;
+            this.btnZoomDown.Visible = false;
             // 
-            // picUp
+            // btnZoomUp
             // 
-            this.picUp.Image = ((System.Drawing.Image)(resources.GetObject("picUp.Image")));
-            this.picUp.Location = new System.Drawing.Point(289, 48);
-            this.picUp.Name = "picUp";
-            this.picUp.Size = new System.Drawing.Size(51, 50);
-            this.picUp.TabIndex = 1;
-            this.picUp.TabStop = false;
-            this.picUp.Visible = false;
+            this.btnZoomUp.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomUp.Image")));
+            this.btnZoomUp.Location = new System.Drawing.Point(289, 48);
+            this.btnZoomUp.Name = "btnZoomUp";
+            this.btnZoomUp.Size = new System.Drawing.Size(51, 50);
+            this.btnZoomUp.TabIndex = 1;
+            this.btnZoomUp.TabStop = false;
+            this.btnZoomUp.Visible = false;
             // 
             // lblDefault
             // 
@@ -1986,6 +1998,66 @@
             this.helpToolStripMenuItem1.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem1.Text = "Help";
             // 
+            // btnDoorNorth
+            // 
+            this.btnDoorNorth.Image = ((System.Drawing.Image)(resources.GetObject("btnDoorNorth.Image")));
+            this.btnDoorNorth.Location = new System.Drawing.Point(189, 44);
+            this.btnDoorNorth.Name = "btnDoorNorth";
+            this.btnDoorNorth.Size = new System.Drawing.Size(54, 58);
+            this.btnDoorNorth.TabIndex = 23;
+            this.btnDoorNorth.UseVisualStyleBackColor = true;
+            this.btnDoorNorth.Visible = false;
+            // 
+            // btnDoorUp
+            // 
+            this.btnDoorUp.Image = ((System.Drawing.Image)(resources.GetObject("btnDoorUp.Image")));
+            this.btnDoorUp.Location = new System.Drawing.Point(285, 44);
+            this.btnDoorUp.Name = "btnDoorUp";
+            this.btnDoorUp.Size = new System.Drawing.Size(54, 58);
+            this.btnDoorUp.TabIndex = 24;
+            this.btnDoorUp.UseVisualStyleBackColor = true;
+            this.btnDoorUp.Visible = false;
+            // 
+            // btnDoorEast
+            // 
+            this.btnDoorEast.Image = ((System.Drawing.Image)(resources.GetObject("btnDoorEast.Image")));
+            this.btnDoorEast.Location = new System.Drawing.Point(285, 143);
+            this.btnDoorEast.Name = "btnDoorEast";
+            this.btnDoorEast.Size = new System.Drawing.Size(54, 58);
+            this.btnDoorEast.TabIndex = 25;
+            this.btnDoorEast.UseVisualStyleBackColor = true;
+            this.btnDoorEast.Visible = false;
+            // 
+            // btnDoorSouth
+            // 
+            this.btnDoorSouth.Image = ((System.Drawing.Image)(resources.GetObject("btnDoorSouth.Image")));
+            this.btnDoorSouth.Location = new System.Drawing.Point(189, 247);
+            this.btnDoorSouth.Name = "btnDoorSouth";
+            this.btnDoorSouth.Size = new System.Drawing.Size(54, 58);
+            this.btnDoorSouth.TabIndex = 26;
+            this.btnDoorSouth.UseVisualStyleBackColor = true;
+            this.btnDoorSouth.Visible = false;
+            // 
+            // btnDoorDown
+            // 
+            this.btnDoorDown.Image = ((System.Drawing.Image)(resources.GetObject("btnDoorDown.Image")));
+            this.btnDoorDown.Location = new System.Drawing.Point(88, 247);
+            this.btnDoorDown.Name = "btnDoorDown";
+            this.btnDoorDown.Size = new System.Drawing.Size(54, 58);
+            this.btnDoorDown.TabIndex = 27;
+            this.btnDoorDown.UseVisualStyleBackColor = true;
+            this.btnDoorDown.Visible = false;
+            // 
+            // btnDoorWest
+            // 
+            this.btnDoorWest.Image = ((System.Drawing.Image)(resources.GetObject("btnDoorWest.Image")));
+            this.btnDoorWest.Location = new System.Drawing.Point(88, 144);
+            this.btnDoorWest.Name = "btnDoorWest";
+            this.btnDoorWest.Size = new System.Drawing.Size(54, 58);
+            this.btnDoorWest.TabIndex = 28;
+            this.btnDoorWest.UseVisualStyleBackColor = true;
+            this.btnDoorWest.Visible = false;
+            // 
             // Mapper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2016,8 +2088,8 @@
             this.tabArea.PerformLayout();
             this.pnlZoom.ResumeLayout(false);
             this.pnlZoom.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picUp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnZoomDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnZoomUp)).EndInit();
             this.pnlDoor.ResumeLayout(false);
             this.pnlDoor.PerformLayout();
             this.pnlGeneral.ResumeLayout(false);
@@ -2071,8 +2143,8 @@
         private System.Windows.Forms.Label lblCoordX;
         private System.Windows.Forms.Label lblAreaID;
         private System.Windows.Forms.Label lblAreaIDPrompt;
-        private System.Windows.Forms.PictureBox picUp;
-        private System.Windows.Forms.PictureBox picDown;
+        private System.Windows.Forms.PictureBox btnZoomUp;
+        private System.Windows.Forms.PictureBox btnZoomDown;
         private System.Windows.Forms.TabPage tabAttributes;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -2201,6 +2273,12 @@
         private System.Windows.Forms.Button btnRemoveSpawn;
         private System.Windows.Forms.ToolStripMenuItem newMobToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newObjectToolStripMenuItem;
+        private System.Windows.Forms.Button btnDoorNorth;
+        private System.Windows.Forms.Button btnDoorWest;
+        private System.Windows.Forms.Button btnDoorDown;
+        private System.Windows.Forms.Button btnDoorSouth;
+        private System.Windows.Forms.Button btnDoorEast;
+        private System.Windows.Forms.Button btnDoorUp;
     }
 }
 
