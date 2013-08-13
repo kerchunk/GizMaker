@@ -48,6 +48,7 @@
     <Compile Include="Classes\area.cs" />
     <Compile Include="Classes\c_object.cs" />
     <Compile Include="Classes\database.cs" />
+    <Compile Include="Classes\door.cs" />
     <Compile Include="Classes\mob.cs" />
     <Compile Include="Classes\room.cs" />
     <Compile Include="Form1.cs">
@@ -139,7 +140,6 @@
   <ItemGroup>
     <Content Include="Resources\dir45_up.jpg" />
     <Content Include="Resources\dir_up.jpg" />
-    <Content Include="Resources\wooden-door.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />

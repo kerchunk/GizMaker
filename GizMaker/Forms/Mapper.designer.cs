@@ -104,6 +104,12 @@
             this.lblCurrentVNUM = new System.Windows.Forms.Label();
             this.lblDoorSection = new System.Windows.Forms.Label();
             this.pnlZoom = new System.Windows.Forms.Panel();
+            this.btnDoorWest = new System.Windows.Forms.Button();
+            this.btnDoorDown = new System.Windows.Forms.Button();
+            this.btnDoorSouth = new System.Windows.Forms.Button();
+            this.btnDoorEast = new System.Windows.Forms.Button();
+            this.btnDoorUp = new System.Windows.Forms.Button();
+            this.btnDoorNorth = new System.Windows.Forms.Button();
             this.btnZoomDown = new System.Windows.Forms.PictureBox();
             this.btnZoomUp = new System.Windows.Forms.PictureBox();
             this.lblDefault = new System.Windows.Forms.Label();
@@ -121,11 +127,11 @@
             this.btnCurrentZoom = new System.Windows.Forms.Button();
             this.pnlDoor = new System.Windows.Forms.Panel();
             this.lblDoorFlag = new System.Windows.Forms.Label();
-            this.cboDoorFlag = new System.Windows.Forms.ComboBox();
+            this.cboDoorType = new System.Windows.Forms.ComboBox();
             this.lblDoorKey = new System.Windows.Forms.Label();
             this.cboDoorKey = new System.Windows.Forms.ComboBox();
             this.lblDoorObjNum = new System.Windows.Forms.Label();
-            this.txtDoorObjNum = new System.Windows.Forms.TextBox();
+            this.txtDoorVNUM = new System.Windows.Forms.TextBox();
             this.btnSaveDoor = new System.Windows.Forms.Button();
             this.lblKeywords = new System.Windows.Forms.Label();
             this.txtDoorKeywords = new System.Windows.Forms.TextBox();
@@ -193,12 +199,7 @@
             this.objectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newObjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDoorNorth = new System.Windows.Forms.Button();
-            this.btnDoorUp = new System.Windows.Forms.Button();
-            this.btnDoorEast = new System.Windows.Forms.Button();
-            this.btnDoorSouth = new System.Windows.Forms.Button();
-            this.btnDoorDown = new System.Windows.Forms.Button();
-            this.btnDoorWest = new System.Windows.Forms.Button();
+            this.lblDoorID = new System.Windows.Forms.Label();
             this.tabMob.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -1077,6 +1078,72 @@
             this.pnlZoom.Size = new System.Drawing.Size(429, 346);
             this.pnlZoom.TabIndex = 14;
             // 
+            // btnDoorWest
+            // 
+            this.btnDoorWest.Image = ((System.Drawing.Image)(resources.GetObject("btnDoorWest.Image")));
+            this.btnDoorWest.Location = new System.Drawing.Point(88, 144);
+            this.btnDoorWest.Name = "btnDoorWest";
+            this.btnDoorWest.Size = new System.Drawing.Size(54, 58);
+            this.btnDoorWest.TabIndex = 28;
+            this.btnDoorWest.UseVisualStyleBackColor = true;
+            this.btnDoorWest.Visible = false;
+            this.btnDoorWest.Click += new System.EventHandler(this.btnDoorWest_Click);
+            // 
+            // btnDoorDown
+            // 
+            this.btnDoorDown.Image = ((System.Drawing.Image)(resources.GetObject("btnDoorDown.Image")));
+            this.btnDoorDown.Location = new System.Drawing.Point(88, 247);
+            this.btnDoorDown.Name = "btnDoorDown";
+            this.btnDoorDown.Size = new System.Drawing.Size(54, 58);
+            this.btnDoorDown.TabIndex = 27;
+            this.btnDoorDown.UseVisualStyleBackColor = true;
+            this.btnDoorDown.Visible = false;
+            this.btnDoorDown.Click += new System.EventHandler(this.btnDoorDown_Click);
+            // 
+            // btnDoorSouth
+            // 
+            this.btnDoorSouth.Image = ((System.Drawing.Image)(resources.GetObject("btnDoorSouth.Image")));
+            this.btnDoorSouth.Location = new System.Drawing.Point(189, 247);
+            this.btnDoorSouth.Name = "btnDoorSouth";
+            this.btnDoorSouth.Size = new System.Drawing.Size(54, 58);
+            this.btnDoorSouth.TabIndex = 26;
+            this.btnDoorSouth.UseVisualStyleBackColor = true;
+            this.btnDoorSouth.Visible = false;
+            this.btnDoorSouth.Click += new System.EventHandler(this.btnDoorSouth_Click);
+            // 
+            // btnDoorEast
+            // 
+            this.btnDoorEast.Image = ((System.Drawing.Image)(resources.GetObject("btnDoorEast.Image")));
+            this.btnDoorEast.Location = new System.Drawing.Point(285, 143);
+            this.btnDoorEast.Name = "btnDoorEast";
+            this.btnDoorEast.Size = new System.Drawing.Size(54, 58);
+            this.btnDoorEast.TabIndex = 25;
+            this.btnDoorEast.UseVisualStyleBackColor = true;
+            this.btnDoorEast.Visible = false;
+            this.btnDoorEast.Click += new System.EventHandler(this.btnDoorEast_Click);
+            // 
+            // btnDoorUp
+            // 
+            this.btnDoorUp.Image = ((System.Drawing.Image)(resources.GetObject("btnDoorUp.Image")));
+            this.btnDoorUp.Location = new System.Drawing.Point(285, 44);
+            this.btnDoorUp.Name = "btnDoorUp";
+            this.btnDoorUp.Size = new System.Drawing.Size(54, 58);
+            this.btnDoorUp.TabIndex = 24;
+            this.btnDoorUp.UseVisualStyleBackColor = true;
+            this.btnDoorUp.Visible = false;
+            this.btnDoorUp.Click += new System.EventHandler(this.btnDoorUp_Click);
+            // 
+            // btnDoorNorth
+            // 
+            this.btnDoorNorth.Image = ((System.Drawing.Image)(resources.GetObject("btnDoorNorth.Image")));
+            this.btnDoorNorth.Location = new System.Drawing.Point(189, 44);
+            this.btnDoorNorth.Name = "btnDoorNorth";
+            this.btnDoorNorth.Size = new System.Drawing.Size(54, 58);
+            this.btnDoorNorth.TabIndex = 23;
+            this.btnDoorNorth.UseVisualStyleBackColor = true;
+            this.btnDoorNorth.Visible = false;
+            this.btnDoorNorth.Click += new System.EventHandler(this.btnDoorNorth_Click);
+            // 
             // btnZoomDown
             // 
             this.btnZoomDown.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomDown.Image")));
@@ -1232,12 +1299,13 @@
             // pnlDoor
             // 
             this.pnlDoor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlDoor.Controls.Add(this.lblDoorID);
             this.pnlDoor.Controls.Add(this.lblDoorFlag);
-            this.pnlDoor.Controls.Add(this.cboDoorFlag);
+            this.pnlDoor.Controls.Add(this.cboDoorType);
             this.pnlDoor.Controls.Add(this.lblDoorKey);
             this.pnlDoor.Controls.Add(this.cboDoorKey);
             this.pnlDoor.Controls.Add(this.lblDoorObjNum);
-            this.pnlDoor.Controls.Add(this.txtDoorObjNum);
+            this.pnlDoor.Controls.Add(this.txtDoorVNUM);
             this.pnlDoor.Controls.Add(this.btnSaveDoor);
             this.pnlDoor.Controls.Add(this.lblKeywords);
             this.pnlDoor.Controls.Add(this.txtDoorKeywords);
@@ -1257,20 +1325,20 @@
             this.lblDoorFlag.TabIndex = 21;
             this.lblDoorFlag.Text = "Door Type:";
             // 
-            // cboDoorFlag
+            // cboDoorType
             // 
-            this.cboDoorFlag.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.cboDoorFlag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboDoorFlag.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboDoorFlag.FormattingEnabled = true;
-            this.cboDoorFlag.Items.AddRange(new object[] {
+            this.cboDoorType.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.cboDoorType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDoorType.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboDoorType.FormattingEnabled = true;
+            this.cboDoorType.Items.AddRange(new object[] {
             "Pickable",
             "Not Pickable",
             "Special Routine"});
-            this.cboDoorFlag.Location = new System.Drawing.Point(96, 55);
-            this.cboDoorFlag.Name = "cboDoorFlag";
-            this.cboDoorFlag.Size = new System.Drawing.Size(121, 22);
-            this.cboDoorFlag.TabIndex = 11;
+            this.cboDoorType.Location = new System.Drawing.Point(96, 55);
+            this.cboDoorType.Name = "cboDoorType";
+            this.cboDoorType.Size = new System.Drawing.Size(121, 22);
+            this.cboDoorType.TabIndex = 11;
             // 
             // lblDoorKey
             // 
@@ -1298,18 +1366,18 @@
             this.lblDoorObjNum.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDoorObjNum.Location = new System.Drawing.Point(15, 34);
             this.lblDoorObjNum.Name = "lblDoorObjNum";
-            this.lblDoorObjNum.Size = new System.Drawing.Size(76, 14);
+            this.lblDoorObjNum.Size = new System.Drawing.Size(66, 14);
             this.lblDoorObjNum.TabIndex = 17;
-            this.lblDoorObjNum.Text = "Door Obj Num:";
+            this.lblDoorObjNum.Text = "Door VNUM:";
             // 
-            // txtDoorObjNum
+            // txtDoorVNUM
             // 
-            this.txtDoorObjNum.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtDoorObjNum.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDoorObjNum.Location = new System.Drawing.Point(96, 31);
-            this.txtDoorObjNum.Name = "txtDoorObjNum";
-            this.txtDoorObjNum.Size = new System.Drawing.Size(88, 20);
-            this.txtDoorObjNum.TabIndex = 9;
+            this.txtDoorVNUM.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtDoorVNUM.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDoorVNUM.Location = new System.Drawing.Point(96, 31);
+            this.txtDoorVNUM.Name = "txtDoorVNUM";
+            this.txtDoorVNUM.Size = new System.Drawing.Size(88, 20);
+            this.txtDoorVNUM.TabIndex = 9;
             // 
             // btnSaveDoor
             // 
@@ -1320,6 +1388,7 @@
             this.btnSaveDoor.TabIndex = 13;
             this.btnSaveDoor.Text = "Save Door";
             this.btnSaveDoor.UseVisualStyleBackColor = true;
+            this.btnSaveDoor.Click += new System.EventHandler(this.btnSaveDoor_Click);
             // 
             // lblKeywords
             // 
@@ -1998,65 +2067,14 @@
             this.helpToolStripMenuItem1.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem1.Text = "Help";
             // 
-            // btnDoorNorth
+            // lblDoorID
             // 
-            this.btnDoorNorth.Image = ((System.Drawing.Image)(resources.GetObject("btnDoorNorth.Image")));
-            this.btnDoorNorth.Location = new System.Drawing.Point(189, 44);
-            this.btnDoorNorth.Name = "btnDoorNorth";
-            this.btnDoorNorth.Size = new System.Drawing.Size(54, 58);
-            this.btnDoorNorth.TabIndex = 23;
-            this.btnDoorNorth.UseVisualStyleBackColor = true;
-            this.btnDoorNorth.Visible = false;
-            // 
-            // btnDoorUp
-            // 
-            this.btnDoorUp.Image = ((System.Drawing.Image)(resources.GetObject("btnDoorUp.Image")));
-            this.btnDoorUp.Location = new System.Drawing.Point(285, 44);
-            this.btnDoorUp.Name = "btnDoorUp";
-            this.btnDoorUp.Size = new System.Drawing.Size(54, 58);
-            this.btnDoorUp.TabIndex = 24;
-            this.btnDoorUp.UseVisualStyleBackColor = true;
-            this.btnDoorUp.Visible = false;
-            // 
-            // btnDoorEast
-            // 
-            this.btnDoorEast.Image = ((System.Drawing.Image)(resources.GetObject("btnDoorEast.Image")));
-            this.btnDoorEast.Location = new System.Drawing.Point(285, 143);
-            this.btnDoorEast.Name = "btnDoorEast";
-            this.btnDoorEast.Size = new System.Drawing.Size(54, 58);
-            this.btnDoorEast.TabIndex = 25;
-            this.btnDoorEast.UseVisualStyleBackColor = true;
-            this.btnDoorEast.Visible = false;
-            // 
-            // btnDoorSouth
-            // 
-            this.btnDoorSouth.Image = ((System.Drawing.Image)(resources.GetObject("btnDoorSouth.Image")));
-            this.btnDoorSouth.Location = new System.Drawing.Point(189, 247);
-            this.btnDoorSouth.Name = "btnDoorSouth";
-            this.btnDoorSouth.Size = new System.Drawing.Size(54, 58);
-            this.btnDoorSouth.TabIndex = 26;
-            this.btnDoorSouth.UseVisualStyleBackColor = true;
-            this.btnDoorSouth.Visible = false;
-            // 
-            // btnDoorDown
-            // 
-            this.btnDoorDown.Image = ((System.Drawing.Image)(resources.GetObject("btnDoorDown.Image")));
-            this.btnDoorDown.Location = new System.Drawing.Point(88, 247);
-            this.btnDoorDown.Name = "btnDoorDown";
-            this.btnDoorDown.Size = new System.Drawing.Size(54, 58);
-            this.btnDoorDown.TabIndex = 27;
-            this.btnDoorDown.UseVisualStyleBackColor = true;
-            this.btnDoorDown.Visible = false;
-            // 
-            // btnDoorWest
-            // 
-            this.btnDoorWest.Image = ((System.Drawing.Image)(resources.GetObject("btnDoorWest.Image")));
-            this.btnDoorWest.Location = new System.Drawing.Point(88, 144);
-            this.btnDoorWest.Name = "btnDoorWest";
-            this.btnDoorWest.Size = new System.Drawing.Size(54, 58);
-            this.btnDoorWest.TabIndex = 28;
-            this.btnDoorWest.UseVisualStyleBackColor = true;
-            this.btnDoorWest.Visible = false;
+            this.lblDoorID.AutoSize = true;
+            this.lblDoorID.Location = new System.Drawing.Point(4, 31);
+            this.lblDoorID.Name = "lblDoorID";
+            this.lblDoorID.Size = new System.Drawing.Size(0, 13);
+            this.lblDoorID.TabIndex = 22;
+            this.lblDoorID.Visible = false;
             // 
             // Mapper
             // 
@@ -2170,7 +2188,7 @@
         private System.Windows.Forms.TextBox txtDoorKeywords;
         private System.Windows.Forms.Button btnSaveDoor;
         private System.Windows.Forms.Label lblDoorObjNum;
-        private System.Windows.Forms.TextBox txtDoorObjNum;
+        private System.Windows.Forms.TextBox txtDoorVNUM;
         private System.Windows.Forms.Panel pnlRoomDetail;
         private System.Windows.Forms.TextBox txtExtraDescKeywords;
         private System.Windows.Forms.TextBox txtExtraDescription;
@@ -2236,7 +2254,7 @@
         private System.Windows.Forms.Label lblDoorKey;
         private System.Windows.Forms.ComboBox cboDoorKey;
         private System.Windows.Forms.Label lblDoorFlag;
-        private System.Windows.Forms.ComboBox cboDoorFlag;
+        private System.Windows.Forms.ComboBox cboDoorType;
         private System.Windows.Forms.Label lblZoomRoomName;
         private System.Windows.Forms.Label lblAttributesRoomNumber;
         private System.Windows.Forms.Label lblAttributesRoomName;
@@ -2279,6 +2297,7 @@
         private System.Windows.Forms.Button btnDoorSouth;
         private System.Windows.Forms.Button btnDoorEast;
         private System.Windows.Forms.Button btnDoorUp;
+        private System.Windows.Forms.Label lblDoorID;
     }
 }
 

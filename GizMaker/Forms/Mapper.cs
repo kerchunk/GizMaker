@@ -65,9 +65,6 @@ namespace GizMaker.forms
                 // Display the Current Map.
                 DisplayPanelRooms(iCurrentArea, iCurrentX, iCurrentY, iCurrentZ);
             }
-
-            DisplayDoor("north");
-            DisplayDoor("south");
         }
 
         // Populate Area to the Grid.
@@ -83,6 +80,45 @@ namespace GizMaker.forms
             txtAreaName.Text = oArea.areaName;
             txtZoneNumber.Text = oArea.zoneNumber.ToString();
             txtStartingVNUM.Text = oArea.startingVNUM.ToString();
+
+            // Populate Door Key List.
+            PopulateKeyList();
+        }
+
+        // Populate Door Key List. 
+        public void PopulateKeyList()
+        {
+            // Create a DataTable to source the Combobox.
+            DataTable dtKeys = new DataTable();
+            dtKeys.Columns.Add("ObjectID", typeof(string));
+            dtKeys.Columns.Add("ShortDesc", typeof(string));
+
+            // Get the list of Key Objects to Populate the Combobox.
+            DataSet dsKeys = classes.c_object.GetAreaKeys(iCurrentArea);
+
+            // Fill the DataTable with the list of Key Objects.
+            dtKeys = dsKeys.Tables[0];
+
+            // Add blank row to the top of the ComboBox.
+            DataRow row = dtKeys.NewRow();
+            row["ObjectID"] = "";
+            row["ShortDesc"] = " < Add Key >";
+            dtKeys.Rows.InsertAt(row, 0);
+
+            // Push the List to the ComboBox.
+            cboDoorKey.ValueMember = "ObjectID";
+            cboDoorKey.DisplayMember = "ShortDesc";
+            cboDoorKey.DataSource = dtKeys;
+        }
+
+        // Get Key Name.
+        public string GetKeyName(int iKeyID)
+        {
+            string strKeyName = "";
+
+            strKeyName = classes.door.GetKeyName_ByID(iCurrentArea, iKeyID);
+
+            return strKeyName;
         }
         #endregion
 
@@ -1458,6 +1494,125 @@ namespace GizMaker.forms
                 PopulateObjectsNotLoadingOnMob(iCurrentMob);
             }
         }
+
+        // Save Door
+        private void btnSaveDoor_Click(object sender, EventArgs e)
+        {
+            if (txtDoorVNUM.Text != "" && txtDoorKeywords.Text != "")
+            {
+                classes.door oDoor = new classes.door();
+
+                oDoor.areaID = iCurrentArea;
+                oDoor.roomNumber = iCurrentRoom;
+                oDoor.VNUM = Convert.ToInt32(txtDoorVNUM.Text);
+                oDoor.keywords = txtDoorKeywords.Text;
+                oDoor.direction = cboDirection.Items[cboDirection.SelectedIndex].ToString();
+                oDoor.doorType = cboDoorType.Items[cboDoorType.SelectedIndex].ToString();
+
+                if (cboDoorKey.SelectedIndex > 0)
+                    oDoor.keyVNUM = Convert.ToInt32(cboDoorKey.SelectedValue.ToString());
+
+                oDoor.coordX = iCurrentX;
+                oDoor.coordY = iCurrentY;
+                oDoor.coordZ = iCurrentZ;
+
+                if (lblDoorID.Text != "")
+                {
+                    oDoor.doorID = Convert.ToInt32(lblDoorID.Text);
+                    oDoor.UpdateDoor();
+                }
+                else
+                    oDoor.AddDoor();
+
+                // Get the Current Room in Zoom View.
+                Control[] ctrlRoom = this.Controls.Find("room" + iCurrentRoom.ToString(), true);
+                Button btnRoom = new Button();
+                btnRoom = (Button)ctrlRoom[0];
+
+                // Redraw the Panel and refresh Zoom View to reflect the Door Save.
+                ClearDoorSection();
+                DisplayPanelRooms(iCurrentArea, iCurrentX, iCurrentY, iCurrentZ);
+                UpdateZoomView(btnRoom);
+            }
+        }
+
+        // Door North Click
+        private void btnDoorNorth_Click(object sender, EventArgs e)
+        {
+            classes.door oDoor = classes.door.GetDoor_ByRoomAndDirection(iCurrentArea, iCurrentRoom, "north", iCurrentX, iCurrentY, iCurrentZ);
+
+            lblDoorID.Text = oDoor.doorID.ToString();
+            txtDoorVNUM.Text = oDoor.VNUM.ToString();
+            txtDoorKeywords.Text = oDoor.keywords;
+            cboDirection.SelectedIndex = cboDirection.FindString(oDoor.direction);
+            cboDoorType.SelectedIndex = cboDoorType.FindString(oDoor.doorType);
+            cboDoorKey.SelectedIndex = cboDoorKey.FindString(GetKeyName(oDoor.keyVNUM));
+        }
+
+        // Door South Click
+        private void btnDoorSouth_Click(object sender, EventArgs e)
+        {
+            classes.door oDoor = classes.door.GetDoor_ByRoomAndDirection(iCurrentArea, iCurrentRoom, "south", iCurrentX, iCurrentY, iCurrentZ);
+
+            lblDoorID.Text = oDoor.doorID.ToString();
+            txtDoorVNUM.Text = oDoor.VNUM.ToString();
+            txtDoorKeywords.Text = oDoor.keywords;
+            cboDirection.SelectedIndex = cboDirection.FindString(oDoor.direction);
+            cboDoorType.SelectedIndex = cboDoorType.FindString(oDoor.doorType);
+            cboDoorKey.SelectedIndex = cboDoorKey.FindString(GetKeyName(oDoor.keyVNUM));
+        }
+
+        // Door East Click
+        private void btnDoorEast_Click(object sender, EventArgs e)
+        {
+            classes.door oDoor = classes.door.GetDoor_ByRoomAndDirection(iCurrentArea, iCurrentRoom, "east", iCurrentX, iCurrentY, iCurrentZ);
+
+            lblDoorID.Text = oDoor.doorID.ToString();
+            txtDoorVNUM.Text = oDoor.VNUM.ToString();
+            txtDoorKeywords.Text = oDoor.keywords;
+            cboDirection.SelectedIndex = cboDirection.FindString(oDoor.direction);
+            cboDoorType.SelectedIndex = cboDoorType.FindString(oDoor.doorType);
+            cboDoorKey.SelectedIndex = cboDoorKey.FindString(GetKeyName(oDoor.keyVNUM));
+        }
+
+        // Door West Click
+        private void btnDoorWest_Click(object sender, EventArgs e)
+        {
+            classes.door oDoor = classes.door.GetDoor_ByRoomAndDirection(iCurrentArea, iCurrentRoom, "west", iCurrentX, iCurrentY, iCurrentZ);
+
+            lblDoorID.Text = oDoor.doorID.ToString();
+            txtDoorVNUM.Text = oDoor.VNUM.ToString();
+            txtDoorKeywords.Text = oDoor.keywords;
+            cboDirection.SelectedIndex = cboDirection.FindString(oDoor.direction);
+            cboDoorType.SelectedIndex = cboDoorType.FindString(oDoor.doorType);
+            cboDoorKey.SelectedIndex = cboDoorKey.FindString(GetKeyName(oDoor.keyVNUM));
+        }
+
+        // Door Up Click
+        private void btnDoorUp_Click(object sender, EventArgs e)
+        {
+            classes.door oDoor = classes.door.GetDoor_ByRoomAndDirection(iCurrentArea, iCurrentRoom, "up", iCurrentX, iCurrentY, iCurrentZ);
+
+            lblDoorID.Text = oDoor.doorID.ToString();
+            txtDoorVNUM.Text = oDoor.VNUM.ToString();
+            txtDoorKeywords.Text = oDoor.keywords;
+            cboDirection.SelectedIndex = cboDirection.FindString(oDoor.direction);
+            cboDoorType.SelectedIndex = cboDoorType.FindString(oDoor.doorType);
+            cboDoorKey.SelectedIndex = cboDoorKey.FindString(GetKeyName(oDoor.keyVNUM));
+        }
+
+        // Door Down Click
+        private void btnDoorDown_Click(object sender, EventArgs e)
+        {
+            classes.door oDoor = classes.door.GetDoor_ByRoomAndDirection(iCurrentArea, iCurrentRoom, "down", iCurrentX, iCurrentY, iCurrentZ);
+
+            lblDoorID.Text = oDoor.doorID.ToString();
+            txtDoorVNUM.Text = oDoor.VNUM.ToString();
+            txtDoorKeywords.Text = oDoor.keywords;
+            cboDirection.SelectedIndex = cboDirection.FindString(oDoor.direction);
+            cboDoorType.SelectedIndex = cboDoorType.FindString(oDoor.doorType);
+            cboDoorKey.SelectedIndex = cboDoorKey.FindString(GetKeyName(oDoor.keyVNUM));
+        }
         #endregion
 
         // Current room details.
@@ -1845,6 +2000,69 @@ namespace GizMaker.forms
                     }
                 }
             }
+
+            // Display Doors.
+            classes.door[] doors = new classes.door[250];
+            doors = classes.door.GetPanelDoors(iCurrentArea, iCurrentX, iCurrentY, iCurrentZ);
+            // Loop through Doors and Display on Panel.
+            foreach (classes.door oDoor in doors)
+            {
+                if (oDoor != null)
+                {
+                    switch (oDoor.direction.ToLower())
+                    {
+                        case "north":
+                            // Get the Button at the specified location.
+                            Control[] ctrlNorth = this.Controls.Find("vpath" + (oDoor.roomNumber - 1).ToString(), true);
+                            Button btnNorth = new Button();
+                            if (btnNorth != null)
+                            {
+                                btnNorth = (Button)ctrlNorth[0];
+                                btnNorth.Visible = true;
+                                if (oDoor.doorType == "Not Pickable")
+                                    btnNorth.BackColor = clrDoorLocked;
+                                else
+                                    btnNorth.BackColor = clrDoorDefault;
+                            }
+                            break;
+                        case "south":
+                            // Get the Button at the specified location.
+                            Control[] ctrlSouth = this.Controls.Find("vpath" + (oDoor.roomNumber).ToString(), true);
+                            Button btnSouth = new Button();
+                            if (btnSouth != null)
+                            {
+                                btnSouth = (Button)ctrlSouth[0];
+                                btnSouth.Visible = true;
+                                btnSouth.BackColor = clrDoorDefault;
+                            }
+                            break;
+                        case "east":
+                            // Get the Button at the specified location.
+                            Control[] ctrlEast = this.Controls.Find("hpath" + (oDoor.roomNumber).ToString(), true);
+                            Button btnEast = new Button();
+                            if (btnEast != null)
+                            {
+                                btnEast = (Button)ctrlEast[0];
+                                btnEast.Visible = true;
+                                btnEast.BackColor = clrDoorDefault;
+                            }
+                            break;
+                        case "west":
+                            // Get the Button at the specified location.
+                            Control[] ctrlWest = this.Controls.Find("hpath" + (oDoor.roomNumber - 25).ToString(), true);
+                            Button btnWest = new Button();
+                            if (btnWest != null)
+                            {
+                                btnWest = (Button)ctrlWest[0];
+                                btnWest.Visible = true;
+                                btnWest.BackColor = clrDoorDefault;
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
         }
 
         // Fully load a new (0, 0, 0) Mapper screen for an AreaID.
@@ -1951,6 +2169,12 @@ namespace GizMaker.forms
                 btnAddSpawn.Enabled = true;
                 btnMobDetail.Enabled = true;
                 btnRemoveSpawn.Enabled = true;
+
+                txtDoorKeywords.Enabled = true;
+                txtDoorVNUM.Enabled = true;
+                cboDirection.Enabled = true;
+                cboDoorType.Enabled = true;
+                cboDoorKey.Enabled = true;
             }
             else
             {
@@ -1958,8 +2182,13 @@ namespace GizMaker.forms
                 btnAddSpawn.Enabled = false;
                 btnMobDetail.Enabled = false;
                 btnRemoveSpawn.Enabled = false;
-            }
 
+                txtDoorKeywords.Enabled = false;
+                txtDoorVNUM.Enabled = false;
+                cboDirection.Enabled = false;
+                cboDoorType.Enabled = false;
+                cboDoorKey.Enabled = false;
+            }
 
             // Disable Load selection if Mob is not Selected.
             if (lbSpawns.SelectedIndex > -1)
@@ -1991,6 +2220,9 @@ namespace GizMaker.forms
             lblX.Text = iCurrentX.ToString();
             lblY.Text = iCurrentY.ToString();
             lblZ.Text = iCurrentZ.ToString();
+
+            // Hide Doors.
+            HideDoors();
 
             // ################
             // Set Zoom North.
@@ -2088,10 +2320,39 @@ namespace GizMaker.forms
                 btnZoomDown.Visible = false;
             }
 
+            // ################
+            // Display Doors.
+            // ################
+            DisplayRoomDoors();
+
             if (blnAutoColor && btnCurrentRoom.BackColor != clrBlank)
             {
                 SaveRoom(iCurrentArea, iCurrentRoom, iCurrentX, iCurrentY, iCurrentZ, HasUpLink(iCurrentRoom), HasDownLink(iCurrentRoom));
             }
+        }
+
+        // Hide all Doors.
+        private void HideDoors()
+        {
+            ClearDoorSection();
+
+            btnDoorNorth.Visible = false;
+            btnDoorSouth.Visible = false;
+            btnDoorEast.Visible = false;
+            btnDoorWest.Visible = false;
+            btnDoorUp.Visible = false;
+            btnDoorDown.Visible = false;
+        }
+
+        // Clear Door Fields.
+        private void ClearDoorSection()
+        {
+            lblDoorID.Text = "";
+            txtDoorKeywords.Text = "";
+            txtDoorVNUM.Text = "";
+            cboDirection.SelectedIndex = -1;
+            cboDoorType.SelectedIndex = -1;
+            cboDoorKey.SelectedIndex = 0;
         }
 
         // Set Door to Display as Exit.
@@ -2121,10 +2382,26 @@ namespace GizMaker.forms
                     break;
                 case "up":
                     btnDoorUp.Visible = true;
-                    btnDoorDown.Visible = false;
+                    btnZoomUp.Visible = false;
                     break;
                 default:
                     break;
+            }
+        }
+
+        // Display All Doors for a Room.
+        private void DisplayRoomDoors()
+        {
+            // Display Room Doors. 
+            classes.door[] doors = new classes.door[6];
+            doors = classes.door.GetRoomDoors(iCurrentArea, iCurrentRoom, iCurrentX, iCurrentY, iCurrentZ);
+            // Loop through doors and display on the zoom view map. 
+            foreach (classes.door oDoor in doors)
+            {
+                if (oDoor != null)
+                {
+                    DisplayDoor(oDoor.direction);
+                }
             }
         }
         #endregion

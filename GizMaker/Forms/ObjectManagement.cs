@@ -43,13 +43,14 @@ namespace GizMaker.forms
 
         // Populate Object Details to the Form
         #region "population"
-        public void PopulateObjectDetails(int iObjectID)
+        public void PopulateObjectDetails(int ObjectID)
         {
             classes.c_object oObject = new classes.c_object();
-            oObject = classes.c_object.GetObject(iObjectID);
+            oObject = classes.c_object.GetObject(ObjectID);
 
             txtVNUM.Text = oObject.objVNUM.ToString();
             txtShortDescription.Text = oObject.ShortDesc;
+            cboType.SelectedIndex = cboType.FindString(oObject.objType);
         }
         #endregion
 
@@ -72,6 +73,7 @@ namespace GizMaker.forms
         }
         #endregion
 
+        // General Methods
         #region "methods"
         private void SaveObject()
         {
@@ -86,6 +88,7 @@ namespace GizMaker.forms
             oObject.objAreaID = iCurrentAreaID;
             oObject.objVNUM = iVUM;
             oObject.ShortDesc = txtShortDescription.Text;
+            oObject.objType = cboType.Items[cboType.SelectedIndex].ToString();
 
             // Insert or Update the room.
             if (iObjectID > 0)

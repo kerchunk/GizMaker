@@ -17,6 +17,7 @@ namespace GizMaker.classes
         public int objAreaID { get; set; }
         public int objVNUM { get; set; }
         public string ShortDesc { get; set; }
+        public string objType { get; set; }
         #endregion
 
         #region "object methods"
@@ -35,8 +36,8 @@ namespace GizMaker.classes
 
                 // Create query. 
                 string strSQL = string.Empty;
-                strSQL += " insert into [Object] ([ObjectAreaID], [VNUM], [ShortDesc]) ";
-                strSQL += " values (@ObjectAreaID, @VNUM, @ShortDesc) ";
+                strSQL += " insert into [Object] ([ObjectAreaID], [VNUM], [ShortDesc], [ObjectType]) ";
+                strSQL += " values (@ObjectAreaID, @VNUM, @ShortDesc, @ObjectType) ";
 
                 da.InsertCommand = new OleDbCommand(strSQL);
                 da.InsertCommand.Connection = connection;
@@ -44,6 +45,7 @@ namespace GizMaker.classes
                 da.InsertCommand.Parameters.Add("@ObjectAreaID", OleDbType.Integer, 10, "ObjectAreaID").Value = this.objAreaID;
                 da.InsertCommand.Parameters.Add("@VNUM", OleDbType.Integer, 10, "VNUM").Value = this.objVNUM;
                 da.InsertCommand.Parameters.Add("@ShortDesc", OleDbType.VarChar, 100, "ShortDesc").Value = this.ShortDesc;
+                da.InsertCommand.Parameters.Add("@ObjectType", OleDbType.VarChar, 100, "ObjectType").Value = this.objType;
 
                 da.InsertCommand.ExecuteNonQuery();
             }
@@ -72,8 +74,9 @@ namespace GizMaker.classes
                 // Create query. 
                 string strSQL = string.Empty;
                 strSQL += " update  [Object] ";
-                strSQL += " set     [VNUM] =  @VNUM,";
-                strSQL += "         [ShortDesc] =  @ShortDesc";
+                strSQL += " set     [VNUM] =  @VNUM, ";
+                strSQL += "         [ShortDesc] =  @ShortDesc ";
+                strSQL += "         [ObjectType] = @ObjectType ";
                 strSQL += " where  ObjectID = " + this.objectID + " ";
 
                 da.InsertCommand = new OleDbCommand(strSQL);
@@ -81,6 +84,7 @@ namespace GizMaker.classes
 
                 da.InsertCommand.Parameters.Add("@VNUM", OleDbType.Integer, 10, "VNUM").Value = this.objVNUM;
                 da.InsertCommand.Parameters.Add("@ShortDesc", OleDbType.VarChar, 100, "ShortDesc").Value = this.ShortDesc;
+                da.InsertCommand.Parameters.Add("@ObjectType", OleDbType.VarChar, 100, "ObjectType").Value = this.objType;
 
                 da.InsertCommand.ExecuteNonQuery();
             }
@@ -112,7 +116,7 @@ namespace GizMaker.classes
 
                 // Create query. 
                 string strSQL = string.Empty;
-                strSQL += " select [ObjectID], [VNUM], [ShortDesc] ";
+                strSQL += " select [ObjectID], [VNUM], [ShortDesc], [ObjectType] ";
                 strSQL += " from   [Object] ";
                 strSQL += " where  ObjectID = " + ObjectID + " ";
 
@@ -124,6 +128,7 @@ namespace GizMaker.classes
                     oObject.objectID = (int)ds.Tables[0].Rows[0]["ObjectID"];
                     oObject.objVNUM = (int)ds.Tables[0].Rows[0]["VNUM"];
                     oObject.ShortDesc = (string)ds.Tables[0].Rows[0]["ShortDesc"];
+                    oObject.objType = (string)ds.Tables[0].Rows[0]["ObjectType"];
                 }
             }
             catch (Exception ex)
@@ -227,6 +232,58 @@ namespace GizMaker.classes
                 strSQL += "                 and [CoordY] = " + CoordY.ToString() + " ";
                 strSQL += "                 and [CoordZ] = " + CoordZ.ToString() + " ";
                 strSQL += "         ) ";
+
+                da = new OleDbDataAdapter(strSQL, connection);
+                da.Fill(ds);
+
+                // Populate a DataTable with the query results.
+                int iRow = 0;
+                while (iRow <= ds.Tables[0].Rows.Count - 1)
+                {
+                    dtObjects.Rows.Add((int)ds.Tables[0].Rows[iRow]["ObjectID"], (int)ds.Tables[0].Rows[iRow]["VNUM"], (string)ds.Tables[0].Rows[iRow]["ShortDesc"]);
+
+                    iRow++;
+                }
+            }
+            catch (Exception ex)
+            {
+                string strError = ex.Message;
+            }
+
+            connection.Close();
+            connection.Dispose();
+
+            // Create a DataSet to return to the DataGridView.
+            DataSet set = new DataSet("SetObj");
+            set.Tables.Add(dtObjects);
+
+            return set;
+        }
+
+        // Get a dataset of keys loading in the area.
+        public static DataSet GetAreaKeys(int ObjAreaID)
+        {
+            // Configure database connection elements.
+            OleDbDataAdapter da = new OleDbDataAdapter();
+            OleDbConnection connection = new OleDbConnection();
+            connection.ConnectionString = database.getConnectionString();
+            DataSet ds = new DataSet("objs");
+
+            DataTable dtObjects = new DataTable("Objs");
+            dtObjects.Columns.Add("ObjectID");
+            dtObjects.Columns.Add("VNUM");
+            dtObjects.Columns.Add("ShortDesc");
+
+            try
+            {
+                connection.Open();
+
+                // Create query. 
+                string strSQL = string.Empty;
+                strSQL += " select  [ObjectID], [VNUM], [ShortDesc] ";
+                strSQL += " from    [Object]  ";
+                strSQL += " where   [ObjectAreaID] = " + ObjAreaID.ToString() + " ";
+                strSQL += "         and [ObjectType] = 'Key' ";
 
                 da = new OleDbDataAdapter(strSQL, connection);
                 da.Fill(ds);

@@ -63,7 +63,7 @@
             this.lblValue = new System.Windows.Forms.Label();
             this.txtWeight = new System.Windows.Forms.TextBox();
             this.lblWeight = new System.Windows.Forms.Label();
-            this.cboAttackType = new System.Windows.Forms.ComboBox();
+            this.cboType = new System.Windows.Forms.ComboBox();
             this.lblType = new System.Windows.Forms.Label();
             this.txtNameList = new System.Windows.Forms.TextBox();
             this.lblNameList = new System.Windows.Forms.Label();
@@ -174,7 +174,7 @@
             this.panel1.Controls.Add(this.lblValue);
             this.panel1.Controls.Add(this.txtWeight);
             this.panel1.Controls.Add(this.lblWeight);
-            this.panel1.Controls.Add(this.cboAttackType);
+            this.panel1.Controls.Add(this.cboType);
             this.panel1.Controls.Add(this.lblType);
             this.panel1.Controls.Add(this.txtNameList);
             this.panel1.Controls.Add(this.lblNameList);
@@ -568,24 +568,52 @@
             this.lblWeight.TabIndex = 41;
             this.lblWeight.Text = "Weight:";
             // 
-            // cboAttackType
+            // cboType
             // 
-            this.cboAttackType.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.cboAttackType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboAttackType.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboAttackType.FormattingEnabled = true;
-            this.cboAttackType.Location = new System.Drawing.Point(103, 80);
-            this.cboAttackType.Name = "cboAttackType";
-            this.cboAttackType.Size = new System.Drawing.Size(91, 22);
-            this.cboAttackType.TabIndex = 40;
+            this.cboType.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboType.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboType.FormattingEnabled = true;
+            this.cboType.Items.AddRange(new object[] {
+            "Armor",
+            "Boat",
+            "Bullet",
+            "Container",
+            "Fire Weapon",
+            "Food",
+            "Key",
+            "Light",
+            "Liquid Container",
+            "Missile",
+            "Money",
+            "Musical",
+            "Note",
+            "Other",
+            "Pen",
+            "Potion",
+            "Reagent",
+            "Scroll",
+            "Shadow",
+            "Staff",
+            "Trap",
+            "Trash",
+            "Treasure",
+            "Undefined",
+            "Wand",
+            "Weapon",
+            "Worn"});
+            this.cboType.Location = new System.Drawing.Point(103, 80);
+            this.cboType.Name = "cboType";
+            this.cboType.Size = new System.Drawing.Size(91, 22);
+            this.cboType.TabIndex = 40;
             // 
             // lblType
             // 
             this.lblType.AutoSize = true;
-            this.lblType.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblType.Location = new System.Drawing.Point(67, 82);
+            this.lblType.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblType.Location = new System.Drawing.Point(62, 82);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(33, 14);
+            this.lblType.Size = new System.Drawing.Size(36, 14);
             this.lblType.TabIndex = 39;
             this.lblType.Text = "Type:";
             // 
@@ -1623,7 +1651,7 @@
         private System.Windows.Forms.TextBox txtLongDescription;
         private System.Windows.Forms.TextBox txtNameList;
         private System.Windows.Forms.Label lblNameList;
-        private System.Windows.Forms.ComboBox cboAttackType;
+        private System.Windows.Forms.ComboBox cboType;
         private System.Windows.Forms.Label lblType;
         private System.Windows.Forms.TextBox txtWeight;
         private System.Windows.Forms.Label lblWeight;
