@@ -2310,8 +2310,8 @@ namespace GizMaker.forms
             if (oRoom.Exists())
             {
                 // Set Room Details.
-                lblCurrentRoomName.Text = "< Not Set >";
-                lblVNUM.Text = "< Not Set >";
+                if (oRoom.roomName == "" || oRoom.roomName == null) lblCurrentRoomName.Text = "< Not Set >"; else lblCurrentRoomName.Text = oRoom.roomName;
+                if (oRoom.VNUM <= 0) lblVNUM.Text = "< Not Set >"; else lblVNUM.Text = oRoom.VNUM.ToString();
                 txtRoomName.Text = oRoom.roomName;
                 txtVNUM.Text = oRoom.VNUM.ToString();
                 cboSector.SelectedIndex = cboSector.FindString(oRoom.sector);
