@@ -66,7 +66,6 @@ namespace GizMaker.forms
                 // Display the Current Map.
                 DisplayPanelRooms(iCurrentArea, iCurrentX, iCurrentY, iCurrentZ);
             }
-
         }
 
         // Populate Area to the Grid.
@@ -2673,7 +2672,7 @@ namespace GizMaker.forms
                             if (btnRoom != null)
                             {
                                 btnRoom = (Button)ctrlSpawn[0];
-                                btnRoom.FlatAppearance.BorderColor = clrHighlightSpawn;
+                                btnRoom.BackColor = clrHighlightSpawn;
                             }
                         }
                     }
