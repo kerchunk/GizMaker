@@ -53,9 +53,6 @@ namespace GizMaker.forms
             // Set the default room color.
             clrCurrent = clrDefault;
 
-            // Set Legend Colors
-            SetLegendColors();
-
             // Add Key Capture for Numpad.
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(KeyDown_Click);
@@ -69,6 +66,7 @@ namespace GizMaker.forms
                 // Display the Current Map.
                 DisplayPanelRooms(iCurrentArea, iCurrentX, iCurrentY, iCurrentZ);
             }
+
         }
 
         // Populate Area to the Grid.
@@ -2700,6 +2698,7 @@ namespace GizMaker.forms
         #region "testing"
         private void btnTesting_Click(object sender, EventArgs e)
         {
+
         }
         #endregion
     }

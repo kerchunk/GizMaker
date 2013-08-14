@@ -1191,7 +1191,7 @@
             // 
             this.lblZ.AutoSize = true;
             this.lblZ.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblZ.Location = new System.Drawing.Point(27, 58);
+            this.lblZ.Location = new System.Drawing.Point(59, 58);
             this.lblZ.Name = "lblZ";
             this.lblZ.Size = new System.Drawing.Size(14, 15);
             this.lblZ.TabIndex = 22;
@@ -1201,7 +1201,7 @@
             // 
             this.lblY.AutoSize = true;
             this.lblY.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblY.Location = new System.Drawing.Point(27, 36);
+            this.lblY.Location = new System.Drawing.Point(59, 35);
             this.lblY.Name = "lblY";
             this.lblY.Size = new System.Drawing.Size(14, 15);
             this.lblY.TabIndex = 21;
@@ -1211,7 +1211,7 @@
             // 
             this.lblX.AutoSize = true;
             this.lblX.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblX.Location = new System.Drawing.Point(27, 14);
+            this.lblX.Location = new System.Drawing.Point(59, 13);
             this.lblX.Name = "lblX";
             this.lblX.Size = new System.Drawing.Size(14, 15);
             this.lblX.TabIndex = 20;
@@ -1221,31 +1221,31 @@
             // 
             this.lblCoordZ.AutoSize = true;
             this.lblCoordZ.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCoordZ.Location = new System.Drawing.Point(9, 58);
+            this.lblCoordZ.Location = new System.Drawing.Point(19, 58);
             this.lblCoordZ.Name = "lblCoordZ";
-            this.lblCoordZ.Size = new System.Drawing.Size(16, 15);
+            this.lblCoordZ.Size = new System.Drawing.Size(40, 15);
             this.lblCoordZ.TabIndex = 19;
-            this.lblCoordZ.Text = "z:";
+            this.lblCoordZ.Text = "Level:";
             // 
             // lblCoordY
             // 
             this.lblCoordY.AutoSize = true;
             this.lblCoordY.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCoordY.Location = new System.Drawing.Point(9, 35);
+            this.lblCoordY.Location = new System.Drawing.Point(14, 35);
             this.lblCoordY.Name = "lblCoordY";
-            this.lblCoordY.Size = new System.Drawing.Size(16, 15);
+            this.lblCoordY.Size = new System.Drawing.Size(45, 15);
             this.lblCoordY.TabIndex = 18;
-            this.lblCoordY.Text = "y:";
+            this.lblCoordY.Text = "Y-Axis:";
             // 
             // lblCoordX
             // 
             this.lblCoordX.AutoSize = true;
             this.lblCoordX.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCoordX.Location = new System.Drawing.Point(8, 12);
+            this.lblCoordX.Location = new System.Drawing.Point(13, 12);
             this.lblCoordX.Name = "lblCoordX";
-            this.lblCoordX.Size = new System.Drawing.Size(17, 15);
+            this.lblCoordX.Size = new System.Drawing.Size(47, 15);
             this.lblCoordX.TabIndex = 17;
-            this.lblCoordX.Text = "x:";
+            this.lblCoordX.Text = "X-Axis:";
             // 
             // btnZoomWest
             // 
