@@ -52,6 +52,7 @@ namespace GizMaker.classes
             connection.Dispose();
         }
 
+        // Get List of All Areas.
         public static DataSet GetAreas()
         {
             // Configure database connection elements.
@@ -101,6 +102,7 @@ namespace GizMaker.classes
             return set;
         }
 
+        // Get Area Details by ID.
         public static area GetAreaByID(int iAreaID)
         {
             area oArea = new area();
@@ -145,6 +147,47 @@ namespace GizMaker.classes
             connection.Dispose();
 
             return oArea;
+        }
+
+        // Get Area Room Count by ID.
+        public static int GetRoomCountByID(int iAreaID)
+        {
+            int iRoomCount = 0;
+
+            // Configure database connection elements.
+            OleDbDataAdapter da = new OleDbDataAdapter();
+            OleDbConnection connection = new OleDbConnection();
+            connection.ConnectionString = database.getConnectionString();
+            DataSet ds = new DataSet("areas");
+
+            // Create query. 
+            string strSQL = string.Empty;
+            strSQL += " select count(RoomID) as [RoomCount]";
+            strSQL += " from   [Room] ";
+            strSQL += " where  [RoomAreaID] = " + iAreaID.ToString() + " ";
+
+            try
+            {
+                connection.Open();
+
+                da = new OleDbDataAdapter(strSQL, connection);
+                da.Fill(ds);
+
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+
+                    iRoomCount = (int)ds.Tables[0].Rows[0]["RoomCount"];
+                }
+            }
+            catch (Exception ex)
+            {
+                string strError = ex.Message;
+            }
+
+            connection.Close();
+            connection.Dispose();
+
+            return iRoomCount;
         }
 
         // Completely Remove an Area from the database.

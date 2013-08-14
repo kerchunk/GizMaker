@@ -78,6 +78,7 @@ namespace GizMaker.forms
 
             // Set the form controls with the Area Object details.
             lblAreaHeader.Text = oArea.areaName.ToString() + " [ #" + oArea.startingVNUM.ToString() + " ]";
+            //lblRoomCount.Text = classes.area.GetRoomCountByID(iAreaID).ToString();
 
             // Populate Door Key List.
             PopulateKeyList();
@@ -2110,6 +2111,9 @@ namespace GizMaker.forms
                     oRoom.AddRoom();
                 }
             }
+
+            // Refresh Room Count.
+            //lblRoomCount.Text = classes.area.GetRoomCountByID(iAreaID).ToString();
         }
 
         // Remove the current room.
@@ -2127,6 +2131,9 @@ namespace GizMaker.forms
 
             // Delete the room.
             oRoom.RemoveRoom();
+
+            // Refresh Room Count.
+            //lblRoomCount.Text = classes.area.GetRoomCountByID(iAreaID).ToString();
         }
 
         // Save current room door.
@@ -2281,6 +2288,7 @@ namespace GizMaker.forms
             {
                 // Set Room Details.
                 lblCurrentRoomName.Text = "< Not Set >";
+                lblVNUM.Text = "< Not Set >";
                 
                 cboAllMobs.Enabled = true;
                 btnAddSpawn.Enabled = true;
