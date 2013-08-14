@@ -38,6 +38,9 @@ namespace GizMaker.forms
         bool blnAutoColor = false;
         bool blnAutoLink = false;
         bool blnHighlightMobs = false;
+
+        // String Messages
+        string strErrorHeaderMsg = "You blew it.";
         #endregion"
 
         // On Load Event.
@@ -1495,45 +1498,16 @@ namespace GizMaker.forms
             }
         }
 
-        // Save Door
+        // Save Door Click
         private void btnSaveDoor_Click(object sender, EventArgs e)
         {
-            if (txtDoorVNUM.Text != "" && txtDoorKeywords.Text != "")
-            {
-                classes.door oDoor = new classes.door();
+            SaveDoor();
+        }
 
-                oDoor.areaID = iCurrentArea;
-                oDoor.roomNumber = iCurrentRoom;
-                oDoor.VNUM = Convert.ToInt32(txtDoorVNUM.Text);
-                oDoor.keywords = txtDoorKeywords.Text;
-                oDoor.direction = cboDirection.Items[cboDirection.SelectedIndex].ToString();
-                oDoor.doorType = cboDoorType.Items[cboDoorType.SelectedIndex].ToString();
-
-                if (cboDoorKey.SelectedIndex > 0)
-                    oDoor.keyVNUM = Convert.ToInt32(cboDoorKey.SelectedValue.ToString());
-
-                oDoor.coordX = iCurrentX;
-                oDoor.coordY = iCurrentY;
-                oDoor.coordZ = iCurrentZ;
-
-                if (lblDoorID.Text != "")
-                {
-                    oDoor.doorID = Convert.ToInt32(lblDoorID.Text);
-                    oDoor.UpdateDoor();
-                }
-                else
-                    oDoor.AddDoor();
-
-                // Get the Current Room in Zoom View.
-                Control[] ctrlRoom = this.Controls.Find("room" + iCurrentRoom.ToString(), true);
-                Button btnRoom = new Button();
-                btnRoom = (Button)ctrlRoom[0];
-
-                // Redraw the Panel and refresh Zoom View to reflect the Door Save.
-                ClearDoorSection();
-                DisplayPanelRooms(iCurrentArea, iCurrentX, iCurrentY, iCurrentZ);
-                UpdateZoomView(btnRoom);
-            }
+        // Delete Door Click
+        private void btnDeleteDoor_Click(object sender, EventArgs e)
+        {
+            DeleteDoor();
         }
 
         // Door North Click
@@ -1921,6 +1895,7 @@ namespace GizMaker.forms
                         {
                             btnNorth = (Button)ctrlNorth[0];
                             btnNorth.Visible = true;
+                            btnNorth.BackColor = Color.Black;
                         }
                     }
 
@@ -1934,6 +1909,7 @@ namespace GizMaker.forms
                         {
                             btnSouth = (Button)ctrlSouth[0];
                             btnSouth.Visible = true;
+                            btnSouth.BackColor = Color.Black;
                         }
                     }
 
@@ -1947,6 +1923,7 @@ namespace GizMaker.forms
                         {
                             btnEast = (Button)ctrlEast[0];
                             btnEast.Visible = true;
+                            btnEast.BackColor = Color.Black;
                         }
                     }
 
@@ -1960,6 +1937,7 @@ namespace GizMaker.forms
                         {
                             btnWest = (Button)ctrlWest[0];
                             btnWest.Visible = true;
+                            btnWest.BackColor = Color.Black;
                         }
                     }
                 }
@@ -2141,6 +2119,110 @@ namespace GizMaker.forms
             // Delete the room.
             oRoom.RemoveRoom();
         }
+
+        // Save current room door.
+        public void SaveDoor()
+        {
+            if (txtDoorVNUM.Text != "" && txtDoorKeywords.Text != "" && cboDirection.SelectedIndex > -1 && cboDoorType.SelectedIndex > -1)
+            {
+                // Populate a Door Object with data from the Form.
+                classes.door oDoor = new classes.door();
+                if (lblDoorID.Text != "")
+                    oDoor.doorID = Convert.ToInt32(lblDoorID.Text);
+                oDoor.areaID = iCurrentArea;
+                oDoor.roomNumber = iCurrentRoom;
+                oDoor.VNUM = Convert.ToInt32(txtDoorVNUM.Text);
+                oDoor.keywords = txtDoorKeywords.Text;
+                oDoor.direction = cboDirection.Items[cboDirection.SelectedIndex].ToString();
+                oDoor.doorType = cboDoorType.Items[cboDoorType.SelectedIndex].ToString();
+                if (cboDoorKey.SelectedIndex > 0)
+                    oDoor.keyVNUM = Convert.ToInt32(cboDoorKey.SelectedValue.ToString());
+                oDoor.coordX = iCurrentX;
+                oDoor.coordY = iCurrentY;
+                oDoor.coordZ = iCurrentZ;
+
+                // Populate the Door Mirror Object with data from the Door.
+                classes.door oDoorMirror = new classes.door();
+                oDoorMirror = classes.door.GetDoorMirror(oDoor, iCurrentRoom);
+
+                // Check if Door is a Duplicate (by Room and Direction)
+                if (!oDoor.DoorIsDuplicate())
+                {
+                    // If Door is not a Duplicate, Insert/Update.
+                    if (lblDoorID.Text != "")
+                    {
+                        // Update Door.
+                        oDoor.doorID = Convert.ToInt32(lblDoorID.Text);
+                        oDoor.UpdateDoor();
+
+                        // Get Door Mirror.
+                        int iDoorMirrorID = 0;
+                        iDoorMirrorID = classes.door.GetDoorMirrorID(oDoorMirror, iCurrentRoom);
+                        if (iDoorMirrorID > 0)
+                        {
+                            oDoorMirror.doorID = iDoorMirrorID;
+                            oDoorMirror.UpdateDoor();
+                        }
+                    }
+                    else
+                    {
+                        // Add Door.
+                        oDoor.AddDoor();
+                        // Add Door Mirror.
+                        oDoorMirror.AddDoor();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("A door already exists in that direction!", strErrorHeaderMsg, MessageBoxButtons.OK);
+                }
+
+                // Get the Current Room in Zoom View.
+                Control[] ctrlRoom = this.Controls.Find("room" + iCurrentRoom.ToString(), true);
+                Button btnRoom = new Button();
+                btnRoom = (Button)ctrlRoom[0];
+
+                // Redraw the Panel and refresh Zoom View to reflect the Door Save.
+                ClearDoorSection();
+                DisplayPanelRooms(iCurrentArea, iCurrentX, iCurrentY, iCurrentZ);
+                UpdateZoomView(btnRoom);
+            }
+            else
+                MessageBox.Show("The door needs more info!", strErrorHeaderMsg, MessageBoxButtons.OK);
+        }
+
+        // Delete the current door and its mirror.
+        public void DeleteDoor()
+        {
+            if (lblDoorID.Text != "")
+            {
+                // Populate a Door Object with data from the Form.
+                classes.door oDoor = new classes.door();
+                oDoor = classes.door.GetDoorByID(Convert.ToInt32(lblDoorID.Text));
+
+                // Populate the Door Mirror Object with data from the Door.
+                classes.door oDoorMirror = new classes.door();
+                oDoorMirror = classes.door.GetDoorMirror(oDoor, iCurrentRoom);
+                oDoorMirror.doorID = classes.door.GetDoorMirrorID(oDoorMirror, iCurrentRoom);
+
+                // Delete Doors. 
+                oDoor.DeleteDoor();
+                oDoorMirror.DeleteDoor();
+            }
+            else
+                MessageBox.Show("You don't have a door selected!", strErrorHeaderMsg, MessageBoxButtons.OK);
+
+            // Get the Current Room in Zoom View.
+            Control[] ctrlRoom = this.Controls.Find("room" + iCurrentRoom.ToString(), true);
+            Button btnRoom = new Button();
+            btnRoom = (Button)ctrlRoom[0];
+
+            // Redraw the Panel and refresh Zoom View to reflect the Door Save.
+            ClearDoorSection();
+            DisplayPanelRooms(iCurrentArea, iCurrentX, iCurrentY, iCurrentZ);
+            UpdateZoomView(btnRoom);
+        }
+
         #endregion
 
         // Zoom view window painting.
