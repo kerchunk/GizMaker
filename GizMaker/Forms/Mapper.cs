@@ -16,14 +16,14 @@ namespace GizMaker.forms
         #region "global variables"
         // Colors
         Color clrBlank = Color.Gray;
-        //Color clrBlankNoGrid = Color.DimGray;
+        Color clrBlankNoGrid = Color.DimGray;
         Color clrBlankBorder = Color.Black;
-        //Color clrBlankBorderNoGrid = Color.DimGray;
+        Color clrBlankBorderNoGrid = Color.DimGray;
         Color clrDefault = Color.DarkSlateGray;
         Color clrCurrent = Color.DarkSlateGray;
         Color clrUp = Color.Yellow;
         Color clrDown = Color.MediumSpringGreen;
-        Color clrDoorDefault = Color.DarkGoldenrod;
+        Color clrDoorDefault = Color.BurlyWood;
         Color clrDoorLocked = Color.DarkRed;
         Color clrHighlightSpawn = Color.OrangeRed;
 
@@ -2011,7 +2011,10 @@ namespace GizMaker.forms
                             {
                                 btnSouth = (Button)ctrlSouth[0];
                                 btnSouth.Visible = true;
-                                btnSouth.BackColor = clrDoorDefault;
+                                if (oDoor.doorType == "Not Pickable")
+                                    btnSouth.BackColor = clrDoorLocked;
+                                else
+                                    btnSouth.BackColor = clrDoorDefault;
                             }
                             break;
                         case "east":
@@ -2023,6 +2026,10 @@ namespace GizMaker.forms
                                 btnEast = (Button)ctrlEast[0];
                                 btnEast.Visible = true;
                                 btnEast.BackColor = clrDoorDefault;
+                                if (oDoor.doorType == "Not Pickable")
+                                    btnEast.BackColor = clrDoorLocked;
+                                else
+                                    btnEast.BackColor = clrDoorDefault;
                             }
                             break;
                         case "west":
@@ -2033,7 +2040,10 @@ namespace GizMaker.forms
                             {
                                 btnWest = (Button)ctrlWest[0];
                                 btnWest.Visible = true;
-                                btnWest.BackColor = clrDoorDefault;
+                                if (oDoor.doorType == "Not Pickable")
+                                    btnWest.BackColor = clrDoorLocked;
+                                else
+                                    btnWest.BackColor = clrDoorDefault;
                             }
                             break;
                         default:
