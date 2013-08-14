@@ -113,7 +113,7 @@ namespace GizMaker.classes
 
             // Create query. 
             string strSQL = string.Empty;
-            strSQL += " select [AreaID], [AreaName], [ZoneNumber]";
+            strSQL += " select [AreaID], [AreaName], [ZoneNumber], [StartingVNUM]";
             strSQL += " from   [Area] ";
             strSQL += " where  [AreaID] = " + iAreaID.ToString() + " ";
 

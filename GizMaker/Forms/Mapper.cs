@@ -35,8 +35,7 @@ namespace GizMaker.forms
         int iCurrentZ = 0;
 
         // Toggles
-        bool blnAutoColor = false;
-        bool blnAutoLink = false;
+        bool blnAutoMap = false;
         bool blnHighlightMobs = false;
 
         // String Messages
@@ -78,9 +77,7 @@ namespace GizMaker.forms
             oArea = classes.area.GetAreaByID(iAreaID);
 
             // Set the form controls with the Area Object details.
-            txtAreaName.Text = oArea.areaName;
-            txtZoneNumber.Text = oArea.zoneNumber.ToString();
-            txtStartingVNUM.Text = oArea.startingVNUM.ToString();
+            lblAreaHeader.Text = oArea.areaName.ToString() + " [ #" + oArea.startingVNUM.ToString() + " ]";
 
             // Populate Door Key List.
             PopulateKeyList();
@@ -232,9 +229,16 @@ namespace GizMaker.forms
                     }
                     room.Focus();
 
-                    // If Autolink is enabled, link the respective rooms.
-                    if (blnAutoLink)
+                    // If AutoMap is enabled, save the new room to the map.
+                    if (blnAutoMap)
                     {
+                        if (room.BackColor != clrCurrent)
+                        {
+                            room.BackColor = clrCurrent;
+                            blnRoomUpdated = true;
+                        }
+
+                        // If AutoMap is enabled, Link the respective rooms.
                         Control[] btnVPath = this.Controls.Find("vpath" + iNextButton, true);
                         if (btnVPath != null)
                         {
@@ -246,16 +250,7 @@ namespace GizMaker.forms
                                 blnLinkUpdated = true;
                             }
                         }
-                    }
-
-                    // If AutoColor is enabled, save the new room to the map.
-                    if (blnAutoColor)
-                    {
-                        if (room.BackColor != clrCurrent)
-                        {
-                            room.BackColor = clrCurrent;
-                            blnRoomUpdated = true;
-                        }
+                    
                     }
 
                     // Save the Room Location
@@ -314,9 +309,16 @@ namespace GizMaker.forms
                 }
                 room.Focus();
 
-                // If Autolink is enabled, link the respective rooms.
-                if (blnAutoLink)
+                // If AutoMap is enabled, save the new room to the map.
+                if (blnAutoMap)
                 {
+                    if (room.BackColor != clrCurrent)
+                    {
+                        room.BackColor = clrCurrent;
+                        blnRoomUpdated = true;
+                    }
+
+                    // If AutoMap is enabled, link the respective rooms.
                     Control[] btnHPath = this.Controls.Find("hpath" + iNextButton, true);
                     if (btnHPath != null)
                     {
@@ -327,17 +329,7 @@ namespace GizMaker.forms
                             hPath.Visible = true;
                             blnLinkUpdated = true;
                         }
-                    }
-                }
-
-                // If AutoColor is enabled, save the new room to the map.
-                if (blnAutoColor)
-                {
-                    if (room.BackColor != clrCurrent)
-                    {
-                        room.BackColor = clrCurrent;
-                        blnRoomUpdated = true;
-                    }
+                    }                
                 }
 
                 // Save the Room Location
@@ -394,9 +386,16 @@ namespace GizMaker.forms
                 }
                 room.Focus();
 
-                // If Autolink is enabled, link the respective rooms.
-                if (blnAutoLink)
+                // If AutoMap is enabled, save the new room to the map.
+                if (blnAutoMap)
                 {
+                    if (room.BackColor != clrCurrent)
+                    {
+                        room.BackColor = clrCurrent;
+                        blnRoomUpdated = true;
+                    }
+
+                    // If AutoMap is enabled, link the respective rooms.
                     Control[] btnHPath = this.Controls.Find("hpath" + iCurrentRoom, true);
                     if (btnHPath != null)
                     {
@@ -407,16 +406,6 @@ namespace GizMaker.forms
                             hPath.Visible = true;
                             blnLinkUpdated = true;
                         }
-                    }
-                }
-
-                // If AutoColor is enabled, save the new room to the map.
-                if (blnAutoColor)
-                {
-                    if (room.BackColor != clrCurrent)
-                    {
-                        room.BackColor = clrCurrent;
-                        blnRoomUpdated = true;
                     }
                 }
 
@@ -479,9 +468,16 @@ namespace GizMaker.forms
                     }
                     room.Focus();
 
-                    // If Autolink is enabled, link the respective rooms.
-                    if (blnAutoLink)
+                    // If AutoMap is enabled, save the new room to the map.
+                    if (blnAutoMap)
                     {
+                        if (room.BackColor != clrCurrent)
+                        {
+                            room.BackColor = clrCurrent;
+                            blnRoomUpdated = true;
+                        }
+
+                        // If AutoMap is enabled, link the respective rooms.
                         Control[] btnVPath = this.Controls.Find("vpath" + iCurrentRoom, true);
                         if (btnVPath != null)
                         {
@@ -492,16 +488,6 @@ namespace GizMaker.forms
                                 vPath.Visible = true;
                                 blnLinkUpdated = true;
                             }
-                        }
-                    }
-
-                    // If AutoColor is enabled, save the new room to the map.
-                    if (blnAutoColor)
-                    {
-                        if (room.BackColor != clrCurrent)
-                        {
-                            room.BackColor = clrCurrent;
-                            blnRoomUpdated = true;
                         }
                     }
                     // Save the Room Location
@@ -547,7 +533,7 @@ namespace GizMaker.forms
                 room = (Button)btnRoom[0];
                 room.Focus();
 
-                if (blnAutoColor || blnAutoLink)
+                if (blnAutoMap)
                 {
                     // Save the Room Location
                     SaveRoom(iCurrentArea, iCurrentRoom, iCurrentX, iCurrentY, iCurrentZ, true, HasDownLink(iCurrentRoom));
@@ -569,7 +555,7 @@ namespace GizMaker.forms
                 room = (Button)btnRoom[0];
                 room.Focus();
 
-                if (blnAutoColor || blnAutoLink)
+                if (blnAutoMap)
                 {
                     // Save the Room Location
                     SaveRoom(iCurrentArea, iCurrentRoom, iCurrentX, iCurrentY, iCurrentZ, HasUpLink(iCurrentRoom), true);
@@ -647,8 +633,8 @@ namespace GizMaker.forms
                 room = (Button)btnRoom[0];
                 room.Focus();
 
-                // If AutoColor is enabled, save the new room to the map.
-                if (blnAutoColor)
+                // If AutoMap is enabled, save the new room to the map.
+                if (blnAutoMap)
                 {
                     room.BackColor = clrCurrent;
 
@@ -685,8 +671,8 @@ namespace GizMaker.forms
                 room = (Button)btnRoom[0];
                 room.Focus();
 
-                // If AutoColor is enabled, save the new room to the map.
-                if (blnAutoColor)
+                // If AutoMap is enabled, save the new room to the map.
+                if (blnAutoMap)
                 {
                     room.BackColor = clrCurrent;
 
@@ -723,8 +709,8 @@ namespace GizMaker.forms
                 room = (Button)btnRoom[0];
                 room.Focus();
 
-                // If AutoColor is enabled, save the new room to the map.
-                if (blnAutoColor)
+                // If AutoMap is enabled, save the new room to the map.
+                if (blnAutoMap)
                 {
                     room.BackColor = clrCurrent;
 
@@ -761,8 +747,8 @@ namespace GizMaker.forms
                 room = (Button)btnRoom[0];
                 room.Focus();
 
-                // If AutoColor is enabled, save the new room to the map.
-                if (blnAutoColor)
+                // If AutoMap is enabled, save the new room to the map.
+                if (blnAutoMap)
                 {
                     room.BackColor = clrCurrent;
 
@@ -798,8 +784,8 @@ namespace GizMaker.forms
                 room = (Button)btnRoom[0];
                 room.Focus();
 
-                // If AutoColor is enabled, save the new room to the map.
-                if (blnAutoColor)
+                // If AutoMap is enabled, save the new room to the map.
+                if (blnAutoMap)
                 {
                     room.BackColor = clrCurrent;
 
@@ -836,8 +822,8 @@ namespace GizMaker.forms
                 room = (Button)btnRoom[0];
                 room.Focus();
 
-                // If AutoColor is enabled, save the new room to the map.
-                if (blnAutoColor)
+                // If AutoMap is enabled, save the new room to the map.
+                if (blnAutoMap)
                 {
                     room.BackColor = clrCurrent;
 
@@ -1124,7 +1110,7 @@ namespace GizMaker.forms
             iCurrentRoom = Convert.ToInt32(strRoomName.Replace("room", ""));
             SetCurrentRoom();
 
-            if (blnAutoColor)
+            if (blnAutoMap)
             {
                 if (btnButton.BackColor == clrCurrent)
                 {
@@ -1164,6 +1150,7 @@ namespace GizMaker.forms
             // Path On-Click Toggle:
             // ################################
 
+            /*
             // Remove Link
             if (rdoRemoveLink.Checked)
             {
@@ -1234,6 +1221,7 @@ namespace GizMaker.forms
                 // Create Door Object at selected location.
 
             }
+            */
         }
 
         // Set the Paint Color to Default.
@@ -1394,29 +1382,16 @@ namespace GizMaker.forms
             }
         }
 
-        // Set Autocolor Flag.
-        private void chkAutocolor_CheckedChanged(object sender, EventArgs e)
+        // Set AutoMap Flag.
+        private void chkAutoMap_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkAutocolor.Checked == true)
+            if (chkAutoMap.Checked == true)
             {
-                blnAutoColor = true;
+                blnAutoMap = true;
             }
             else
             {
-                blnAutoColor = false;
-            }
-        }
-
-        // Set Autolink Flag.
-        private void chkAutolink_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkAutolink.Checked == true)
-            {
-                blnAutoLink = true;
-            }
-            else
-            {
-                blnAutoLink = false;
+                blnAutoMap = false;
             }
         }
 
@@ -2299,8 +2274,14 @@ namespace GizMaker.forms
             // Disable Spawn selection if Room is not part of Map.
             classes.room oRoom = new classes.room();
             oRoom = classes.room.GetRoom(iCurrentArea, iCurrentRoom, iCurrentX, iCurrentY, iCurrentZ);
+
+
+            // Toggle Panels and allow Add/Edit if Room is part of the Map.
             if (oRoom.Exists())
             {
+                // Set Room Details.
+                lblCurrentRoomName.Text = "< Not Set >";
+                
                 cboAllMobs.Enabled = true;
                 btnAddSpawn.Enabled = true;
                 btnMobDetail.Enabled = true;
@@ -2461,7 +2442,7 @@ namespace GizMaker.forms
             // ################
             DisplayRoomDoors();
 
-            if (blnAutoColor && btnCurrentRoom.BackColor != clrBlank)
+            if (blnAutoMap && btnCurrentRoom.BackColor != clrBlank)
             {
                 SaveRoom(iCurrentArea, iCurrentRoom, iCurrentX, iCurrentY, iCurrentZ, HasUpLink(iCurrentRoom), HasDownLink(iCurrentRoom));
             }

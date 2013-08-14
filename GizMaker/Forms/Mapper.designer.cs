@@ -98,7 +98,7 @@
             this.btnIndoors = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabArea = new System.Windows.Forms.TabPage();
-            this.lblZoomRoomName = new System.Windows.Forms.Label();
+            this.lblCurrentRoomName = new System.Windows.Forms.Label();
             this.lblOverviewRoomName = new System.Windows.Forms.Label();
             this.lblVNUM = new System.Windows.Forms.Label();
             this.lblCurrentVNUM = new System.Windows.Forms.Label();
@@ -126,6 +126,8 @@
             this.btnZoomNorth = new System.Windows.Forms.Button();
             this.btnCurrentZoom = new System.Windows.Forms.Button();
             this.pnlDoor = new System.Windows.Forms.Panel();
+            this.btnDeleteDoor = new System.Windows.Forms.Button();
+            this.lblDoorID = new System.Windows.Forms.Label();
             this.lblDoorFlag = new System.Windows.Forms.Label();
             this.cboDoorType = new System.Windows.Forms.ComboBox();
             this.lblDoorKey = new System.Windows.Forms.Label();
@@ -142,17 +144,7 @@
             this.lblAreaIDPrompt = new System.Windows.Forms.Label();
             this.lblButtonPrompt = new System.Windows.Forms.Label();
             this.pnlGeneral = new System.Windows.Forms.Panel();
-            this.lblZoneNumber = new System.Windows.Forms.Label();
-            this.txtZoneNumber = new System.Windows.Forms.TextBox();
-            this.lblOnLinkClick = new System.Windows.Forms.Label();
-            this.rdoRemoveLink = new System.Windows.Forms.RadioButton();
-            this.rdoCreateDoor = new System.Windows.Forms.RadioButton();
-            this.lblStartingVNUM = new System.Windows.Forms.Label();
-            this.txtStartingVNUM = new System.Windows.Forms.TextBox();
-            this.chkAutolink = new System.Windows.Forms.CheckBox();
-            this.lblAreaName = new System.Windows.Forms.Label();
-            this.chkAutocolor = new System.Windows.Forms.CheckBox();
-            this.txtAreaName = new System.Windows.Forms.TextBox();
+            this.chkAutoMap = new System.Windows.Forms.CheckBox();
             this.tabAttributes = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblAttributesRoomVNUM = new System.Windows.Forms.Label();
@@ -199,8 +191,8 @@
             this.objectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newObjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblDoorID = new System.Windows.Forms.Label();
-            this.btnDeleteDoor = new System.Windows.Forms.Button();
+            this.lblAreaHeader = new System.Windows.Forms.Label();
+            this.lblRoomNameLabel = new System.Windows.Forms.Label();
             this.tabMob.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -947,7 +939,7 @@
             // lblButtonName
             // 
             this.lblButtonName.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblButtonName.Location = new System.Drawing.Point(120, 329);
+            this.lblButtonName.Location = new System.Drawing.Point(86, 0);
             this.lblButtonName.Name = "lblButtonName";
             this.lblButtonName.Size = new System.Drawing.Size(71, 23);
             this.lblButtonName.TabIndex = 0;
@@ -984,18 +976,13 @@
             // tabArea
             // 
             this.tabArea.BackColor = System.Drawing.Color.LightSlateGray;
-            this.tabArea.Controls.Add(this.lblZoomRoomName);
             this.tabArea.Controls.Add(this.lblOverviewRoomName);
-            this.tabArea.Controls.Add(this.lblVNUM);
-            this.tabArea.Controls.Add(this.lblCurrentVNUM);
             this.tabArea.Controls.Add(this.lblDoorSection);
             this.tabArea.Controls.Add(this.pnlZoom);
             this.tabArea.Controls.Add(this.pnlDoor);
             this.tabArea.Controls.Add(this.lblAreaID);
             this.tabArea.Controls.Add(this.lblGeneral);
-            this.tabArea.Controls.Add(this.lblButtonName);
             this.tabArea.Controls.Add(this.lblAreaIDPrompt);
-            this.tabArea.Controls.Add(this.lblButtonPrompt);
             this.tabArea.Controls.Add(this.pnlGeneral);
             this.tabArea.Location = new System.Drawing.Point(4, 22);
             this.tabArea.Name = "tabArea";
@@ -1003,14 +990,13 @@
             this.tabArea.TabIndex = 0;
             this.tabArea.Text = "Area Overview";
             // 
-            // lblZoomRoomName
+            // lblCurrentRoomName
             // 
-            this.lblZoomRoomName.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblZoomRoomName.Location = new System.Drawing.Point(9, 369);
-            this.lblZoomRoomName.Name = "lblZoomRoomName";
-            this.lblZoomRoomName.Size = new System.Drawing.Size(429, 16);
-            this.lblZoomRoomName.TabIndex = 21;
-            this.lblZoomRoomName.Text = "Room Name";
+            this.lblCurrentRoomName.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentRoomName.Location = new System.Drawing.Point(6, 47);
+            this.lblCurrentRoomName.Name = "lblCurrentRoomName";
+            this.lblCurrentRoomName.Size = new System.Drawing.Size(413, 16);
+            this.lblCurrentRoomName.TabIndex = 21;
             // 
             // lblOverviewRoomName
             // 
@@ -1024,7 +1010,7 @@
             // lblVNUM
             // 
             this.lblVNUM.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVNUM.Location = new System.Drawing.Point(368, 329);
+            this.lblVNUM.Location = new System.Drawing.Point(336, 0);
             this.lblVNUM.Name = "lblVNUM";
             this.lblVNUM.Size = new System.Drawing.Size(56, 23);
             this.lblVNUM.TabIndex = 19;
@@ -1033,10 +1019,10 @@
             // lblCurrentVNUM
             // 
             this.lblCurrentVNUM.AutoSize = true;
-            this.lblCurrentVNUM.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentVNUM.Location = new System.Drawing.Point(256, 335);
+            this.lblCurrentVNUM.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentVNUM.Location = new System.Drawing.Point(253, 8);
             this.lblCurrentVNUM.Name = "lblCurrentVNUM";
-            this.lblCurrentVNUM.Size = new System.Drawing.Size(112, 16);
+            this.lblCurrentVNUM.Size = new System.Drawing.Size(79, 14);
             this.lblCurrentVNUM.TabIndex = 18;
             this.lblCurrentVNUM.Text = "Current VNUM:";
             // 
@@ -1044,7 +1030,7 @@
             // 
             this.lblDoorSection.AutoSize = true;
             this.lblDoorSection.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDoorSection.Location = new System.Drawing.Point(10, 196);
+            this.lblDoorSection.Location = new System.Drawing.Point(10, 238);
             this.lblDoorSection.Name = "lblDoorSection";
             this.lblDoorSection.Size = new System.Drawing.Size(111, 14);
             this.lblDoorSection.TabIndex = 17;
@@ -1061,8 +1047,6 @@
             this.pnlZoom.Controls.Add(this.btnDoorNorth);
             this.pnlZoom.Controls.Add(this.btnZoomDown);
             this.pnlZoom.Controls.Add(this.btnZoomUp);
-            this.pnlZoom.Controls.Add(this.lblDefault);
-            this.pnlZoom.Controls.Add(this.btnDefault);
             this.pnlZoom.Controls.Add(this.lblZ);
             this.pnlZoom.Controls.Add(this.lblY);
             this.pnlZoom.Controls.Add(this.lblX);
@@ -1169,7 +1153,7 @@
             // 
             this.lblDefault.AutoSize = true;
             this.lblDefault.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDefault.Location = new System.Drawing.Point(321, 12);
+            this.lblDefault.Location = new System.Drawing.Point(313, 151);
             this.lblDefault.Name = "lblDefault";
             this.lblDefault.Size = new System.Drawing.Size(99, 14);
             this.lblDefault.TabIndex = 9;
@@ -1178,7 +1162,7 @@
             // 
             // btnDefault
             // 
-            this.btnDefault.Location = new System.Drawing.Point(297, 7);
+            this.btnDefault.Location = new System.Drawing.Point(289, 146);
             this.btnDefault.Name = "btnDefault";
             this.btnDefault.Size = new System.Drawing.Size(20, 20);
             this.btnDefault.TabIndex = 8;
@@ -1313,10 +1297,30 @@
             this.pnlDoor.Controls.Add(this.txtDoorKeywords);
             this.pnlDoor.Controls.Add(this.lblDirection);
             this.pnlDoor.Controls.Add(this.cboDirection);
-            this.pnlDoor.Location = new System.Drawing.Point(9, 210);
+            this.pnlDoor.Location = new System.Drawing.Point(9, 252);
             this.pnlDoor.Name = "pnlDoor";
             this.pnlDoor.Size = new System.Drawing.Size(429, 117);
             this.pnlDoor.TabIndex = 12;
+            // 
+            // btnDeleteDoor
+            // 
+            this.btnDeleteDoor.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteDoor.Location = new System.Drawing.Point(339, 60);
+            this.btnDeleteDoor.Name = "btnDeleteDoor";
+            this.btnDeleteDoor.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteDoor.TabIndex = 23;
+            this.btnDeleteDoor.Text = "Delete Door";
+            this.btnDeleteDoor.UseVisualStyleBackColor = true;
+            this.btnDeleteDoor.Click += new System.EventHandler(this.btnDeleteDoor_Click);
+            // 
+            // lblDoorID
+            // 
+            this.lblDoorID.AutoSize = true;
+            this.lblDoorID.Location = new System.Drawing.Point(4, 31);
+            this.lblDoorID.Name = "lblDoorID";
+            this.lblDoorID.Size = new System.Drawing.Size(0, 13);
+            this.lblDoorID.TabIndex = 22;
+            this.lblDoorID.Visible = false;
             // 
             // lblDoorFlag
             // 
@@ -1443,7 +1447,7 @@
             // 
             this.lblAreaID.AutoSize = true;
             this.lblAreaID.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAreaID.Location = new System.Drawing.Point(420, 13);
+            this.lblAreaID.Location = new System.Drawing.Point(435, 16);
             this.lblAreaID.Name = "lblAreaID";
             this.lblAreaID.Size = new System.Drawing.Size(0, 14);
             this.lblAreaID.TabIndex = 5;
@@ -1463,7 +1467,7 @@
             // 
             this.lblAreaIDPrompt.AutoSize = true;
             this.lblAreaIDPrompt.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAreaIDPrompt.Location = new System.Drawing.Point(362, 13);
+            this.lblAreaIDPrompt.Location = new System.Drawing.Point(377, 16);
             this.lblAreaIDPrompt.Name = "lblAreaIDPrompt";
             this.lblAreaIDPrompt.Size = new System.Drawing.Size(49, 14);
             this.lblAreaIDPrompt.TabIndex = 4;
@@ -1473,146 +1477,41 @@
             // lblButtonPrompt
             // 
             this.lblButtonPrompt.AutoSize = true;
-            this.lblButtonPrompt.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblButtonPrompt.Location = new System.Drawing.Point(8, 335);
+            this.lblButtonPrompt.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblButtonPrompt.Location = new System.Drawing.Point(6, 8);
             this.lblButtonPrompt.Name = "lblButtonPrompt";
-            this.lblButtonPrompt.Size = new System.Drawing.Size(110, 16);
+            this.lblButtonPrompt.Size = new System.Drawing.Size(76, 14);
             this.lblButtonPrompt.TabIndex = 16;
             this.lblButtonPrompt.Text = "Current Room:";
             // 
             // pnlGeneral
             // 
             this.pnlGeneral.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlGeneral.Controls.Add(this.lblZoneNumber);
-            this.pnlGeneral.Controls.Add(this.txtZoneNumber);
-            this.pnlGeneral.Controls.Add(this.lblOnLinkClick);
-            this.pnlGeneral.Controls.Add(this.rdoRemoveLink);
-            this.pnlGeneral.Controls.Add(this.rdoCreateDoor);
-            this.pnlGeneral.Controls.Add(this.lblStartingVNUM);
-            this.pnlGeneral.Controls.Add(this.txtStartingVNUM);
-            this.pnlGeneral.Controls.Add(this.chkAutolink);
-            this.pnlGeneral.Controls.Add(this.lblAreaName);
-            this.pnlGeneral.Controls.Add(this.chkAutocolor);
-            this.pnlGeneral.Controls.Add(this.txtAreaName);
+            this.pnlGeneral.Controls.Add(this.lblRoomNameLabel);
+            this.pnlGeneral.Controls.Add(this.lblCurrentRoomName);
+            this.pnlGeneral.Controls.Add(this.lblVNUM);
+            this.pnlGeneral.Controls.Add(this.lblCurrentVNUM);
+            this.pnlGeneral.Controls.Add(this.lblDefault);
+            this.pnlGeneral.Controls.Add(this.btnDefault);
+            this.pnlGeneral.Controls.Add(this.chkAutoMap);
+            this.pnlGeneral.Controls.Add(this.lblButtonName);
+            this.pnlGeneral.Controls.Add(this.lblButtonPrompt);
             this.pnlGeneral.Location = new System.Drawing.Point(9, 30);
             this.pnlGeneral.Name = "pnlGeneral";
-            this.pnlGeneral.Size = new System.Drawing.Size(429, 158);
+            this.pnlGeneral.Size = new System.Drawing.Size(429, 181);
             this.pnlGeneral.TabIndex = 10;
             // 
-            // lblZoneNumber
+            // chkAutoMap
             // 
-            this.lblZoneNumber.AutoSize = true;
-            this.lblZoneNumber.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblZoneNumber.Location = new System.Drawing.Point(30, 45);
-            this.lblZoneNumber.Name = "lblZoneNumber";
-            this.lblZoneNumber.Size = new System.Drawing.Size(47, 14);
-            this.lblZoneNumber.TabIndex = 32;
-            this.lblZoneNumber.Text = "Zone #:";
-            // 
-            // txtZoneNumber
-            // 
-            this.txtZoneNumber.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtZoneNumber.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtZoneNumber.Location = new System.Drawing.Point(82, 41);
-            this.txtZoneNumber.Name = "txtZoneNumber";
-            this.txtZoneNumber.Size = new System.Drawing.Size(53, 20);
-            this.txtZoneNumber.TabIndex = 2;
-            // 
-            // lblOnLinkClick
-            // 
-            this.lblOnLinkClick.AutoSize = true;
-            this.lblOnLinkClick.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOnLinkClick.Location = new System.Drawing.Point(282, 88);
-            this.lblOnLinkClick.Name = "lblOnLinkClick";
-            this.lblOnLinkClick.Size = new System.Drawing.Size(119, 14);
-            this.lblOnLinkClick.TabIndex = 30;
-            this.lblOnLinkClick.Text = "Action on Link Click:";
-            // 
-            // rdoRemoveLink
-            // 
-            this.rdoRemoveLink.AutoSize = true;
-            this.rdoRemoveLink.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoRemoveLink.Location = new System.Drawing.Point(289, 118);
-            this.rdoRemoveLink.Name = "rdoRemoveLink";
-            this.rdoRemoveLink.Size = new System.Drawing.Size(86, 18);
-            this.rdoRemoveLink.TabIndex = 7;
-            this.rdoRemoveLink.Text = "Remove Link";
-            this.rdoRemoveLink.UseVisualStyleBackColor = true;
-            // 
-            // rdoCreateDoor
-            // 
-            this.rdoCreateDoor.AutoSize = true;
-            this.rdoCreateDoor.Checked = true;
-            this.rdoCreateDoor.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoCreateDoor.Location = new System.Drawing.Point(289, 102);
-            this.rdoCreateDoor.Name = "rdoCreateDoor";
-            this.rdoCreateDoor.Size = new System.Drawing.Size(98, 18);
-            this.rdoCreateDoor.TabIndex = 6;
-            this.rdoCreateDoor.TabStop = true;
-            this.rdoCreateDoor.Text = "Configure Door";
-            this.rdoCreateDoor.UseVisualStyleBackColor = true;
-            // 
-            // lblStartingVNUM
-            // 
-            this.lblStartingVNUM.AutoSize = true;
-            this.lblStartingVNUM.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStartingVNUM.Location = new System.Drawing.Point(270, 45);
-            this.lblStartingVNUM.Name = "lblStartingVNUM";
-            this.lblStartingVNUM.Size = new System.Drawing.Size(70, 14);
-            this.lblStartingVNUM.TabIndex = 3;
-            this.lblStartingVNUM.Text = "First VNUM:";
-            // 
-            // txtStartingVNUM
-            // 
-            this.txtStartingVNUM.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtStartingVNUM.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStartingVNUM.Location = new System.Drawing.Point(345, 41);
-            this.txtStartingVNUM.Name = "txtStartingVNUM";
-            this.txtStartingVNUM.Size = new System.Drawing.Size(53, 20);
-            this.txtStartingVNUM.TabIndex = 3;
-            // 
-            // chkAutolink
-            // 
-            this.chkAutolink.AutoSize = true;
-            this.chkAutolink.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkAutolink.Location = new System.Drawing.Point(25, 118);
-            this.chkAutolink.Name = "chkAutolink";
-            this.chkAutolink.Size = new System.Drawing.Size(156, 18);
-            this.chkAutolink.TabIndex = 5;
-            this.chkAutolink.Text = "Enable Linking on Move";
-            this.chkAutolink.UseVisualStyleBackColor = true;
-            this.chkAutolink.CheckedChanged += new System.EventHandler(this.chkAutolink_CheckedChanged);
-            // 
-            // lblAreaName
-            // 
-            this.lblAreaName.AutoSize = true;
-            this.lblAreaName.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAreaName.Location = new System.Drawing.Point(7, 19);
-            this.lblAreaName.Name = "lblAreaName";
-            this.lblAreaName.Size = new System.Drawing.Size(70, 14);
-            this.lblAreaName.TabIndex = 1;
-            this.lblAreaName.Text = "Area Name:";
-            // 
-            // chkAutocolor
-            // 
-            this.chkAutocolor.AutoSize = true;
-            this.chkAutocolor.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkAutocolor.Location = new System.Drawing.Point(25, 99);
-            this.chkAutocolor.Name = "chkAutocolor";
-            this.chkAutocolor.Size = new System.Drawing.Size(138, 18);
-            this.chkAutocolor.TabIndex = 4;
-            this.chkAutocolor.Text = "Enable Map Creation";
-            this.chkAutocolor.UseVisualStyleBackColor = true;
-            this.chkAutocolor.CheckedChanged += new System.EventHandler(this.chkAutocolor_CheckedChanged);
-            // 
-            // txtAreaName
-            // 
-            this.txtAreaName.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtAreaName.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAreaName.Location = new System.Drawing.Point(82, 16);
-            this.txtAreaName.Name = "txtAreaName";
-            this.txtAreaName.Size = new System.Drawing.Size(316, 20);
-            this.txtAreaName.TabIndex = 1;
+            this.chkAutoMap.AutoSize = true;
+            this.chkAutoMap.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkAutoMap.Location = new System.Drawing.Point(9, 146);
+            this.chkAutoMap.Name = "chkAutoMap";
+            this.chkAutoMap.Size = new System.Drawing.Size(138, 18);
+            this.chkAutoMap.TabIndex = 4;
+            this.chkAutoMap.Text = "Enable Map Creation";
+            this.chkAutoMap.UseVisualStyleBackColor = true;
+            this.chkAutoMap.CheckedChanged += new System.EventHandler(this.chkAutoMap_CheckedChanged);
             // 
             // tabAttributes
             // 
@@ -2069,25 +1968,24 @@
             this.helpToolStripMenuItem1.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem1.Text = "Help";
             // 
-            // lblDoorID
+            // lblAreaHeader
             // 
-            this.lblDoorID.AutoSize = true;
-            this.lblDoorID.Location = new System.Drawing.Point(4, 31);
-            this.lblDoorID.Name = "lblDoorID";
-            this.lblDoorID.Size = new System.Drawing.Size(0, 13);
-            this.lblDoorID.TabIndex = 22;
-            this.lblDoorID.Visible = false;
+            this.lblAreaHeader.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAreaHeader.Location = new System.Drawing.Point(12, 29);
+            this.lblAreaHeader.Name = "lblAreaHeader";
+            this.lblAreaHeader.Size = new System.Drawing.Size(947, 23);
+            this.lblAreaHeader.TabIndex = 9;
+            this.lblAreaHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnDeleteDoor
+            // lblRoomNameLabel
             // 
-            this.btnDeleteDoor.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteDoor.Location = new System.Drawing.Point(339, 60);
-            this.btnDeleteDoor.Name = "btnDeleteDoor";
-            this.btnDeleteDoor.Size = new System.Drawing.Size(75, 23);
-            this.btnDeleteDoor.TabIndex = 23;
-            this.btnDeleteDoor.Text = "Delete Door";
-            this.btnDeleteDoor.UseVisualStyleBackColor = true;
-            this.btnDeleteDoor.Click += new System.EventHandler(this.btnDeleteDoor_Click);
+            this.lblRoomNameLabel.AutoSize = true;
+            this.lblRoomNameLabel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRoomNameLabel.Location = new System.Drawing.Point(6, 31);
+            this.lblRoomNameLabel.Name = "lblRoomNameLabel";
+            this.lblRoomNameLabel.Size = new System.Drawing.Size(67, 14);
+            this.lblRoomNameLabel.TabIndex = 22;
+            this.lblRoomNameLabel.Text = "Room Name:";
             // 
             // Mapper
             // 
@@ -2096,6 +1994,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(1450, 821);
+            this.Controls.Add(this.lblAreaHeader);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -2160,12 +2059,7 @@
         private System.Windows.Forms.Button btnZoomWest;
         private System.Windows.Forms.Button btnZoomEast;
         private System.Windows.Forms.Label lblButtonPrompt;
-        private System.Windows.Forms.CheckBox chkAutocolor;
-        private System.Windows.Forms.CheckBox chkAutolink;
-        private System.Windows.Forms.TextBox txtStartingVNUM;
-        private System.Windows.Forms.Label lblAreaName;
-        private System.Windows.Forms.TextBox txtAreaName;
-        private System.Windows.Forms.Label lblStartingVNUM;
+        private System.Windows.Forms.CheckBox chkAutoMap;
         private System.Windows.Forms.Label lblZ;
         private System.Windows.Forms.Label lblY;
         private System.Windows.Forms.Label lblX;
@@ -2183,11 +2077,6 @@
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Label lblDoorSection;
-        private System.Windows.Forms.Label lblOnLinkClick;
-        private System.Windows.Forms.RadioButton rdoRemoveLink;
-        private System.Windows.Forms.RadioButton rdoCreateDoor;
-        private System.Windows.Forms.Label lblZoneNumber;
-        private System.Windows.Forms.TextBox txtZoneNumber;
         private System.Windows.Forms.ToolStripMenuItem areaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem roomToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mobToolStripMenuItem;
@@ -2268,7 +2157,7 @@
         private System.Windows.Forms.ComboBox cboDoorKey;
         private System.Windows.Forms.Label lblDoorFlag;
         private System.Windows.Forms.ComboBox cboDoorType;
-        private System.Windows.Forms.Label lblZoomRoomName;
+        private System.Windows.Forms.Label lblCurrentRoomName;
         private System.Windows.Forms.Label lblAttributesRoomNumber;
         private System.Windows.Forms.Label lblAttributesRoomName;
         private System.Windows.Forms.Label lblAttributesRoomVNUM;
@@ -2312,6 +2201,8 @@
         private System.Windows.Forms.Button btnDoorUp;
         private System.Windows.Forms.Label lblDoorID;
         private System.Windows.Forms.Button btnDeleteDoor;
+        private System.Windows.Forms.Label lblAreaHeader;
+        private System.Windows.Forms.Label lblRoomNameLabel;
     }
 }
 
