@@ -69,7 +69,7 @@
             this.lblRoomRoomNumber = new System.Windows.Forms.Label();
             this.lblDetailRoomNumber = new System.Windows.Forms.Label();
             this.btnSaveRoom = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboSector = new System.Windows.Forms.ComboBox();
             this.txtVNUM = new System.Windows.Forms.TextBox();
             this.txtRoomName = new System.Windows.Forms.TextBox();
             this.txtExtraDescKeywords = new System.Windows.Forms.TextBox();
@@ -98,10 +98,15 @@
             this.btnIndoors = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabArea = new System.Windows.Forms.TabPage();
-            this.lblCurrentRoomName = new System.Windows.Forms.Label();
+            this.lblMapConfigLabel = new System.Windows.Forms.Label();
+            this.pnlMapConfig = new System.Windows.Forms.Panel();
+            this.chkAutoMap = new System.Windows.Forms.CheckBox();
+            this.lblDefault = new System.Windows.Forms.Label();
+            this.btnDefault = new System.Windows.Forms.Button();
+            this.lblRoomCount = new System.Windows.Forms.Label();
+            this.lblZoomViewLabel = new System.Windows.Forms.Label();
+            this.lblRoomCountLabel = new System.Windows.Forms.Label();
             this.lblOverviewRoomName = new System.Windows.Forms.Label();
-            this.lblVNUM = new System.Windows.Forms.Label();
-            this.lblCurrentVNUM = new System.Windows.Forms.Label();
             this.lblDoorSection = new System.Windows.Forms.Label();
             this.pnlZoom = new System.Windows.Forms.Panel();
             this.btnDoorWest = new System.Windows.Forms.Button();
@@ -112,8 +117,6 @@
             this.btnDoorNorth = new System.Windows.Forms.Button();
             this.btnZoomDown = new System.Windows.Forms.PictureBox();
             this.btnZoomUp = new System.Windows.Forms.PictureBox();
-            this.lblDefault = new System.Windows.Forms.Label();
-            this.btnDefault = new System.Windows.Forms.Button();
             this.lblZ = new System.Windows.Forms.Label();
             this.lblY = new System.Windows.Forms.Label();
             this.lblX = new System.Windows.Forms.Label();
@@ -142,9 +145,12 @@
             this.lblAreaID = new System.Windows.Forms.Label();
             this.lblGeneral = new System.Windows.Forms.Label();
             this.lblAreaIDPrompt = new System.Windows.Forms.Label();
-            this.lblButtonPrompt = new System.Windows.Forms.Label();
             this.pnlGeneral = new System.Windows.Forms.Panel();
-            this.chkAutoMap = new System.Windows.Forms.CheckBox();
+            this.lblRoomNameLabel = new System.Windows.Forms.Label();
+            this.lblCurrentRoomName = new System.Windows.Forms.Label();
+            this.lblVNUM = new System.Windows.Forms.Label();
+            this.lblCurrentVNUM = new System.Windows.Forms.Label();
+            this.lblButtonPrompt = new System.Windows.Forms.Label();
             this.tabAttributes = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblAttributesRoomVNUM = new System.Windows.Forms.Label();
@@ -192,12 +198,6 @@
             this.newObjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.lblAreaHeader = new System.Windows.Forms.Label();
-            this.lblRoomNameLabel = new System.Windows.Forms.Label();
-            this.lblRoomCountLabel = new System.Windows.Forms.Label();
-            this.lblRoomCount = new System.Windows.Forms.Label();
-            this.lblZoomViewLabel = new System.Windows.Forms.Label();
-            this.pnlMapConfig = new System.Windows.Forms.Panel();
-            this.lblMapConfigLabel = new System.Windows.Forms.Label();
             this.tabMob.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -206,6 +206,7 @@
             this.pnlRoomDetail.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabArea.SuspendLayout();
+            this.pnlMapConfig.SuspendLayout();
             this.pnlZoom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnZoomDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnZoomUp)).BeginInit();
@@ -215,7 +216,6 @@
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.pnlMapConfig.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabMob
@@ -639,7 +639,7 @@
             this.pnlRoomDetail.Controls.Add(this.lblRoomRoomNumber);
             this.pnlRoomDetail.Controls.Add(this.lblDetailRoomNumber);
             this.pnlRoomDetail.Controls.Add(this.btnSaveRoom);
-            this.pnlRoomDetail.Controls.Add(this.comboBox1);
+            this.pnlRoomDetail.Controls.Add(this.cboSector);
             this.pnlRoomDetail.Controls.Add(this.txtVNUM);
             this.pnlRoomDetail.Controls.Add(this.txtRoomName);
             this.pnlRoomDetail.Controls.Add(this.txtExtraDescKeywords);
@@ -706,14 +706,15 @@
             this.btnSaveRoom.TabIndex = 26;
             this.btnSaveRoom.Text = "Save Room";
             this.btnSaveRoom.UseVisualStyleBackColor = true;
+            this.btnSaveRoom.Click += new System.EventHandler(this.btnSaveRoom_Click);
             // 
-            // comboBox1
+            // cboSector
             // 
-            this.comboBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cboSector.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.cboSector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSector.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboSector.FormattingEnabled = true;
+            this.cboSector.Items.AddRange(new object[] {
             "Inside",
             "City",
             "Field",
@@ -722,10 +723,10 @@
             "Mountain",
             "Water - Swim",
             "Water - No Swim"});
-            this.comboBox1.Location = new System.Drawing.Point(285, 45);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 22);
-            this.comboBox1.TabIndex = 14;
+            this.cboSector.Location = new System.Drawing.Point(285, 45);
+            this.cboSector.Name = "cboSector";
+            this.cboSector.Size = new System.Drawing.Size(121, 22);
+            this.cboSector.TabIndex = 14;
             // 
             // txtVNUM
             // 
@@ -1001,13 +1002,89 @@
             this.tabArea.TabIndex = 0;
             this.tabArea.Text = "Area Overview";
             // 
-            // lblCurrentRoomName
+            // lblMapConfigLabel
             // 
-            this.lblCurrentRoomName.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentRoomName.Location = new System.Drawing.Point(6, 47);
-            this.lblCurrentRoomName.Name = "lblCurrentRoomName";
-            this.lblCurrentRoomName.Size = new System.Drawing.Size(413, 16);
-            this.lblCurrentRoomName.TabIndex = 21;
+            this.lblMapConfigLabel.AutoSize = true;
+            this.lblMapConfigLabel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMapConfigLabel.Location = new System.Drawing.Point(9, 137);
+            this.lblMapConfigLabel.Name = "lblMapConfigLabel";
+            this.lblMapConfigLabel.Size = new System.Drawing.Size(131, 14);
+            this.lblMapConfigLabel.TabIndex = 26;
+            this.lblMapConfigLabel.Text = "Map Creation Behavior";
+            // 
+            // pnlMapConfig
+            // 
+            this.pnlMapConfig.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMapConfig.Controls.Add(this.chkAutoMap);
+            this.pnlMapConfig.Controls.Add(this.lblDefault);
+            this.pnlMapConfig.Controls.Add(this.btnDefault);
+            this.pnlMapConfig.Location = new System.Drawing.Point(9, 151);
+            this.pnlMapConfig.Name = "pnlMapConfig";
+            this.pnlMapConfig.Size = new System.Drawing.Size(429, 109);
+            this.pnlMapConfig.TabIndex = 25;
+            // 
+            // chkAutoMap
+            // 
+            this.chkAutoMap.AutoSize = true;
+            this.chkAutoMap.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkAutoMap.Location = new System.Drawing.Point(272, 13);
+            this.chkAutoMap.Name = "chkAutoMap";
+            this.chkAutoMap.Size = new System.Drawing.Size(138, 18);
+            this.chkAutoMap.TabIndex = 4;
+            this.chkAutoMap.Text = "Enable Map Creation";
+            this.chkAutoMap.UseVisualStyleBackColor = true;
+            this.chkAutoMap.CheckedChanged += new System.EventHandler(this.chkAutoMap_CheckedChanged);
+            // 
+            // lblDefault
+            // 
+            this.lblDefault.AutoSize = true;
+            this.lblDefault.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDefault.Location = new System.Drawing.Point(35, 14);
+            this.lblDefault.Name = "lblDefault";
+            this.lblDefault.Size = new System.Drawing.Size(99, 14);
+            this.lblDefault.TabIndex = 9;
+            this.lblDefault.Text = "Default Room Color";
+            // 
+            // btnDefault
+            // 
+            this.btnDefault.Location = new System.Drawing.Point(11, 9);
+            this.btnDefault.Name = "btnDefault";
+            this.btnDefault.Size = new System.Drawing.Size(20, 20);
+            this.btnDefault.TabIndex = 8;
+            this.btnDefault.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnDefault.UseVisualStyleBackColor = true;
+            this.btnDefault.Click += new System.EventHandler(this.btnDefault_Click);
+            // 
+            // lblRoomCount
+            // 
+            this.lblRoomCount.AutoSize = true;
+            this.lblRoomCount.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRoomCount.Location = new System.Drawing.Point(420, 16);
+            this.lblRoomCount.Name = "lblRoomCount";
+            this.lblRoomCount.Size = new System.Drawing.Size(0, 14);
+            this.lblRoomCount.TabIndex = 24;
+            this.lblRoomCount.Visible = false;
+            // 
+            // lblZoomViewLabel
+            // 
+            this.lblZoomViewLabel.AutoSize = true;
+            this.lblZoomViewLabel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblZoomViewLabel.Location = new System.Drawing.Point(9, 425);
+            this.lblZoomViewLabel.Name = "lblZoomViewLabel";
+            this.lblZoomViewLabel.Size = new System.Drawing.Size(120, 14);
+            this.lblZoomViewLabel.TabIndex = 21;
+            this.lblZoomViewLabel.Text = "Current Room Zoom";
+            // 
+            // lblRoomCountLabel
+            // 
+            this.lblRoomCountLabel.AutoSize = true;
+            this.lblRoomCountLabel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRoomCountLabel.Location = new System.Drawing.Point(346, 16);
+            this.lblRoomCountLabel.Name = "lblRoomCountLabel";
+            this.lblRoomCountLabel.Size = new System.Drawing.Size(68, 14);
+            this.lblRoomCountLabel.TabIndex = 23;
+            this.lblRoomCountLabel.Text = "Room Count:";
+            this.lblRoomCountLabel.Visible = false;
             // 
             // lblOverviewRoomName
             // 
@@ -1017,25 +1094,6 @@
             this.lblOverviewRoomName.Name = "lblOverviewRoomName";
             this.lblOverviewRoomName.Size = new System.Drawing.Size(0, 16);
             this.lblOverviewRoomName.TabIndex = 20;
-            // 
-            // lblVNUM
-            // 
-            this.lblVNUM.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVNUM.Location = new System.Drawing.Point(333, 0);
-            this.lblVNUM.Name = "lblVNUM";
-            this.lblVNUM.Size = new System.Drawing.Size(88, 23);
-            this.lblVNUM.TabIndex = 19;
-            this.lblVNUM.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // lblCurrentVNUM
-            // 
-            this.lblCurrentVNUM.AutoSize = true;
-            this.lblCurrentVNUM.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentVNUM.Location = new System.Drawing.Point(253, 8);
-            this.lblCurrentVNUM.Name = "lblCurrentVNUM";
-            this.lblCurrentVNUM.Size = new System.Drawing.Size(79, 14);
-            this.lblCurrentVNUM.TabIndex = 18;
-            this.lblCurrentVNUM.Text = "Current VNUM:";
             // 
             // lblDoorSection
             // 
@@ -1159,26 +1217,6 @@
             this.btnZoomUp.TabIndex = 1;
             this.btnZoomUp.TabStop = false;
             this.btnZoomUp.Visible = false;
-            // 
-            // lblDefault
-            // 
-            this.lblDefault.AutoSize = true;
-            this.lblDefault.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDefault.Location = new System.Drawing.Point(35, 14);
-            this.lblDefault.Name = "lblDefault";
-            this.lblDefault.Size = new System.Drawing.Size(99, 14);
-            this.lblDefault.TabIndex = 9;
-            this.lblDefault.Text = "Default Room Color";
-            // 
-            // btnDefault
-            // 
-            this.btnDefault.Location = new System.Drawing.Point(11, 9);
-            this.btnDefault.Name = "btnDefault";
-            this.btnDefault.Size = new System.Drawing.Size(20, 20);
-            this.btnDefault.TabIndex = 8;
-            this.btnDefault.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnDefault.UseVisualStyleBackColor = true;
-            this.btnDefault.Click += new System.EventHandler(this.btnDefault_Click);
             // 
             // lblZ
             // 
@@ -1483,16 +1521,6 @@
             this.lblAreaIDPrompt.Text = "Area ID:";
             this.lblAreaIDPrompt.Visible = false;
             // 
-            // lblButtonPrompt
-            // 
-            this.lblButtonPrompt.AutoSize = true;
-            this.lblButtonPrompt.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblButtonPrompt.Location = new System.Drawing.Point(6, 8);
-            this.lblButtonPrompt.Name = "lblButtonPrompt";
-            this.lblButtonPrompt.Size = new System.Drawing.Size(76, 14);
-            this.lblButtonPrompt.TabIndex = 16;
-            this.lblButtonPrompt.Text = "Current Room:";
-            // 
             // pnlGeneral
             // 
             this.pnlGeneral.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -1507,17 +1535,52 @@
             this.pnlGeneral.Size = new System.Drawing.Size(429, 87);
             this.pnlGeneral.TabIndex = 10;
             // 
-            // chkAutoMap
+            // lblRoomNameLabel
             // 
-            this.chkAutoMap.AutoSize = true;
-            this.chkAutoMap.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkAutoMap.Location = new System.Drawing.Point(272, 13);
-            this.chkAutoMap.Name = "chkAutoMap";
-            this.chkAutoMap.Size = new System.Drawing.Size(138, 18);
-            this.chkAutoMap.TabIndex = 4;
-            this.chkAutoMap.Text = "Enable Map Creation";
-            this.chkAutoMap.UseVisualStyleBackColor = true;
-            this.chkAutoMap.CheckedChanged += new System.EventHandler(this.chkAutoMap_CheckedChanged);
+            this.lblRoomNameLabel.AutoSize = true;
+            this.lblRoomNameLabel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRoomNameLabel.Location = new System.Drawing.Point(6, 31);
+            this.lblRoomNameLabel.Name = "lblRoomNameLabel";
+            this.lblRoomNameLabel.Size = new System.Drawing.Size(67, 14);
+            this.lblRoomNameLabel.TabIndex = 22;
+            this.lblRoomNameLabel.Text = "Room Name:";
+            // 
+            // lblCurrentRoomName
+            // 
+            this.lblCurrentRoomName.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentRoomName.Location = new System.Drawing.Point(6, 47);
+            this.lblCurrentRoomName.Name = "lblCurrentRoomName";
+            this.lblCurrentRoomName.Size = new System.Drawing.Size(413, 16);
+            this.lblCurrentRoomName.TabIndex = 21;
+            // 
+            // lblVNUM
+            // 
+            this.lblVNUM.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVNUM.Location = new System.Drawing.Point(333, 0);
+            this.lblVNUM.Name = "lblVNUM";
+            this.lblVNUM.Size = new System.Drawing.Size(88, 23);
+            this.lblVNUM.TabIndex = 19;
+            this.lblVNUM.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // lblCurrentVNUM
+            // 
+            this.lblCurrentVNUM.AutoSize = true;
+            this.lblCurrentVNUM.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentVNUM.Location = new System.Drawing.Point(253, 8);
+            this.lblCurrentVNUM.Name = "lblCurrentVNUM";
+            this.lblCurrentVNUM.Size = new System.Drawing.Size(79, 14);
+            this.lblCurrentVNUM.TabIndex = 18;
+            this.lblCurrentVNUM.Text = "Current VNUM:";
+            // 
+            // lblButtonPrompt
+            // 
+            this.lblButtonPrompt.AutoSize = true;
+            this.lblButtonPrompt.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblButtonPrompt.Location = new System.Drawing.Point(6, 8);
+            this.lblButtonPrompt.Name = "lblButtonPrompt";
+            this.lblButtonPrompt.Size = new System.Drawing.Size(76, 14);
+            this.lblButtonPrompt.TabIndex = 16;
+            this.lblButtonPrompt.Text = "Current Room:";
             // 
             // tabAttributes
             // 
@@ -1983,68 +2046,6 @@
             this.lblAreaHeader.TabIndex = 9;
             this.lblAreaHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblRoomNameLabel
-            // 
-            this.lblRoomNameLabel.AutoSize = true;
-            this.lblRoomNameLabel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoomNameLabel.Location = new System.Drawing.Point(6, 31);
-            this.lblRoomNameLabel.Name = "lblRoomNameLabel";
-            this.lblRoomNameLabel.Size = new System.Drawing.Size(67, 14);
-            this.lblRoomNameLabel.TabIndex = 22;
-            this.lblRoomNameLabel.Text = "Room Name:";
-            // 
-            // lblRoomCountLabel
-            // 
-            this.lblRoomCountLabel.AutoSize = true;
-            this.lblRoomCountLabel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoomCountLabel.Location = new System.Drawing.Point(346, 16);
-            this.lblRoomCountLabel.Name = "lblRoomCountLabel";
-            this.lblRoomCountLabel.Size = new System.Drawing.Size(68, 14);
-            this.lblRoomCountLabel.TabIndex = 23;
-            this.lblRoomCountLabel.Text = "Room Count:";
-            this.lblRoomCountLabel.Visible = false;
-            // 
-            // lblRoomCount
-            // 
-            this.lblRoomCount.AutoSize = true;
-            this.lblRoomCount.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoomCount.Location = new System.Drawing.Point(420, 16);
-            this.lblRoomCount.Name = "lblRoomCount";
-            this.lblRoomCount.Size = new System.Drawing.Size(0, 14);
-            this.lblRoomCount.TabIndex = 24;
-            this.lblRoomCount.Visible = false;
-            // 
-            // lblZoomViewLabel
-            // 
-            this.lblZoomViewLabel.AutoSize = true;
-            this.lblZoomViewLabel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblZoomViewLabel.Location = new System.Drawing.Point(9, 425);
-            this.lblZoomViewLabel.Name = "lblZoomViewLabel";
-            this.lblZoomViewLabel.Size = new System.Drawing.Size(120, 14);
-            this.lblZoomViewLabel.TabIndex = 21;
-            this.lblZoomViewLabel.Text = "Current Room Zoom";
-            // 
-            // pnlMapConfig
-            // 
-            this.pnlMapConfig.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlMapConfig.Controls.Add(this.chkAutoMap);
-            this.pnlMapConfig.Controls.Add(this.lblDefault);
-            this.pnlMapConfig.Controls.Add(this.btnDefault);
-            this.pnlMapConfig.Location = new System.Drawing.Point(9, 151);
-            this.pnlMapConfig.Name = "pnlMapConfig";
-            this.pnlMapConfig.Size = new System.Drawing.Size(429, 109);
-            this.pnlMapConfig.TabIndex = 25;
-            // 
-            // lblMapConfigLabel
-            // 
-            this.lblMapConfigLabel.AutoSize = true;
-            this.lblMapConfigLabel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMapConfigLabel.Location = new System.Drawing.Point(9, 137);
-            this.lblMapConfigLabel.Name = "lblMapConfigLabel";
-            this.lblMapConfigLabel.Size = new System.Drawing.Size(131, 14);
-            this.lblMapConfigLabel.TabIndex = 26;
-            this.lblMapConfigLabel.Text = "Map Creation Behavior";
-            // 
             // Mapper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2074,6 +2075,8 @@
             this.tabControl.ResumeLayout(false);
             this.tabArea.ResumeLayout(false);
             this.tabArea.PerformLayout();
+            this.pnlMapConfig.ResumeLayout(false);
+            this.pnlMapConfig.PerformLayout();
             this.pnlZoom.ResumeLayout(false);
             this.pnlZoom.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnZoomDown)).EndInit();
@@ -2090,8 +2093,6 @@
             this.panel3.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.pnlMapConfig.ResumeLayout(false);
-            this.pnlMapConfig.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2173,7 +2174,7 @@
         private System.Windows.Forms.Label lblTerrain;
         private System.Windows.Forms.Label lblRoomName;
         private System.Windows.Forms.Label lblRoomVNUM;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboSector;
         private System.Windows.Forms.TextBox txtVNUM;
         private System.Windows.Forms.TextBox txtRoomName;
         private System.Windows.Forms.Button btnSaveRoom;

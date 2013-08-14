@@ -16,6 +16,18 @@ namespace GizMaker.classes
         public int roomID { get; set; }
         public int roomAreaID { get; set; }
         public int roomNumber { get; set; }
+        public string roomName { get; set; }
+        public int VNUM { get; set; }
+        public string sector { get; set; }
+        public string description { get; set; }
+        public string extraKeywords { get; set; }
+        public string extraDescription { get; set; }
+        public string exitNorthDesc { get; set; }
+        public string exitSouthDesc { get; set; }
+        public string exitEastDesc { get; set; }
+        public string exitWestDesc { get; set; }
+        public string exitUpDesc { get; set; }
+        public string exitDownDesc { get; set; }
         public int coordX { get; set; }
         public int coordY { get; set; }
         public int coordZ { get; set; }
@@ -43,8 +55,9 @@ namespace GizMaker.classes
 
                 // Create query. 
                 string strSQL = string.Empty;
-                strSQL += " insert into [Room] ([RoomAreaID], [RoomNumber], [CoordX], [CoordY], [CoordZ], [HasExitNorth], [HasExitSouth], [HasExitEast], ";
-                strSQL += "             [HasExitWest], [HasExitUp], [HasExitDown]) ";
+                strSQL += " insert into [Room] ([RoomAreaID], [RoomNumber], [RoomName], [VNUM], [Sector], [Description], [ExtraKeywords], [ExtraDescription], ";
+                strSQL += "             [ExitNorthDesc], [ExitSouthDesc], [ExitEastDesc], [ExitWestDesc], [ExitUpDesc], [ExitDownDesc], ";
+                strSQL += "             [CoordX], [CoordY], [CoordZ], [HasExitNorth], [HasExitSouth], [HasExitEast], [HasExitWest], [HasExitUp], [HasExitDown]) ";
                 strSQL += " values (@RoomAreaID, @RoomNumber, @CoordX, @CoordY, @CoordZ, @HasExitNorth, @HasExitSouth, @HasExitEast, ";
                 strSQL += "             @HasExitWest, @HasExitUp, @HasExitDown) ";
 
@@ -53,6 +66,18 @@ namespace GizMaker.classes
 
                 da.InsertCommand.Parameters.Add("@RoomAreaID", OleDbType.Integer, 10, "RoomAreaID").Value = this.roomAreaID;
                 da.InsertCommand.Parameters.Add("@RoomNumber", OleDbType.Integer, 10, "RoomNumber").Value = this.roomNumber;
+                da.InsertCommand.Parameters.Add("@RoomName", OleDbType.VarChar, 100, "RoomName").Value = this.roomName;
+                da.InsertCommand.Parameters.Add("@VNUM", OleDbType.Integer, 10, "VNUM").Value = this.VNUM;
+                da.InsertCommand.Parameters.Add("@Sector", OleDbType.VarChar, 25, "Sector").Value = this.sector;
+                da.InsertCommand.Parameters.Add("@Description", OleDbType.VarChar, 2000, "Description").Value = this.description;
+                da.InsertCommand.Parameters.Add("@ExtraKeywords", OleDbType.VarChar, 100, "ExtraKeywords").Value = this.extraKeywords;
+                da.InsertCommand.Parameters.Add("@ExtraDescription", OleDbType.VarChar, 100, "ExtraDescription").Value = this.extraDescription;
+                da.InsertCommand.Parameters.Add("@ExitNorthDesc", OleDbType.VarChar, 100, "ExitNorthDesc").Value = this.exitNorthDesc;
+                da.InsertCommand.Parameters.Add("@ExitSouthDesc", OleDbType.VarChar, 100, "ExitSouthDesc").Value = this.exitSouthDesc;
+                da.InsertCommand.Parameters.Add("@ExitEastDesc", OleDbType.VarChar, 100, "ExitEastDesc").Value = this.exitEastDesc;
+                da.InsertCommand.Parameters.Add("@ExitWestDesc", OleDbType.VarChar, 100, "ExitWestDesc").Value = this.exitWestDesc;
+                da.InsertCommand.Parameters.Add("@ExitUpDesc", OleDbType.VarChar, 100, "ExitUpDesc").Value = this.exitUpDesc;
+                da.InsertCommand.Parameters.Add("@ExitDownDesc", OleDbType.VarChar, 100, "ExitDownDesc").Value = this.exitDownDesc;
                 da.InsertCommand.Parameters.Add("@CoordX", OleDbType.Integer, 10, "CoordX").Value = this.coordX;
                 da.InsertCommand.Parameters.Add("@CoordY", OleDbType.Integer, 10, "CoordY").Value = this.coordY;
                 da.InsertCommand.Parameters.Add("@CoordZ", OleDbType.Integer, 10, "CoordZ").Value = this.coordZ;
@@ -90,7 +115,19 @@ namespace GizMaker.classes
                 // Create query. 
                 string strSQL = string.Empty;
                 strSQL += " update  [Room] ";
-                strSQL += " set     [HasExitNorth] =  @HasExitNorth,";
+                strSQL += " set     [RoomName] = @RoomName, ";
+                strSQL += "         [VNUM] = @VNUM,";
+                strSQL += "         [Sector] = @Sector,";
+                strSQL += "         [Description] = @Description,";
+                strSQL += "         [ExtraKeywords] = @ExtraKeywords,";
+                strSQL += "         [ExtraDescription] = @ExtraDescription,";
+                strSQL += "         [ExitNorthDesc] = @ExitNorthDesc,";
+                strSQL += "         [ExitSouthDesc] = @ExitSouthDesc,";
+                strSQL += "         [ExitEastDesc] = @ExitEastDesc,";
+                strSQL += "         [ExitWestDesc] = @ExitWestDesc,";
+                strSQL += "         [ExitUpDesc] = @ExitUpDesc,";
+                strSQL += "         [ExitDownDesc] = @ExitDownDesc,";
+                strSQL += "         [HasExitNorth] =  @HasExitNorth,";
                 strSQL += "         [HasExitSouth] =  @HasExitSouth,";
                 strSQL += "         [HasExitEast] =  @HasExitEast,";
                 strSQL += "         [HasExitWest] =  @HasExitWest,";
@@ -105,6 +142,18 @@ namespace GizMaker.classes
                 da.InsertCommand = new OleDbCommand(strSQL);
                 da.InsertCommand.Connection = connection;
 
+                da.InsertCommand.Parameters.Add("@RoomName", OleDbType.VarChar, 100, "RoomName").Value = this.roomName;
+                da.InsertCommand.Parameters.Add("@VNUM", OleDbType.Integer, 10, "VNUM").Value = this.VNUM;
+                da.InsertCommand.Parameters.Add("@Sector", OleDbType.VarChar, 25, "Sector").Value = this.sector;
+                da.InsertCommand.Parameters.Add("@Description", OleDbType.VarChar, 2000, "Description").Value = this.description;
+                da.InsertCommand.Parameters.Add("@ExtraKeywords", OleDbType.VarChar, 100, "ExtraKeywords").Value = this.extraKeywords;
+                da.InsertCommand.Parameters.Add("@ExtraDescription", OleDbType.VarChar, 100, "ExtraDescription").Value = this.extraDescription;
+                da.InsertCommand.Parameters.Add("@ExitNorthDesc", OleDbType.VarChar, 100, "ExitNorthDesc").Value = this.exitNorthDesc;
+                da.InsertCommand.Parameters.Add("@ExitSouthDesc", OleDbType.VarChar, 100, "ExitSouthDesc").Value = this.exitSouthDesc;
+                da.InsertCommand.Parameters.Add("@ExitEastDesc", OleDbType.VarChar, 100, "ExitEastDesc").Value = this.exitEastDesc;
+                da.InsertCommand.Parameters.Add("@ExitWestDesc", OleDbType.VarChar, 100, "ExitWestDesc").Value = this.exitWestDesc;
+                da.InsertCommand.Parameters.Add("@ExitUpDesc", OleDbType.VarChar, 100, "ExitUpDesc").Value = this.exitUpDesc;
+                da.InsertCommand.Parameters.Add("@ExitDownDesc", OleDbType.VarChar, 100, "ExitDownDesc").Value = this.exitDownDesc;
                 da.InsertCommand.Parameters.Add("@HasExitNorth", OleDbType.Boolean, 10, "HasExitNorth").Value = this.hasExitNorth;
                 da.InsertCommand.Parameters.Add("@HasExitSouth", OleDbType.Boolean, 10, "HasExitSouth").Value = this.hasExitSouth;
                 da.InsertCommand.Parameters.Add("@HasExitEast", OleDbType.Boolean, 10, "HasExitEast").Value = this.hasExitEast;
@@ -243,8 +292,9 @@ namespace GizMaker.classes
 
                 // Create query. 
                 string strSQL = string.Empty;
-                strSQL += " select [RoomAreaID], [RoomNumber], [CoordX], [CoordY], [CoordZ], [HasExitNorth], [HasExitSouth], [HasExitEast], ";
-                strSQL += "             [HasExitWest], [HasExitUp], [HasExitDown] ";
+                //strSQL += " select [RoomAreaID], [RoomNumber], [CoordX], [CoordY], [CoordZ], [HasExitNorth], [HasExitSouth], [HasExitEast], ";
+                //strSQL += "             [HasExitWest], [HasExitUp], [HasExitDown] ";
+                strSQL += " select * ";
                 strSQL += " from   [Room] ";
                 strSQL += " where  RoomAreaID = " + RoomAreaID + " ";
                 strSQL += "        and RoomNumber = " + RoomNumber + " ";
@@ -259,7 +309,18 @@ namespace GizMaker.classes
                 {
                     oRoom.roomAreaID = (int)ds.Tables[0].Rows[0]["RoomAreaID"];
                     oRoom.roomNumber = (int)ds.Tables[0].Rows[0]["RoomNumber"];
-                    oRoom.hasExitNorth = (bool)ds.Tables[0].Rows[0]["HasExitNorth"];
+                    if (ds.Tables[0].Rows[0]["RoomName"] != DBNull.Value) oRoom.roomName = (string)ds.Tables[0].Rows[0]["RoomName"];
+                    if (ds.Tables[0].Rows[0]["VNUM"] != DBNull.Value) oRoom.VNUM = (int)ds.Tables[0].Rows[0]["VNUM"];
+                    if (ds.Tables[0].Rows[0]["Sector"] != DBNull.Value) oRoom.sector = (string)ds.Tables[0].Rows[0]["Sector"];
+                    if (ds.Tables[0].Rows[0]["Description"] != DBNull.Value) oRoom.description = (string)ds.Tables[0].Rows[0]["Description"];
+                    if (ds.Tables[0].Rows[0]["ExtraKeywords"] != DBNull.Value) oRoom.extraKeywords = (string)ds.Tables[0].Rows[0]["ExtraKeywords"];
+                    if (ds.Tables[0].Rows[0]["ExtraDescription"] != DBNull.Value) oRoom.extraDescription = (string)ds.Tables[0].Rows[0]["ExtraDescription"];
+                    if (ds.Tables[0].Rows[0]["ExitNorthDesc"] != DBNull.Value) oRoom.exitNorthDesc = (string)ds.Tables[0].Rows[0]["ExitNorthDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitSouthDesc"] != DBNull.Value) oRoom.exitSouthDesc = (string)ds.Tables[0].Rows[0]["ExitSouthDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitEastDesc"] != DBNull.Value) oRoom.exitEastDesc = (string)ds.Tables[0].Rows[0]["ExitEastDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitWestDesc"] != DBNull.Value) oRoom.exitWestDesc = (string)ds.Tables[0].Rows[0]["ExitWestDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitUpDesc"] != DBNull.Value) oRoom.exitUpDesc = (string)ds.Tables[0].Rows[0]["ExitUpDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitDownDesc"] != DBNull.Value) oRoom.exitDownDesc = (string)ds.Tables[0].Rows[0]["ExitDownDesc"]; oRoom.hasExitNorth = (bool)ds.Tables[0].Rows[0]["HasExitNorth"];
                     oRoom.hasExitSouth = (bool)ds.Tables[0].Rows[0]["HasExitSouth"];
                     oRoom.hasExitEast = (bool)ds.Tables[0].Rows[0]["HasExitEast"];
                     oRoom.hasExitWest = (bool)ds.Tables[0].Rows[0]["HasExitWest"];
@@ -295,8 +356,7 @@ namespace GizMaker.classes
 
                 // Create query. 
                 string strSQL = string.Empty;
-                strSQL += " select [RoomAreaID], [RoomNumber], [CoordX], [CoordY], [CoordZ], [HasExitNorth], [HasExitSouth], [HasExitEast], ";
-                strSQL += "             [HasExitWest], [HasExitUp], [HasExitDown] ";
+                strSQL += " select * ";
                 strSQL += " from   [Room] ";
                 strSQL += " where  RoomAreaID = " + RoomAreaID + " ";
                 strSQL += "        and CoordX = " + CoordX + " ";
@@ -312,6 +372,18 @@ namespace GizMaker.classes
                     room oRoom = new room();
 
                     oRoom.roomNumber = (int)ds.Tables[0].Rows[iRow]["RoomNumber"];
+                    if (ds.Tables[0].Rows[0]["RoomName"] != DBNull.Value) oRoom.roomName = (string)ds.Tables[0].Rows[0]["RoomName"];
+                    if (ds.Tables[0].Rows[0]["VNUM"] != DBNull.Value) oRoom.VNUM = (int)ds.Tables[0].Rows[0]["VNUM"];
+                    if (ds.Tables[0].Rows[0]["Sector"] != DBNull.Value) oRoom.sector = (string)ds.Tables[0].Rows[0]["Sector"];
+                    if (ds.Tables[0].Rows[0]["Description"] != DBNull.Value) oRoom.description = (string)ds.Tables[0].Rows[0]["Description"];
+                    if (ds.Tables[0].Rows[0]["ExtraKeywords"] != DBNull.Value) oRoom.extraKeywords = (string)ds.Tables[0].Rows[0]["ExtraKeywords"];
+                    if (ds.Tables[0].Rows[0]["ExtraDescription"] != DBNull.Value) oRoom.extraDescription = (string)ds.Tables[0].Rows[0]["ExtraDescription"];
+                    if (ds.Tables[0].Rows[0]["ExitNorthDesc"] != DBNull.Value) oRoom.exitNorthDesc = (string)ds.Tables[0].Rows[0]["ExitNorthDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitSouthDesc"] != DBNull.Value) oRoom.exitSouthDesc = (string)ds.Tables[0].Rows[0]["ExitSouthDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitEastDesc"] != DBNull.Value) oRoom.exitEastDesc = (string)ds.Tables[0].Rows[0]["ExitEastDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitWestDesc"] != DBNull.Value) oRoom.exitWestDesc = (string)ds.Tables[0].Rows[0]["ExitWestDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitUpDesc"] != DBNull.Value) oRoom.exitUpDesc = (string)ds.Tables[0].Rows[0]["ExitUpDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitDownDesc"] != DBNull.Value) oRoom.exitDownDesc = (string)ds.Tables[0].Rows[0]["ExitDownDesc"];
                     oRoom.hasExitNorth = (bool)ds.Tables[0].Rows[iRow]["HasExitNorth"];
                     oRoom.hasExitSouth = (bool)ds.Tables[0].Rows[iRow]["HasExitSouth"];
                     oRoom.hasExitEast = (bool)ds.Tables[0].Rows[iRow]["HasExitEast"];
@@ -352,8 +424,7 @@ namespace GizMaker.classes
 
                 // Create query. 
                 string strSQL = string.Empty;
-                strSQL += " select [RoomAreaID], [RoomNumber], [CoordX], [CoordY], [CoordZ], [HasExitNorth], [HasExitSouth], [HasExitEast], ";
-                strSQL += "             [HasExitWest], [HasExitUp], [HasExitDown] ";
+                strSQL += " select * ";
                 strSQL += " from   [Room] ";
                 strSQL += " where  RoomAreaID = " + RoomAreaID + " ";
                 strSQL += "        and CoordX = " + CoordX + " ";
@@ -370,6 +441,18 @@ namespace GizMaker.classes
                     room oRoom = new room();
 
                     oRoom.roomNumber = (int)ds.Tables[0].Rows[iRow]["RoomNumber"];
+                    if (ds.Tables[0].Rows[0]["RoomName"] != DBNull.Value) oRoom.roomName = (string)ds.Tables[0].Rows[0]["RoomName"];
+                    if (ds.Tables[0].Rows[0]["VNUM"] != DBNull.Value) oRoom.VNUM = (int)ds.Tables[0].Rows[0]["VNUM"];
+                    if (ds.Tables[0].Rows[0]["Sector"] != DBNull.Value) oRoom.sector = (string)ds.Tables[0].Rows[0]["Sector"];
+                    if (ds.Tables[0].Rows[0]["Description"] != DBNull.Value) oRoom.description = (string)ds.Tables[0].Rows[0]["Description"];
+                    if (ds.Tables[0].Rows[0]["ExtraKeywords"] != DBNull.Value) oRoom.extraKeywords = (string)ds.Tables[0].Rows[0]["ExtraKeywords"];
+                    if (ds.Tables[0].Rows[0]["ExtraDescription"] != DBNull.Value) oRoom.extraDescription = (string)ds.Tables[0].Rows[0]["ExtraDescription"];
+                    if (ds.Tables[0].Rows[0]["ExitNorthDesc"] != DBNull.Value) oRoom.exitNorthDesc = (string)ds.Tables[0].Rows[0]["ExitNorthDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitSouthDesc"] != DBNull.Value) oRoom.exitSouthDesc = (string)ds.Tables[0].Rows[0]["ExitSouthDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitEastDesc"] != DBNull.Value) oRoom.exitEastDesc = (string)ds.Tables[0].Rows[0]["ExitEastDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitWestDesc"] != DBNull.Value) oRoom.exitWestDesc = (string)ds.Tables[0].Rows[0]["ExitWestDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitUpDesc"] != DBNull.Value) oRoom.exitUpDesc = (string)ds.Tables[0].Rows[0]["ExitUpDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitDownDesc"] != DBNull.Value) oRoom.exitDownDesc = (string)ds.Tables[0].Rows[0]["ExitDownDesc"];
                     oRoom.hasExitNorth = (bool)ds.Tables[0].Rows[iRow]["HasExitNorth"];
                     oRoom.hasExitSouth = (bool)ds.Tables[0].Rows[iRow]["HasExitSouth"];
                     oRoom.hasExitEast = (bool)ds.Tables[0].Rows[iRow]["HasExitEast"];
@@ -410,8 +493,7 @@ namespace GizMaker.classes
 
                 // Create query. 
                 string strSQL = string.Empty;
-                strSQL += " select [RoomAreaID], [RoomNumber], [CoordX], [CoordY], [CoordZ], [HasExitNorth], [HasExitSouth], [HasExitEast], ";
-                strSQL += "             [HasExitWest], [HasExitUp], [HasExitDown] ";
+                strSQL += " select * ";
                 strSQL += " from   [Room] ";
                 strSQL += " where  RoomAreaID = " + RoomAreaID + " ";
                 strSQL += "        and CoordX = " + CoordX + " ";
@@ -428,6 +510,18 @@ namespace GizMaker.classes
                     room oRoom = new room();
 
                     oRoom.roomNumber = (int)ds.Tables[0].Rows[iRow]["RoomNumber"];
+                    if (ds.Tables[0].Rows[0]["RoomName"] != DBNull.Value) oRoom.roomName = (string)ds.Tables[0].Rows[0]["RoomName"];
+                    if (ds.Tables[0].Rows[0]["VNUM"] != DBNull.Value) oRoom.VNUM = (int)ds.Tables[0].Rows[0]["VNUM"];
+                    if (ds.Tables[0].Rows[0]["Sector"] != DBNull.Value) oRoom.sector = (string)ds.Tables[0].Rows[0]["Sector"];
+                    if (ds.Tables[0].Rows[0]["Description"] != DBNull.Value) oRoom.description = (string)ds.Tables[0].Rows[0]["Description"];
+                    if (ds.Tables[0].Rows[0]["ExtraKeywords"] != DBNull.Value) oRoom.extraKeywords = (string)ds.Tables[0].Rows[0]["ExtraKeywords"];
+                    if (ds.Tables[0].Rows[0]["ExtraDescription"] != DBNull.Value) oRoom.extraDescription = (string)ds.Tables[0].Rows[0]["ExtraDescription"];
+                    if (ds.Tables[0].Rows[0]["ExitNorthDesc"] != DBNull.Value) oRoom.exitNorthDesc = (string)ds.Tables[0].Rows[0]["ExitNorthDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitSouthDesc"] != DBNull.Value) oRoom.exitSouthDesc = (string)ds.Tables[0].Rows[0]["ExitSouthDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitEastDesc"] != DBNull.Value) oRoom.exitEastDesc = (string)ds.Tables[0].Rows[0]["ExitEastDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitWestDesc"] != DBNull.Value) oRoom.exitWestDesc = (string)ds.Tables[0].Rows[0]["ExitWestDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitUpDesc"] != DBNull.Value) oRoom.exitUpDesc = (string)ds.Tables[0].Rows[0]["ExitUpDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitDownDesc"] != DBNull.Value) oRoom.exitDownDesc = (string)ds.Tables[0].Rows[0]["ExitDownDesc"];
                     oRoom.hasExitNorth = (bool)ds.Tables[0].Rows[iRow]["HasExitNorth"];
                     oRoom.hasExitSouth = (bool)ds.Tables[0].Rows[iRow]["HasExitSouth"];
                     oRoom.hasExitEast = (bool)ds.Tables[0].Rows[iRow]["HasExitEast"];
@@ -468,8 +562,7 @@ namespace GizMaker.classes
 
                 // Create query. 
                 string strSQL = string.Empty;
-                strSQL = " select [RoomAreaID], [RoomNumber], [CoordX], [CoordY], [CoordZ], [HasExitNorth], [HasExitSouth], [HasExitEast], ";
-                strSQL += "             [HasExitWest], [HasExitUp], [HasExitDown] ";
+                strSQL = " select * ";
                 strSQL += " from    [Room]  ";
                 strSQL += " where   [RoomAreaID] = " + RoomAreaID.ToString() +" ";
                 strSQL += "         and [RoomNumber] in ( ";
@@ -491,6 +584,18 @@ namespace GizMaker.classes
                     room oRoom = new room();
 
                     oRoom.roomNumber = (int)ds.Tables[0].Rows[iRow]["RoomNumber"];
+                    if (ds.Tables[0].Rows[0]["RoomName"] != DBNull.Value) oRoom.roomName = (string)ds.Tables[0].Rows[0]["RoomName"];
+                    if (ds.Tables[0].Rows[0]["VNUM"] != DBNull.Value) oRoom.VNUM = (int)ds.Tables[0].Rows[0]["VNUM"];
+                    if (ds.Tables[0].Rows[0]["Sector"] != DBNull.Value) oRoom.sector = (string)ds.Tables[0].Rows[0]["Sector"];
+                    if (ds.Tables[0].Rows[0]["Description"] != DBNull.Value) oRoom.description = (string)ds.Tables[0].Rows[0]["Description"];
+                    if (ds.Tables[0].Rows[0]["ExtraKeywords"] != DBNull.Value) oRoom.extraKeywords = (string)ds.Tables[0].Rows[0]["ExtraKeywords"];
+                    if (ds.Tables[0].Rows[0]["ExtraDescription"] != DBNull.Value) oRoom.extraDescription = (string)ds.Tables[0].Rows[0]["ExtraDescription"];
+                    if (ds.Tables[0].Rows[0]["ExitNorthDesc"] != DBNull.Value) oRoom.exitNorthDesc = (string)ds.Tables[0].Rows[0]["ExitNorthDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitSouthDesc"] != DBNull.Value) oRoom.exitSouthDesc = (string)ds.Tables[0].Rows[0]["ExitSouthDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitEastDesc"] != DBNull.Value) oRoom.exitEastDesc = (string)ds.Tables[0].Rows[0]["ExitEastDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitWestDesc"] != DBNull.Value) oRoom.exitWestDesc = (string)ds.Tables[0].Rows[0]["ExitWestDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitUpDesc"] != DBNull.Value) oRoom.exitUpDesc = (string)ds.Tables[0].Rows[0]["ExitUpDesc"];
+                    if (ds.Tables[0].Rows[0]["ExitDownDesc"] != DBNull.Value) oRoom.exitDownDesc = (string)ds.Tables[0].Rows[0]["ExitDownDesc"];
                     oRoom.hasExitNorth = (bool)ds.Tables[0].Rows[iRow]["HasExitNorth"];
                     oRoom.hasExitSouth = (bool)ds.Tables[0].Rows[iRow]["HasExitSouth"];
                     oRoom.hasExitEast = (bool)ds.Tables[0].Rows[iRow]["HasExitEast"];

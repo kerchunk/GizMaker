@@ -263,6 +263,7 @@ namespace GizMaker.forms
                     // Set the room Details to the form.
                     lblButtonName.Text = strRoomName.Replace("room", "");
                     iCurrentRoom = Convert.ToInt32(strRoomName.Replace("room", ""));
+                    SetCurrentRoom();
 
                     // Set new Current Room.
                     iCurrentRoom = iNextButton;
@@ -342,6 +343,7 @@ namespace GizMaker.forms
                 // Set the room Details to the form.
                 lblButtonName.Text = strRoomName.Replace("room", "");
                 iCurrentRoom = Convert.ToInt32(strRoomName.Replace("room", ""));
+                SetCurrentRoom();
 
                 // Set new Current Room.
                 iCurrentRoom = iNextButton;
@@ -419,6 +421,7 @@ namespace GizMaker.forms
                 // Set the room Details to the form.
                 lblButtonName.Text = strRoomName.Replace("room", "");
                 iCurrentRoom = Convert.ToInt32(strRoomName.Replace("room", ""));
+                SetCurrentRoom();
 
                 // Set new Current Room.
                 iCurrentRoom = iNextButton;
@@ -500,6 +503,7 @@ namespace GizMaker.forms
                     // Set the room Details to the form.
                     lblButtonName.Text = strRoomName.Replace("room", "");
                     iCurrentRoom = Convert.ToInt32(strRoomName.Replace("room", ""));
+                    SetCurrentRoom();
 
                     // Set new Current Room.
                     iCurrentRoom = iNextButton;
@@ -1584,6 +1588,12 @@ namespace GizMaker.forms
             cboDoorType.SelectedIndex = cboDoorType.FindString(oDoor.doorType);
             cboDoorKey.SelectedIndex = cboDoorKey.FindString(GetKeyName(oDoor.keyVNUM));
         }
+
+        // Save Room Details
+        private void btnSaveRoom_Click(object sender, EventArgs e)
+        {
+            SaveRoom(iCurrentArea, iCurrentRoom, iCurrentX, iCurrentY, iCurrentZ, this.HasUpLink(iCurrentRoom), this.HasDownLink(iCurrentRoom));
+        }
         #endregion
 
         // Current room details.
@@ -2091,6 +2101,20 @@ namespace GizMaker.forms
                 // Populate the Room Object from the form.
                 oRoom.roomAreaID = iAreaID;
                 oRoom.roomNumber = iCurrentRoom;
+
+                oRoom.roomName = txtRoomName.Text;
+                if (txtVNUM.Text != "")
+                    oRoom.VNUM = Convert.ToInt32(txtVNUM.Text);
+                oRoom.sector = cboSector.Items[cboSector.SelectedIndex].ToString();
+                oRoom.description = txtRoomDescription.Text;
+                oRoom.extraKeywords = txtExtraDescKeywords.Text;
+                oRoom.extraDescription = txtExtraDescription.Text;
+                oRoom.exitNorthDesc = txtNorthExit.Text;
+                oRoom.exitSouthDesc = txtSouthExit.Text;
+                oRoom.exitEastDesc = txtEastExit.Text;
+                oRoom.exitWestDesc = txtWestExit.Text;
+                oRoom.exitUpDesc = txtUpExit.Text;
+                oRoom.exitDownDesc = txtDownExit.Text;
                 oRoom.coordX = iCoordX;
                 oRoom.coordY = iCoordY;
                 oRoom.coordZ = iCoordZ;
@@ -2282,19 +2306,32 @@ namespace GizMaker.forms
             classes.room oRoom = new classes.room();
             oRoom = classes.room.GetRoom(iCurrentArea, iCurrentRoom, iCurrentX, iCurrentY, iCurrentZ);
 
-
             // Toggle Panels and allow Add/Edit if Room is part of the Map.
             if (oRoom.Exists())
             {
                 // Set Room Details.
                 lblCurrentRoomName.Text = "< Not Set >";
                 lblVNUM.Text = "< Not Set >";
-                
+                txtRoomName.Text = oRoom.roomName;
+                txtVNUM.Text = oRoom.VNUM.ToString();
+                cboSector.SelectedIndex = cboSector.FindString(oRoom.sector);
+                txtRoomDescription.Text = oRoom.description;
+                txtExtraDescKeywords.Text = oRoom.extraKeywords;
+                txtExtraDescription.Text = oRoom.extraDescription;
+                txtNorthExit.Text = oRoom.exitNorthDesc;
+                txtSouthExit.Text = oRoom.exitSouthDesc;
+                txtEastExit.Text = oRoom.exitEastDesc;
+                txtWestExit.Text = oRoom.exitWestDesc;
+                txtUpExit.Text = oRoom.exitUpDesc;
+                txtDownExit.Text = oRoom.exitDownDesc;
+
+                // Enable "Mob Tab" controls.
                 cboAllMobs.Enabled = true;
                 btnAddSpawn.Enabled = true;
                 btnMobDetail.Enabled = true;
                 btnRemoveSpawn.Enabled = true;
 
+                // Enable "Door" controls.
                 txtDoorKeywords.Enabled = true;
                 txtDoorVNUM.Enabled = true;
                 cboDirection.Enabled = true;
@@ -2303,11 +2340,13 @@ namespace GizMaker.forms
             }
             else
             {
+                // Disable "Mob Tab" controls.
                 cboAllMobs.Enabled = false;
                 btnAddSpawn.Enabled = false;
                 btnMobDetail.Enabled = false;
                 btnRemoveSpawn.Enabled = false;
 
+                // Disable "Door" controls.
                 txtDoorKeywords.Enabled = false;
                 txtDoorVNUM.Enabled = false;
                 cboDirection.Enabled = false;
