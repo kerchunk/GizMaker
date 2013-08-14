@@ -41,6 +41,7 @@ namespace GizMaker.forms
 
         // String Messages
         string strErrorHeaderMsg = "You blew it.";
+        string strCurrentRoomIndicator = "¥";
         #endregion"
 
         // On Load Event.
@@ -207,6 +208,8 @@ namespace GizMaker.forms
         // Move North on the Grid.
         void MoveNorth()
         {
+            DisplayCurrentRoom(false);
+
             string strRoomName = string.Empty;
             int iNextButton = iCurrentRoom - 1;
             int iModNorthBorder = 0;
@@ -283,11 +286,17 @@ namespace GizMaker.forms
             {
                 NewMap_North();
             }
+
+            // Set the Current Room indicator.
+            DisplayCurrentRoom(true);
         }
 
         // Move West on the Grid.
         void MoveWest()
         {
+            // Set the Current Room indicator.
+            DisplayCurrentRoom(false);
+
             string strRoomName = string.Empty;
             int iNextButton = iCurrentRoom - 25;
             bool blnRoomUpdated = false;
@@ -357,11 +366,17 @@ namespace GizMaker.forms
 
                 NewMap_West();
             }
+
+            // Set the Current Room indicator.
+            DisplayCurrentRoom(true);
         }
 
         // Move East on the Grid.
         void MoveEast()
         {
+            // Set the Current Room indicator.
+            DisplayCurrentRoom(false);
+
             string strRoomName = string.Empty;
             int iNextButton = iCurrentRoom + 25;
             bool blnRoomUpdated = false;
@@ -431,11 +446,17 @@ namespace GizMaker.forms
                 
                 NewMap_East();
             }
+
+            // Set the Current Room indicator.
+            DisplayCurrentRoom(true);
         }
 
         // Move South on the Grid.
         void MoveSouth()
         {
+            // Set the Current Room indicator.
+            DisplayCurrentRoom(false);
+
             string strRoomName = string.Empty;
             int iNextButton = iCurrentRoom + 1;
             int iModSouthBorder = 0;
@@ -449,7 +470,7 @@ namespace GizMaker.forms
 
             // Check if the Current Square is on the South border of the map.
             iModSouthBorder = (iCurrentRoom) % 25;
-            if (iModSouthBorder != 0 && iCurrentRoom != 1)
+            if (iModSouthBorder != 0)
             {
                 try
                 {
@@ -512,6 +533,9 @@ namespace GizMaker.forms
             {
                 NewMap_South();
             }
+
+            // Set the Current Room indicator.
+            DisplayCurrentRoom(true);
         }
 
         // Move Up to a new Grid.
@@ -840,14 +864,13 @@ namespace GizMaker.forms
         {
             // Set new Coordinates.
             iCurrentY += 1;
-            iCurrentRoom = 1;
 
             // Clear Map Rooms.
             ClearRooms();
 
             // Get New Room Control.
             Button room = new Button();
-            string strRoomName = "room1";
+            string strRoomName = "room" + iCurrentRoom;
             Control[] btnRoom = this.Controls.Find(strRoomName, true);
             if (btnRoom != null)
             {
@@ -870,14 +893,13 @@ namespace GizMaker.forms
         {
             // Set new Coordinates.
             iCurrentY -= 1;
-            iCurrentRoom = 1;
 
             // Clear Map Rooms.
             ClearRooms();
 
             // Get New Room Control.
             Button room = new Button();
-            string strRoomName = "room1";
+            string strRoomName = "room" + iCurrentRoom; 
             Control[] btnRoom = this.Controls.Find(strRoomName, true);
             if (btnRoom != null)
             {
@@ -900,14 +922,13 @@ namespace GizMaker.forms
         {
             // Set new Coordinates.
             iCurrentX += 1;
-            iCurrentRoom = 1;
 
             // Clear Map Rooms.
             ClearRooms();
 
             // Get New Room Control.
             Button room = new Button();
-            string strRoomName = "room1";
+            string strRoomName = "room" + iCurrentRoom; 
             Control[] btnRoom = this.Controls.Find(strRoomName, true);
             if (btnRoom != null)
             {
@@ -930,14 +951,13 @@ namespace GizMaker.forms
         {
             // Set new Coordinates.
             iCurrentX -= 1;
-            iCurrentRoom = 1;
 
             // Clear Map Rooms.
             ClearRooms();
 
             // Get New Room Control.
             Button room = new Button();
-            string strRoomName = "room1";
+            string strRoomName = "room" + iCurrentRoom; 
             Control[] btnRoom = this.Controls.Find(strRoomName, true);
             if (btnRoom != null)
             {
@@ -960,14 +980,13 @@ namespace GizMaker.forms
         {
             // Set new Coordinates.
             iCurrentZ += 1;
-            iCurrentRoom = 1;
 
             // Clear Map Rooms.
             ClearRooms();
 
             // Get New Room Control.
             Button room = new Button();
-            string strRoomName = "room1";
+            string strRoomName = "room" + iCurrentRoom; 
             Control[] btnRoom = this.Controls.Find(strRoomName, true);
             if (btnRoom != null)
             {
@@ -990,14 +1009,13 @@ namespace GizMaker.forms
         {
             // Set new Coordinates.
             iCurrentZ -= 1;
-            iCurrentRoom = 1;
 
             // Clear Map Rooms.
             ClearRooms();
 
             // Get New Room Control.
             Button room = new Button();
-            string strRoomName = "room1";
+            string strRoomName = "room" + iCurrentRoom; 
             Control[] btnRoom = this.Controls.Find(strRoomName, true);
             if (btnRoom != null)
             {
@@ -1096,6 +1114,9 @@ namespace GizMaker.forms
         // Use single button click event to route all button clicks. 
         public void RoomClick(object sender, EventArgs e)
         {
+            // Set the Current Room indicator.
+            DisplayCurrentRoom(false);
+
             string strRoomName = string.Empty;
 
             // Get the sender button object.
@@ -1126,6 +1147,9 @@ namespace GizMaker.forms
 
             // Update the Room Zoom View for the current room.
             UpdateZoomView(btnButton);
+
+            // Set the Current Room indicator.
+            DisplayCurrentRoom(true);
         }
 
         // Use single button click event to route all button clicks. 
@@ -2051,6 +2075,9 @@ namespace GizMaker.forms
                     }
                 }
             }
+
+            //Display Current Room.
+            DisplayCurrentRoom(true);
         }
 
         // Fully load a new (0, 0, 0) Mapper screen for an AreaID.
@@ -2233,11 +2260,31 @@ namespace GizMaker.forms
             UpdateZoomView(btnRoom);
         }
 
+        // Show or Hide "Current Room" Indicator.
+        public void DisplayCurrentRoom(bool blnDisplay)
+        {
+            // Set the Current Room indicator.
+            Control[] currRoom = this.Controls.Find("room" + iCurrentRoom, true);
+            Button btnRoom = new Button();
+            if (btnRoom != null)
+            {
+                btnRoom = (Button)currRoom[0];
+
+                if (blnDisplay)
+                {
+                    btnRoom.Text = strCurrentRoomIndicator;
+                    btnRoom.ForeColor = Color.White;
+                }
+                else
+                {
+                    btnRoom.Text = "";
+                }
+            }
+        }
         #endregion
 
         // Zoom view window painting.
         #region "zoom view"
-
         // Update all listings of current room.
         private void SetCurrentRoom()
         {
